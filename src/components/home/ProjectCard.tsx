@@ -31,8 +31,17 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             fill
             className="object-cover object-top group-hover:scale-[1.03] transition-transform duration-500"
           />
-          <div className="absolute top-3 right-3 z-10 px-2 py-1 rounded-sm bg-background/85 backdrop-blur-sm text-accent text-[10px] font-bold uppercase tracking-tight border border-border">
-            Case Study
+          <div className={
+            "absolute top-3 right-3 z-10 flex items-center gap-1.5 px-2 py-1 rounded-sm bg-background/85 backdrop-blur-sm text-[10px] font-bold uppercase tracking-tight border " +
+            (project.stage === 'Production' ? "text-accent border-accent/40" : "text-muted-foreground border-border")
+          }>
+            {project.stage === 'Production' && (
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-accent opacity-75 animate-ping" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+              </span>
+            )}
+            {project.stage}
           </div>
         </div>
 

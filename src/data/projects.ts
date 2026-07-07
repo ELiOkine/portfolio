@@ -17,8 +17,20 @@ export interface Project {
   metrics?: ProjectMetric[];
   architecture?: string[];
   category: 'Engineering' | 'Design' | 'Fullstack';
+  /**
+   * Honest maturity label shown as a badge.
+   * 'Production' = shipped with a real backend/API/auth and real users.
+   * 'Concept'    = build/prototype presented as an interactive demo.
+   */
+  stage: 'Production' | 'Concept';
+  /** One-line note clarifying exactly what "production" or "concept" means here. */
+  stageNote?: string;
   link?: string;
   github?: string;
+  /** Real public URL of the shipped product (distinct from the portfolio demo). */
+  liveUrl?: string;
+  /** Real organizations this was built for / deployed at (for a credibility strip). */
+  clients?: string[];
   image: string;
   /**
    * When true, the live preview loads the project's built index.html directly in the iframe
@@ -69,6 +81,9 @@ export const projects: Project[] = [
       'Sentry-integrated error boundaries and a Vitest + React Testing Library suite (70% coverage threshold).'
     ],
     category: 'Engineering',
+    stage: 'Production',
+    stageNote: 'Live product with a real REST API, database, 2FA auth and paying users. The embedded preview is a sandboxed build running on sample data so it is safe to explore publicly.',
+    liveUrl: '',
     image: '/projects/ismartpay.png',
     link: '/live-projects/ismartpay/index.html',
     directEmbed: true
@@ -92,22 +107,24 @@ export const projects: Project[] = [
     ],
     challenges: [
       'Architecting a 15+ module, multi-role application (operator, workshop, supplier) with maintainable, feature-based structure',
-      'Designing a resilient service layer with an API-fallback pattern so every screen works offline against mock data',
+      'Building a resilient data layer against a live REST API, with a fallback wrapper so the UI degrades gracefully when the network drops',
       'Keeping a large React 19 codebase performant while unifying a consistent design system across all modules'
     ],
-    impact: 'A production-grade, demo-ready platform covering the complete fleet operations lifecycle across three distinct user roles.',
+    impact: 'A production platform unifying the complete fleet operations lifecycle across three distinct user roles behind one SaaS interface.',
     metrics: [
       { label: 'Operational Modules', value: '15+', description: 'From vehicles and maintenance to financials and safety.' },
       { label: 'Partner Portals', value: '3 roles', description: 'Fleet operator, workshop provider and parts supplier.' },
-      { label: 'Offline-first', value: '100%', description: 'Every module renders from mock data with no backend.' }
+      { label: 'AI Copilot', value: 'Natural language', description: 'Groq-powered assistant answers fleet questions in plain English.' }
     ],
     architecture: [
       'Feature-based module architecture organized by domain (fleet, drivers, maintenance, service-providers).',
-      'Service layer with an API-fallback wrapper that transparently serves mock data in demo/offline sessions.',
+      'Axios service layer against a REST API, with a fallback wrapper for graceful offline degradation.',
       'Role-aware routing with protected routes and separate authentication for partner portals.',
       'Shared component and design-system layer (base inputs, modals, tables, badges) reused across every module.'
     ],
     category: 'Fullstack',
+    stage: 'Production',
+    stageNote: 'Shipped fleet operations platform backed by a live REST API and role-based auth. The public preview here runs on sample data so it can be explored without a login.',
     image: '/projects/fleet.png',
     link: '/live-projects/fleet/index.html',
     directEmbed: true
@@ -143,6 +160,10 @@ export const projects: Project[] = [
       'Dockerized build pipeline with nginx serving optimized static assets.'
     ],
     category: 'Fullstack',
+    stage: 'Production',
+    stageNote: 'Deployed for 5+ real organizations against their live provisioning APIs. The embedded preview is the Telecel deployment running on sample data.',
+    liveUrl: '',
+    clients: ['Telecel', 'NHIS', 'SSNIT', 'GPAA', 'Registered Midwives Association'],
     image: '/projects/bundles.png',
     link: '/live-projects/telecel/index.html',
     directEmbed: true
@@ -179,6 +200,8 @@ export const projects: Project[] = [
       'i18next-driven bilingual layer covering every screen and alert.'
     ],
     category: 'Engineering',
+    stage: 'Concept',
+    stageNote: 'A working, self-funded MVP. Offline-first is a deliberate product decision for its users, not a demo limitation: it runs entirely on an on-device SQLite database.',
     image: '/projects/akonta.png',
     link: '/live-projects/akonta/index.html',
     directEmbed: true,
@@ -213,6 +236,9 @@ export const projects: Project[] = [
       'Direct-to-S3 asynchronous document upload pipeline.'
     ],
     category: 'Engineering',
+    stage: 'Production',
+    stageNote: 'Live admissions system that replaced a paper-based process, handling real student applications with document upload and status tracking.',
+    clients: ['Jayee University College'],
     image: '/projects/jayee.png',
     link: '/live-projects/jayee/index.html'
   },
@@ -234,11 +260,11 @@ export const projects: Project[] = [
       'Designing a data model that stays consistent across realtime cloud sync and offline local storage',
       'Building an app that degrades gracefully from cloud mode to local-only without code changes'
     ],
-    impact: 'A production-ready, offline-first rent tracker that keeps a landlord\u2019s entire portfolio in sync in real time.',
+    impact: 'A full-stack, real-time rent tracker with a Postgres backend that keeps a landlord\u2019s entire portfolio in sync, and keeps working when the network drops.',
     metrics: [
-      { label: 'Backend', value: 'Supabase', description: 'Postgres with realtime subscriptions.' },
-      { label: 'Sync', value: 'Realtime', description: 'Every visitor sees changes live.' },
-      { label: 'Offline', value: '100%', description: 'Full local-storage fallback with no backend.' }
+      { label: 'Backend', value: 'Supabase', description: 'Postgres with row-level security and realtime subscriptions.' },
+      { label: 'Sync', value: 'Realtime', description: 'Changes broadcast live to every connected device.' },
+      { label: 'Resilience', value: 'Offline fallback', description: 'Degrades to local storage when the cloud is unreachable, then re-syncs.' }
     ],
     architecture: [
       'JSONB-backed Postgres schema with row-level security policies.',
@@ -246,6 +272,8 @@ export const projects: Project[] = [
       'Storage abstraction that swaps between Supabase and local storage at runtime.'
     ],
     category: 'Fullstack',
+    stage: 'Concept',
+    stageNote: 'A self-directed full-stack build with a real Supabase/Postgres backend, realtime sync and offline resilience.',
     image: '/projects/rentpay.png',
     link: '/live-projects/rentpay/index.html',
     directEmbed: true
@@ -279,6 +307,8 @@ export const projects: Project[] = [
       'Scroll-driven Framer Motion animations with intersection-observer triggers.'
     ],
     category: 'Design',
+    stage: 'Production',
+    stageNote: 'A shipped, statically-exported marketing site tuned for SEO, Core Web Vitals and conversion.',
     image: '/projects/hayapay.png',
     link: '/live-projects/hayapay/index.html',
     directEmbed: true

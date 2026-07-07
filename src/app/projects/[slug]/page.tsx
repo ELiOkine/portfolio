@@ -123,6 +123,18 @@ export default function ProjectPage() {
             transition={{ duration: 0.4 }}
           >
             <div className="flex flex-wrap gap-2 mb-8">
+              <span className={cn(
+                "flex items-center gap-1.5 px-2 py-0.5 border text-[10px] font-bold uppercase tracking-tight rounded-sm",
+                project.stage === 'Production' ? "border-accent/40 text-accent" : "border-border text-muted-foreground"
+              )}>
+                {project.stage === 'Production' && (
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-accent opacity-75 animate-ping" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+                  </span>
+                )}
+                {project.stage}
+              </span>
               <span className="px-2 py-0.5 border border-accent/30 text-accent text-[10px] font-bold uppercase tracking-tight rounded-sm">
                 {project.category}
               </span>
@@ -138,6 +150,11 @@ export default function ProjectPage() {
             <p className="text-xl md:text-2xl text-muted-foreground font-normal leading-relaxed max-w-3xl">
               {project.description}
             </p>
+            {project.stageNote && (
+              <p className="mt-6 text-sm text-muted-foreground/80 leading-relaxed max-w-3xl border-l-2 border-accent/30 pl-4">
+                {project.stageNote}
+              </p>
+            )}
           </motion.div>
 
           <motion.div
@@ -151,11 +168,19 @@ export default function ProjectPage() {
                 <p className="text-xl font-bold">{project.role}</p>
              </div>
              <div className="flex flex-wrap gap-4 md:justify-end">
+                {project.liveUrl && (
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-accent text-white font-bold rounded-md hover:bg-emerald-600 transition-colors">
+                    Visit Live Product <ExternalLink size={16} />
+                  </a>
+                )}
                 {project.link && (
                   <button onClick={() => {
                      setViewMode('live');
                      document.getElementById('preview-section')?.scrollIntoView({ behavior: 'smooth' });
-                  }} className="flex items-center gap-2 px-6 py-3 bg-accent text-white font-bold rounded-md hover:bg-emerald-600 transition-colors">
+                  }} className={cn(
+                    "flex items-center gap-2 px-6 py-3 font-bold rounded-md transition-colors",
+                    project.liveUrl ? "bg-secondary border border-border hover:bg-muted" : "bg-accent text-white hover:bg-emerald-600"
+                  )}>
                     Interactive Preview <ExternalLink size={16} />
                   </button>
                 )}
@@ -166,6 +191,26 @@ export default function ProjectPage() {
                 )}
              </div>
           </motion.div>
+
+          {project.clients && project.clients.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="mt-12 pt-8 border-t border-border"
+            >
+              <h3 className="text-[10px] font-bold uppercase tracking-widest text-accent mb-5">
+                {project.clients.length > 1 ? 'Built for / Deployed at' : 'Built for'}
+              </h3>
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+                {project.clients.map(client => (
+                  <span key={client} className="text-lg md:text-xl font-bold tracking-tight text-muted-foreground/70">
+                    {client}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          )}
         </div>
 
         {/* Project Experience Section */}
