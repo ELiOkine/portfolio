@@ -142,6 +142,42 @@ export const projects: Project[] = [
     directEmbed: true
   },
   {
+    id: 'akonta',
+    title: 'Akonta: Market Ledger App',
+    description: 'A bilingual (English/Twi), offline-first mobile bookkeeping app that replaces the paper notebook for Ghanaian market traders, with icon-based and voice-driven sales entry.',
+    longDescription: 'Akonta (Twi for "account") is a React Native / Expo mobile app I built to bring digital bookkeeping to informal market traders in Ghana. It is designed around real constraints: low literacy, intermittent connectivity, and budget Android phones. Every core feature, from recording sales and managing inventory to seeing daily profit, works fully offline on an on-device SQLite database. Traders record a sale in seconds by tapping product icons, or by speaking (English recognized on-device; Twi via an online path). The entire interface is bilingual English/Twi and switches instantly.',
+    techStack: ['React Native', 'Expo', 'TypeScript', 'SQLite', 'Zustand', 'i18next'],
+    role: 'Mobile Engineer & Product Designer',
+    features: [
+      'Fully offline-first: sales, inventory and profit computed on-device via SQLite (WAL mode)',
+      'Icon-based quick sale entry to record a sale in under 5 seconds',
+      'Voice entry with an NLP parser (Levenshtein fuzzy matching, EN/Twi numbers)',
+      'Instant daily profit, revenue and cost dashboard',
+      'Bilingual English/Twi UI with instant language switching',
+      'Low-stock local notifications and optional PIN lock'
+    ],
+    challenges: [
+      'Designing for low-literacy, Twi-first users through icon-driven interaction rather than text',
+      'Delivering a genuinely offline experience with local SQLite and no server or account',
+      'Keeping the app lightweight for budget Android phones (stripped ~50–100MB of on-device ML weight)'
+    ],
+    impact: 'A feature-complete, offline-first MVP that turns end-of-day "how much did I make?" into an instant answer for market traders.',
+    metrics: [
+      { label: 'Works Offline', value: '100%', description: 'All core features run with no internet.' },
+      { label: 'Sale Entry', value: '<5s', description: 'From product tap to recorded sale.' },
+      { label: 'Languages', value: 'EN / Twi', description: 'Fully bilingual, instant switching.' }
+    ],
+    architecture: [
+      'On-device SQLite (WAL mode, indexed) as the single source of truth.',
+      'Zustand global store hydrated from the local database.',
+      'i18next-driven bilingual layer covering every screen and alert.'
+    ],
+    category: 'Engineering',
+    image: '/projects/akonta.png',
+    link: '/live-projects/akonta/index.html',
+    directEmbed: true
+  },
+  {
     id: 'jayee',
     title: 'University Admissions Portal',
     description: 'A multi-step application system for Higher Education, handling 10,000+ student applications annually.',
