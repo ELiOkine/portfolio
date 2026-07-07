@@ -83,7 +83,7 @@ export const projects: Project[] = [
     category: 'Engineering',
     stage: 'Production',
     stageNote: 'Live product with a real REST API, database, 2FA auth and paying users. The embedded preview is a sandboxed build running on sample data so it is safe to explore publicly.',
-    liveUrl: '',
+    liveUrl: 'https://stgpayportal.ismartghana.com',
     image: '/projects/ismartpay.png',
     link: '/live-projects/ismartpay/index.html',
     directEmbed: true
@@ -162,7 +162,7 @@ export const projects: Project[] = [
     category: 'Fullstack',
     stage: 'Production',
     stageNote: 'Deployed for 5+ real organizations against their live provisioning APIs. The embedded preview is the Telecel deployment running on sample data.',
-    liveUrl: '',
+    liveUrl: 'https://studentbundle.ismartghana.com',
     clients: ['Telecel', 'NHIS', 'SSNIT', 'GPAA', 'Registered Midwives Association'],
     image: '/projects/bundles.png',
     link: '/live-projects/telecel/index.html',

@@ -32,10 +32,13 @@ export default function About() {
               </h2>
               <div className="space-y-5 text-lg text-muted-foreground font-normal leading-relaxed">
                 <p>
-                  I&apos;m Emmanuel Okine, a software engineer and designer based in Accra, Ghana. Over the past two years I&apos;ve shipped production software across fintech, logistics, and education, leading frontend architecture on real products that move money, track fleets, and serve real users.
+                  I&apos;m Emmanuel Okine, a software engineer and designer in Accra, Ghana. I got into this work through a simple frustration: so much of the software that reaches people here is built for fast phones and reliable internet that most users don&apos;t actually have. Closing that gap, between how apps are designed and how they&apos;re really used, is what pulled me in.
                 </p>
                 <p>
-                  I care about systems thinking, clean technical foundations, and design that&apos;s judged by how well it works. I like owning problems end to end, from data model to pixel, and turning complex requirements into interfaces people actually understand.
+                  Over the past two years that has taken me deep into fintech and logistics: leading frontend architecture on products that move money (iSmartPay), run vehicle fleets (Fleetly), and put bookkeeping in the hands of market traders who have never touched a spreadsheet (Akonta). Different domains, same throughline: high stakes, messy real-world constraints, and users who don&apos;t get a second chance if the software fails them.
+                </p>
+                <p>
+                  The problem I keep coming back to is reliability under pressure: how a screen behaves when the network drops mid-payment, how an interface stays legible for a low-literacy user, how a 15-module codebase stays maintainable as it grows. I like owning problems end to end, from data model to pixel, and I judge design by one thing: how well it works.
                 </p>
               </div>
             </div>
