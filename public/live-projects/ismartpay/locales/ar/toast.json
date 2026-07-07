@@ -1,0 +1,42 @@
+{
+  "success": {
+    "settlementConfigSaved": "تم حفظ إعدادات التسوية بنجاح",
+    "settlementModeReset": "تم إعادة تعيين وضع التسوية إلى الافتراضي بنجاح",
+    "bundlesLoaded": "تم تحميل الحزم بنجاح",
+    "customerDetailsVerified": "تم التحقق من تفاصيل العميل بنجاح",
+    "operationCompleted": "اكتملت العملية!",
+    "profileUpdateLogin": "يرجى تسجيل الدخول مرة أخرى لتحديث ملفك الشخصي.",
+    "preferencesUpdateLogin": "يرجى تسجيل الدخول مرة أخرى لتحديث التفضيلات."
+  },
+  "error": {
+    "networkError": "خطأ في الشبكة. يرجى التحقق من اتصالك والمحاولة مرة أخرى.",
+    "fillMobileMoneyFields": "يرجى ملء مزود Mobile Money ورقم الهاتف واسم الحساب",
+    "fillBankFields": "يرجى ملء اسم البنك ورقم الحساب واسم صاحب الحساب",
+    "enterMeterNumber": "يرجى إدخال رقم العداد أولاً",
+    "enterPhoneNumber": "يرجى إدخال رقم هاتف لهذا الحساب المائي",
+    "phoneFormatInvalid": "يجب أن يكون رقم الهاتف بالتنسيق 233 متبوعًا بـ 9 أرقام (مثال: 233123456789)",
+    "fillAllRequiredFields": "يرجى ملء جميع الحقول المطلوبة",
+    "verifyCustomerDetails": "يرجى التحقق من تفاصيل العميل أولاً",
+    "missingSessionId": "معرف الجلسة مفقود. يرجى التحقق من تفاصيل العداد مرة أخرى.",
+    "selectTvProvider": "يرجى اختيار مزود TV أولاً",
+    "enterSmartCardNumber": "يرجى إدخال رقم البطاقة الذكية/الحساب أولاً",
+    "provideClientReference": "يرجى تقديم مرجع العميل",
+    "selectNetwork": "يرجى اختيار شبكة أولاً",
+    "enterPhoneNumberFirst": "يرجى إدخال رقم هاتف أولاً",
+    "bundlesInvalidStructure": "بنية الحزم غير صالحة",
+    "noDataBundlesAvailable": "لا توجد حزم بيانات متاحة لهذه الشبكة",
+    "verifyAndSelectBundle": "يرجى التحقق واختيار حزمة أولاً",
+    "enterCustomerAccountNumber": "يرجى إدخال رقم حساب/عداد العميل أولاً",
+    "selectMeterType": "يرجى اختيار نوع العداد",
+    "enterDestinationFirst": "يرجى إدخال الوجهة (خط أرضي) أولاً",
+    "landlineFormatInvalid": "يجب أن يكون الخط الأرضي بالتنسيق 0 متبوعًا بـ 9 أرقام (مثال: 0301234567)",
+    "enterLandlineNumber": "يرجى إدخال رقم خط أرضي أولاً",
+    "enterValidAmount": "يرجى إدخال مبلغ صالح",
+    "batchNumberRequired": "رقم الدفعة مطلوب. يرجى إدخال رقم دفعة قبل الإرسال.",
+    "failedToSaveSettlementConfig": "فشل حفظ إعدادات التسوية",
+    "failedToResetSettlementConfig": "فشل إعادة تعيين إعدادات التسوية"
+  },
+  "info": {
+    "postpaidComingSoon": "وظيفة الدفع بعد الاستهلاك قريباً"
+  }
+}

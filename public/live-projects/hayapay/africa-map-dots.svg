@@ -1,0 +1,66 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Africa continent outline -->
+  <path d="M200 80 Q180 70 160 90 T140 120 Q120 150 100 180 T80 220 Q60 250 40 280 T20 320 Q60 350 100 380 T140 340 Q180 320 200 300 T240 280 Q260 260 280 240 T300 220 Q320 200 340 180 T360 160 Q340 140 320 120 T280 100 Q240 80 200 80" 
+        fill="none" 
+        stroke="#2563eb" 
+        stroke-width="2" 
+        opacity="0.3"/>
+  
+  <!-- Country dots for major HayaPay locations -->
+  <!-- Ghana (Headquarters) -->
+  <circle cx="200" cy="180" r="8" fill="#dc2626" opacity="0.9">
+    <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Nigeria -->
+  <circle cx="220" cy="160" r="6" fill="#2563eb" opacity="0.8">
+    <animate attributeName="r" values="6;8;6" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- South Africa -->
+  <circle cx="240" cy="280" r="7" fill="#2563eb" opacity="0.85">
+    <animate attributeName="r" values="7;9;7" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Kenya -->
+  <circle cx="260" cy="220" r="6" fill="#2563eb" opacity="0.8">
+    <animate attributeName="r" values="6;8;6" dur="2.2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Egypt -->
+  <circle cx="300" cy="140" r="5" fill="#2563eb" opacity="0.75">
+    <animate attributeName="r" values="5;7;5" dur="2.8s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Morocco -->
+  <circle cx="140" cy="120" r="4" fill="#64748b" opacity="0.7">
+    <animate attributeName="r" values="4;6;4" dur="3.2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Ethiopia -->
+  <circle cx="280" cy="240" r="4" fill="#64748b" opacity="0.7">
+    <animate attributeName="r" values="4;6;4" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Tanzania -->
+  <circle cx="260" cy="260" r="5" fill="#2563eb" opacity="0.8">
+    <animate attributeName="r" values="5;7;5" dur="2.7s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Connection lines -->
+  <line x1="200" y1="180" x2="220" y2="160" stroke="#2563eb" stroke-width="1" opacity="0.5"/>
+  <line x1="220" y1="160" x2="240" y2="280" stroke="#2563eb" stroke-width="1" opacity="0.5"/>
+  <line x1="200" y1="180" x2="260" y2="220" stroke="#2563eb" stroke-width="1" opacity="0.5"/>
+  <line x1="260" y1="220" x2="280" y2="240" stroke="#2563eb" stroke-width="1" opacity="0.5"/>
+  <line x1="260" y1="220" x2="300" y2="140" stroke="#2563eb" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Labels -->
+  <text x="200" y="165" text-anchor="middle" fill="#dc2626" font-size="10" font-weight="bold">Ghana</text>
+  <text x="220" y="145" text-anchor="middle" fill="#2563eb" font-size="10" font-weight="bold">Nigeria</text>
+  <text x="240" y="265" text-anchor="middle" fill="#2563eb" font-size="10" font-weight="bold">South Africa</text>
+  <text x="260" y="205" text-anchor="middle" fill="#2563eb" font-size="10" font-weight="bold">Kenya</text>
+  <text x="300" y="125" text-anchor="middle" fill="#2563eb" font-size="10" font-weight="bold">Egypt</text>
+  <text x="140" y="105" text-anchor="middle" fill="#64748b" font-size="9" font-weight="bold">Morocco</text>
+  <text x="280" y="225" text-anchor="middle" fill="#64748b" font-size="9" font-weight="bold">Ethiopia</text>
+  <text x="260" y="245" text-anchor="middle" fill="#2563eb" font-size="10" font-weight="bold">Tanzania</text>
+</svg>

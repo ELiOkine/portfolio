@@ -1,0 +1,16 @@
+{
+  "releases": [
+    {
+      "version": "latest",
+      "items": [
+        "Fixed dark mode input fields turning white when prefilled or autocompleted by browser",
+        "Improved global input styling for better accessibility",
+        "Moved release notes to dedicated UPDATENOTE folder",
+        "Added Level 0 (Basic Account) card to Verification pages",
+        "Updated Verification Progress Guide with accurate limits and level mapping",
+        "Synchronized document card descriptions across Individual and Business profiles",
+        "Integrated Tour Guide markers for Business Danger Zone and Utilities headers"
+      ]
+    }
+  ]
+}

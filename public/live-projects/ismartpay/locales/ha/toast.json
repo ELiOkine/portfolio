@@ -1,0 +1,42 @@
+{
+  "success": {
+    "settlementConfigSaved": "An saita saitunan biyan kuɗi cikin nasara",
+    "settlementModeReset": "An sake saita yanayin biyan kuɗi zuwa na asali cikin nasara",
+    "bundlesLoaded": "An lodawa tarukan cikin nasara",
+    "customerDetailsVerified": "An tabbatar da cikakkun bayanai na abokin ciniki cikin nasara",
+    "operationCompleted": "An kammala aikin!",
+    "profileUpdateLogin": "Da fatan za ku sake shiga don sabunta bayanan ku.",
+    "preferencesUpdateLogin": "Da fatan za ku sake shiga don sabunta abubuwan da kuka fi so."
+  },
+  "error": {
+    "networkError": "Kuskuren hanyar sadarwa. Da fatan za ku duba haɗin ku kuma ku sake gwadawa.",
+    "fillMobileMoneyFields": "Da fatan za ku cika Mai Ba da Mobile Money, Lambar Waya, da Sunan Asusu",
+    "fillBankFields": "Da fatan za ku cika Sunan Banki, Lambar Asusu da Sunan Mai Asusu",
+    "enterMeterNumber": "Da fatan za ku shigar da lambar mita da farko",
+    "enterPhoneNumber": "Da fatan za ku shigar da lambar waya don wannan asusun ruwa",
+    "phoneFormatInvalid": "Lambar waya dole ta zama a tsari 233 tare da lambobi 9 (misali: 233123456789)",
+    "fillAllRequiredFields": "Da fatan za ku cika duk filayen da ake buƙata",
+    "verifyCustomerDetails": "Da fatan za ku tabbatar da cikakkun bayanai na abokin ciniki da farko",
+    "missingSessionId": "ID na zaman baya nan. Da fatan za ku sake tabbatar da cikakkun bayanai na mita.",
+    "selectTvProvider": "Da fatan za ku zaɓi Mai Ba da TV da farko",
+    "enterSmartCardNumber": "Da fatan za ku shigar da lambar katin wayo/asusu da farko",
+    "provideClientReference": "Da fatan za ku ba da nassoshi na abokin ciniki",
+    "selectNetwork": "Da fatan za ku zaɓi hanyar sadarwa da farko",
+    "enterPhoneNumberFirst": "Da fatan za ku shigar da lambar waya da farko",
+    "bundlesInvalidStructure": "Tsarin tarukan ba daidai ba",
+    "noDataBundlesAvailable": "Babu tarukan bayanai da ke akwai don wannan hanyar sadarwa",
+    "verifyAndSelectBundle": "Da fatan za ku tabbatar kuma ku zaɓi taru da farko",
+    "enterCustomerAccountNumber": "Da fatan za ku shigar da lambar asusu/mita na abokin ciniki da farko",
+    "selectMeterType": "Da fatan za ku zaɓi nau'in mita",
+    "enterDestinationFirst": "Da fatan za ku shigar da wurin zuwa (layin ƙasa) da farko",
+    "landlineFormatInvalid": "Layin ƙasa dole ya zama a tsari 0 tare da lambobi 9 (misali: 0301234567)",
+    "enterLandlineNumber": "Da fatan za ku shigar da lambar layin ƙasa da farko",
+    "enterValidAmount": "Da fatan za ku shigar da adadi mai inganci",
+    "batchNumberRequired": "Ana buƙatar lambar rukunin. Da fatan za ku shigar da lambar rukunin kafin aika.",
+    "failedToSaveSettlementConfig": "Gasar ajiye saitunan biyan kuɗi",
+    "failedToResetSettlementConfig": "Gasar sake saita saitunan biyan kuɗi"
+  },
+  "info": {
+    "postpaidComingSoon": "Aikin biyan kuɗi na bayan biya yana zuwa nan ba da jimawa ba"
+  }
+}

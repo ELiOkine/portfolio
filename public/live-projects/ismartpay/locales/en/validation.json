@@ -1,0 +1,53 @@
+{
+  "errors": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "password": "Password must be at least 8 characters",
+    "passwordMatch": "Passwords do not match",
+    "phone": "Please enter a valid phone number",
+    "apiError": "An error occurred. Please try again.",
+    "networkError": "Network error. Please check your connection.",
+    "unauthorized": "You are not authorized to perform this action",
+    "notFound": "The requested resource was not found",
+    "invalidCredentials": "Invalid credentials",
+    "accountLocked": "Account locked. Please try again later.",
+    "emailAlreadyExists": "This email address is already in use",
+    "phoneAlreadyExists": "This phone number is already in use",
+    "invalidCode": "Invalid code",
+    "codeExpired": "Code has expired",
+    "invalidAmount": "Invalid amount",
+    "insufficientBalance": "Insufficient balance",
+    "invalidAccount": "Invalid account",
+    "transactionFailed": "Transaction failed",
+    "fileTooLarge": "File is too large",
+    "invalidFileType": "Invalid file type",
+    "uploadFailed": "Upload failed",
+    "invalidDate": "Invalid date",
+    "dateInPast": "Date cannot be in the past",
+    "dateInFuture": "Date cannot be in the future",
+    "minLength": "This field must be at least {{min}} characters",
+    "maxLength": "This field cannot exceed {{max}} characters",
+    "minValue": "Value must be at least {{min}}",
+    "maxValue": "Value cannot exceed {{max}}",
+    "numeric": "This field must be numeric",
+    "alphanumeric": "This field can only contain letters and numbers",
+    "url": "Please enter a valid URL",
+    "phoneFormat": "Invalid phone format. Use: {{format}}"
+  },
+  "warnings": {
+    "unsavedChanges": "You have unsaved changes",
+    "deleteConfirm": "Are you sure you want to delete this item?",
+    "logoutConfirm": "Are you sure you want to logout?",
+    "discardChanges": "Do you really want to discard changes?"
+  },
+  "success": {
+    "saved": "Saved successfully",
+    "deleted": "Deleted successfully",
+    "updated": "Updated successfully",
+    "created": "Created successfully",
+    "uploaded": "Uploaded successfully",
+    "sent": "Sent successfully",
+    "processed": "Processed successfully"
+  }
+}
+

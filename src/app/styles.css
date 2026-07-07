@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  --radius-lg: 8px; /* Uncodixified: max 8-12px */
+  --radius-md: 6px;
+  --radius-sm: 4px;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+  --primary: #111111;
+  --primary-foreground: #ffffff;
+  --secondary: #fafafa;
+  --secondary-foreground: #111111;
+  --accent: #10b981;
+  --accent-foreground: #ffffff;
+  --muted: #f5f5f5;
+  --muted-foreground: #666666;
+  --border: #e5e5e5;
+}
+
+/* Dark mode intentionally muted/disabled to favor white theme as requested */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #111111;
+    --primary: #111111;
+    --primary-foreground: #ffffff;
+    --secondary: #fafafa;
+    --secondary-foreground: #111111;
+    --accent: #10b981;
+    --accent-foreground: #ffffff;
+    --muted: #f5f5f5;
+    --muted-foreground: #666666;
+    --border: #e5e5e5;
+  }
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(var(--background), 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(var(--border), 0.5);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}

@@ -1,0 +1,53 @@
+{
+  "errors": {
+    "required": "Ana buƙatar wannan fili",
+    "email": "Da fatan za ka shigar da adireshin imel mai inganci",
+    "password": "Kalmar sirri dole ta zama aƙalla haruffa 8",
+    "passwordMatch": "Kalmomin sirri ba su yi daidai ba",
+    "phone": "Da fatan za ka shigar da lambar waya mai inganci",
+    "apiError": "Kuskure ya faru. Da fatan za ka sake gwadawa.",
+    "networkError": "Kuskuren hanyar sadarwa. Da fatan za ka duba haɗin ka.",
+    "unauthorized": "Ba ka da izini don yin wannan aikin",
+    "notFound": "Ba a sami abin da aka nema ba",
+    "invalidCredentials": "Shaidu marasa inganci",
+    "accountLocked": "An kulle asusun. Da fatan za ka sake gwadawa daga baya.",
+    "emailAlreadyExists": "Wannan adireshin imel yana amfani da shi",
+    "phoneAlreadyExists": "Wannan lambar waya tana amfani da ita",
+    "invalidCode": "Lambar ba ta da inganci",
+    "codeExpired": "Lambar ta ƙare",
+    "invalidAmount": "Adadin ba daidai ba",
+    "insufficientBalance": "Ma'auni bai isa ba",
+    "invalidAccount": "Asusu mara inganci",
+    "transactionFailed": "Aikin ya gaza",
+    "fileTooLarge": "Fayil yana da girma sosai",
+    "invalidFileType": "Nau'in fayil mara inganci",
+    "uploadFailed": "Lodawa ta gaza",
+    "invalidDate": "Kwanan wata mara inganci",
+    "dateInPast": "Kwanan wata ba zai iya zama a baya ba",
+    "dateInFuture": "Kwanan wata ba zai iya zama a nan gaba ba",
+    "minLength": "Wannan fili dole ya zama aƙalla haruffa {{min}}",
+    "maxLength": "Wannan fili ba zai wuce haruffa {{max}} ba",
+    "minValue": "Darajar dole ta zama aƙalla {{min}}",
+    "maxValue": "Darajar ba za ta wuce {{max}} ba",
+    "numeric": "Wannan fili dole ya zama lamba",
+    "alphanumeric": "Wannan fili na iya ƙunsar haruffa da lambobi kawai",
+    "url": "Da fatan za ka shigar da URL mai inganci",
+    "phoneFormat": "Tsarin waya mara inganci. Yi amfani da: {{format}}"
+  },
+  "warnings": {
+    "unsavedChanges": "Kana da canje-canjen da ba aka ajiye ba",
+    "deleteConfirm": "Ka tabbata kana son share wannan abu?",
+    "logoutConfirm": "Ka tabbata kana son fita?",
+    "discardChanges": "Ka gaskiya kana son watsar da canje-canje?"
+  },
+  "success": {
+    "saved": "An ajiye cikin nasara",
+    "deleted": "An share cikin nasara",
+    "updated": "An sabunta cikin nasara",
+    "created": "An ƙirƙira cikin nasara",
+    "uploaded": "An lodawa cikin nasara",
+    "sent": "An aika cikin nasara",
+    "processed": "An gudanar da shi cikin nasara"
+  }
+}
+

@@ -1,0 +1,11 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shield shape -->
+  <path d="M60 10 L100 30 L100 70 Q100 100 60 110 Q20 100 20 70 L20 30 Z" fill="#059669" stroke="#ffffff" stroke-width="2"/>
+  
+  <!-- Health cross -->
+  <rect x="50" y="35" width="20" height="50" fill="#ffffff" rx="2"/>
+  <rect x="35" y="50" width="50" height="20" fill="#ffffff" rx="2"/>
+  
+  <!-- Text -->
+  <text x="60" y="105" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#059669" text-anchor="middle">NHIS</text>
+</svg>

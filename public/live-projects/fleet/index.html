@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/live-projects/fleet/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Fleetly</title>
+    <script>
+      // Portfolio demo bootstrap (injected for embedding only; not part of the app source).
+      // Seeds an offline demo session so every screen renders from mock data with no network,
+      // and normalizes the URL so the SPA router lands on the dashboard when embedded under a sub-path.
+      (function () {
+        try {
+          if (!localStorage.getItem('userInfo')) {
+            localStorage.setItem(
+              'userInfo',
+              JSON.stringify({
+                _id: 'demo-fleet-admin',
+                id: 'demo-fleet-admin',
+                name: 'Fleet Administrator',
+                email: 'admin@fleetly.com',
+                role: 'admin',
+                token: 'fake_token',
+              })
+            );
+          }
+        } catch (e) {}
+        try {
+          var base = '/live-projects/fleet';
+          var path = window.location.pathname;
+          if (path.indexOf(base) === 0) {
+            var sub = path.slice(base.length).replace(/^\/?(index\.html)?/, '');
+            window.history.replaceState(null, '', '/' + sub + window.location.search + window.location.hash);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <script type="module" crossorigin src="/live-projects/fleet/assets/index-BEAqQHuP.js"></script>
+    <link rel="stylesheet" crossorigin href="/live-projects/fleet/assets/index-BRCaIKAG.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

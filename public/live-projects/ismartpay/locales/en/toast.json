@@ -1,0 +1,42 @@
+{
+  "success": {
+    "settlementConfigSaved": "Settlement configuration saved successfully",
+    "settlementModeReset": "Settlement mode reset to default successfully",
+    "bundlesLoaded": "Bundles loaded successfully",
+    "customerDetailsVerified": "Customer details verified successfully",
+    "operationCompleted": "Operation completed!",
+    "profileUpdateLogin": "Please log in again to update your profile.",
+    "preferencesUpdateLogin": "Please log in again to update preferences."
+  },
+  "error": {
+    "networkError": "Network error. Please check your connection and try again.",
+    "fillMobileMoneyFields": "Please fill in Mobile Money Provider, Phone Number, and Account Name",
+    "fillBankFields": "Please fill in Bank Name, Account Number and Account Holder Name",
+    "enterMeterNumber": "Please enter a meter number first",
+    "enterPhoneNumber": "Please enter a phone number for this water account",
+    "phoneFormatInvalid": "Phone number must be in the format 233 followed by 9 digits (e.g., 233123456789)",
+    "fillAllRequiredFields": "Please fill all required fields",
+    "verifyCustomerDetails": "Please verify customer details first",
+    "missingSessionId": "Missing session ID. Please verify the meter details again.",
+    "selectTvProvider": "Please select a TV provider first",
+    "enterSmartCardNumber": "Please enter a smart card/account number first",
+    "provideClientReference": "Please provide a client reference",
+    "selectNetwork": "Please select a network first",
+    "enterPhoneNumberFirst": "Please enter a phone number first",
+    "bundlesInvalidStructure": "Bundles have invalid structure",
+    "noDataBundlesAvailable": "No data bundles available for this network",
+    "verifyAndSelectBundle": "Please verify and select a bundle first",
+    "enterCustomerAccountNumber": "Please enter a customer account/meter number first",
+    "selectMeterType": "Please select a meter type",
+    "enterDestinationFirst": "Please enter a destination (landline) first",
+    "landlineFormatInvalid": "Landline must be in the format 0 followed by 9 digits (e.g., 0301234567)",
+    "enterLandlineNumber": "Please enter a landline number first",
+    "enterValidAmount": "Please enter a valid amount",
+    "batchNumberRequired": "Batch number is required. Please enter a batch number before submitting.",
+    "failedToSaveSettlementConfig": "Failed to save settlement configuration",
+    "failedToResetSettlementConfig": "Failed to reset settlement configuration"
+  },
+  "info": {
+    "postpaidComingSoon": "Postpaid payment functionality coming soon"
+  }
+}

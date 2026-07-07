@@ -1,0 +1,50 @@
+# iSmartPay robots.txt - Prevent search engines from indexing sensitive areas
+
+# Block all search engines from sensitive user-facing pages
+User-agent: *
+Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /settings/
+Disallow: /profile/
+Disallow: /kyc-upload/
+Disallow: /kyc/
+Disallow: /payment-history/
+Disallow: /transactions/
+Disallow: /reports/
+Disallow: /disbursements/
+Disallow: /collections/
+Disallow: /wallet/
+Disallow: /settlements/
+Disallow: /teams/
+Disallow: /team-management/
+Disallow: /business/
+Disallow: /security/
+Disallow: /api/
+Disallow: /auth/
+Disallow: /callback/
+Disallow: /verify/
+Disallow: /reset/
+Disallow: /otp/
+
+# Allow indexing of public pages only
+Allow: /
+Allow: /login
+Allow: /register
+Allow: /forgot-password
+Allow: /documentation/
+
+# Prevent fast crawlers from overwhelming the server
+Crawl-delay: 10
+
+# Prevent specific bots known for abuse
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# Sitemap (if you have one)
+# Sitemap: https://payportal.ismartghana.com/sitemap.xml

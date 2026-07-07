@@ -1,0 +1,1 @@
+import{t as e}from"./api-BqEnlOzo.js";var t=t=>e.post(`/auth/login`,t).then(e=>e.data),n=t=>e.post(`/auth/register`,t).then(e=>e.data);export{n,t};

@@ -1,0 +1,42 @@
+{
+  "success": {
+    "settlementConfigSaved": "Configuration de règlement enregistrée avec succès",
+    "settlementModeReset": "Mode de règlement réinitialisé par défaut avec succès",
+    "bundlesLoaded": "Forfaits chargés avec succès",
+    "customerDetailsVerified": "Détails du client vérifiés avec succès",
+    "operationCompleted": "Opération terminée !",
+    "profileUpdateLogin": "Veuillez vous reconnecter pour mettre à jour votre profil.",
+    "preferencesUpdateLogin": "Veuillez vous reconnecter pour mettre à jour les préférences."
+  },
+  "error": {
+    "networkError": "Erreur réseau. Veuillez vérifier votre connexion et réessayer.",
+    "fillMobileMoneyFields": "Veuillez remplir le fournisseur Mobile Money, le numéro de téléphone et le nom du compte",
+    "fillBankFields": "Veuillez remplir le nom de la banque, le numéro de compte et le nom du titulaire du compte",
+    "enterMeterNumber": "Veuillez d'abord entrer un numéro de compteur",
+    "enterPhoneNumber": "Veuillez entrer un numéro de téléphone pour ce compte d'eau",
+    "phoneFormatInvalid": "Le numéro de téléphone doit être au format 233 suivi de 9 chiffres (ex. 233123456789)",
+    "fillAllRequiredFields": "Veuillez remplir tous les champs obligatoires",
+    "verifyCustomerDetails": "Veuillez d'abord vérifier les détails du client",
+    "missingSessionId": "ID de session manquant. Veuillez vérifier à nouveau les détails du compteur.",
+    "selectTvProvider": "Veuillez d'abord sélectionner un fournisseur TV",
+    "enterSmartCardNumber": "Veuillez d'abord entrer un numéro de carte à puce/compte",
+    "provideClientReference": "Veuillez fournir une référence client",
+    "selectNetwork": "Veuillez d'abord sélectionner un réseau",
+    "enterPhoneNumberFirst": "Veuillez d'abord entrer un numéro de téléphone",
+    "bundlesInvalidStructure": "Structure de forfaits invalide",
+    "noDataBundlesAvailable": "Aucun forfait de données disponible pour ce réseau",
+    "verifyAndSelectBundle": "Veuillez vérifier et sélectionner un forfait d'abord",
+    "enterCustomerAccountNumber": "Veuillez d'abord entrer un numéro de compte/compteur client",
+    "selectMeterType": "Veuillez sélectionner un type de compteur",
+    "enterDestinationFirst": "Veuillez d'abord entrer une destination (ligne fixe)",
+    "landlineFormatInvalid": "La ligne fixe doit être au format 0 suivi de 9 chiffres (ex. 0301234567)",
+    "enterLandlineNumber": "Veuillez d'abord entrer un numéro de ligne fixe",
+    "enterValidAmount": "Veuillez entrer un montant valide",
+    "batchNumberRequired": "Le numéro de lot est requis. Veuillez entrer un numéro de lot avant de soumettre.",
+    "failedToSaveSettlementConfig": "Échec de l'enregistrement de la configuration de règlement",
+    "failedToResetSettlementConfig": "Échec de la réinitialisation de la configuration de règlement"
+  },
+  "info": {
+    "postpaidComingSoon": "La fonctionnalité de paiement postpayé arrive bientôt"
+  }
+}
