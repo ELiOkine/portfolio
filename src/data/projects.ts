@@ -31,9 +31,9 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 'fleet-management-dashboard',
-    title: 'Fleetly — Fleet Management Platform',
-    description: 'An enterprise fleet operations suite spanning 15+ modules — vehicles, drivers, maintenance, fuel, safety, financials and a live tracking map — plus dedicated workshop and supplier partner portals.',
-    longDescription: 'Fleetly is a comprehensive fleet management platform I architected and built end-to-end on the frontend. It unifies the entire operational lifecycle of a vehicle fleet — from onboarding vehicles and drivers, through maintenance work orders, fuel and expense tracking, safety incidents and insurance claims, to reporting and a marketplace — behind a single, cohesive SaaS interface. Beyond the core operator dashboard, it ships two full partner experiences: a Workshop portal for service providers (job cards, quotes, invoicing, technician dispatch and revenue) and a Supplier portal for parts catalogs and fulfillment. An AI copilot, powered by Groq, lets operators query fleet state in natural language.',
+    title: 'Fleetly: Fleet Management Platform',
+    description: 'An enterprise fleet operations suite spanning 15+ modules, from vehicles, drivers, maintenance, fuel and safety to financials and a live tracking map, plus dedicated workshop and supplier partner portals.',
+    longDescription: 'Fleetly is a comprehensive fleet management platform I architected and built on the frontend. It unifies the entire operational lifecycle of a vehicle fleet, from onboarding vehicles and drivers, through maintenance work orders, fuel and expense tracking, safety incidents and insurance claims, to reporting and a marketplace, behind a single, cohesive SaaS interface. Beyond the core operator dashboard, it ships two full partner experiences: a Workshop portal for service providers (job cards, quotes, invoicing, technician dispatch and revenue) and a Supplier portal for parts catalogs and fulfillment. An AI copilot, powered by Groq, lets operators query fleet state in natural language.',
     techStack: ['React 19', 'Vite 7', 'React Router 7', 'Tailwind CSS', 'Recharts', 'React-Leaflet', 'Axios', 'Groq AI'],
     role: 'Lead Frontend Engineer',
     features: [
@@ -70,15 +70,15 @@ export const projects: Project[] = [
   },
   {
     id: 'ismartpay',
-    title: 'iSmartPay — Fintech Platform',
-    description: 'A production fintech platform spanning 15 feature modules — disbursements, payroll, wallet, collections, settlements, invoicing, utility payments and SMS — with 2FA auth, a permissions engine, multi-language support and PDF reporting.',
-    longDescription: 'iSmartPay is a full-scale digital finance platform I led on the frontend, built as a modular React 19 application organized by feature domain. It covers the complete money-movement lifecycle for businesses and individuals: onboarding and KYC verification, wallet top-ups and transfers, single and bulk disbursements, payroll runs, collections, settlements, invoicing, and utility bill payments (electricity, water, TV, internet, airtime). It ships secure two-factor authentication, a role-based permissions engine, session inactivity handling, in-app SMS, multi-language support, and on-the-fly PDF report generation — all backed by a service layer with Zod validation, error boundaries, Sentry monitoring and a Vitest test suite.',
+    title: 'iSmartPay: Fintech Platform',
+    description: 'A production fintech platform spanning 15 feature modules including disbursements, payroll, wallet, collections, settlements, invoicing, utility payments and SMS, with 2FA auth, a permissions engine, multi-language support and PDF reporting.',
+    longDescription: 'iSmartPay is a full-scale digital finance platform I led on the frontend, built as a modular React 19 application organized by feature domain. It covers the complete money-movement lifecycle for businesses and individuals: onboarding and KYC verification, wallet top-ups and transfers, single and bulk disbursements, payroll runs, collections, settlements, invoicing, and utility bill payments (electricity, water, TV, internet, airtime). It ships secure two-factor authentication, a role-based permissions engine, session inactivity handling, in-app SMS, multi-language support, and on-the-fly PDF report generation, all backed by a service layer with Zod validation, error boundaries, Sentry monitoring and a Vitest test suite.',
     techStack: ['React 19', 'Vite 7', 'React Query', 'Zod', 'Chart.js', 'jsPDF', 'i18next', 'Sentry', 'Vitest'],
     role: 'Frontend Lead',
     features: [
       'Single and bulk disbursements with real-time status tracking',
       'Wallet, collections, settlements and payroll modules',
-      'Utility bill payments — electricity, water, TV, internet and airtime',
+      'Utility bill payments for electricity, water, TV, internet and airtime',
       'Invoicing and on-the-fly PDF report generation (jsPDF)',
       'Secure 2FA authentication with a role-based permissions engine',
       'Multi-language UI (i18next) with light/dark theming',
@@ -141,8 +141,8 @@ export const projects: Project[] = [
   {
     id: 'bundle-platform',
     title: 'White-Label Bundle Platform',
-    description: 'A reusable airtime & data-bundle purchase platform white-labeled and deployed for 5+ Ghanaian organizations — Telecel, NHIS, SSNIT, GPAA and the Registered Midwives Association.',
-    longDescription: 'A single, themeable frontend platform for buying institution-specific airtime and data bundles, productized and re-skinned for multiple Ghanaian organizations. Each deployment ships its own branding, catalog and identity-verification rules while sharing one battle-tested codebase — turning a bespoke build into a repeatable product. The live demo shown here is the Telecel deployment, the most feature-complete instance, containerized with Docker and served via nginx.',
+    description: 'A reusable airtime & data-bundle purchase platform white-labeled and deployed for 5+ Ghanaian organizations including Telecel, NHIS, SSNIT, GPAA and the Registered Midwives Association.',
+    longDescription: 'A single, themeable frontend platform for buying institution-specific airtime and data bundles, productized and re-skinned for multiple Ghanaian organizations. Each deployment ships its own branding, catalog and identity-verification rules while sharing one battle-tested codebase, turning a bespoke build into a repeatable product. The live demo shown here is the Telecel deployment, the most feature-complete instance, containerized with Docker and served via nginx.',
     techStack: ['React', 'Vite', 'Tailwind CSS', 'Docker', 'nginx'],
     role: 'Frontend Engineer & UI/UX Designer',
     features: [
@@ -175,9 +175,9 @@ export const projects: Project[] = [
   },
   {
     id: 'hayapay',
-    title: 'HayaPay — HR & Payroll Platform Site',
-    description: 'Marketing site for HayaPay, an HR and payroll outsourcing platform for the modern African enterprise — built for performance, SEO and conversion.',
-    longDescription: 'Designed and built the marketing site for HayaPay, an HR and payroll outsourcing platform serving enterprises across Africa. Statically exported with Next.js for edge-fast delivery, the site pairs a bold, animated hero with a modular component system that lets the team assemble new service and package pages quickly — all tuned for SEO, Core Web Vitals and conversion.',
+    title: 'HayaPay: HR & Payroll Platform Site',
+    description: 'Marketing site for HayaPay, an HR and payroll outsourcing platform for the modern African enterprise, built for performance, SEO and conversion.',
+    longDescription: 'Designed and built the marketing site for HayaPay, an HR and payroll outsourcing platform serving enterprises across Africa. Statically exported with Next.js for edge-fast delivery, the site pairs a bold, animated hero with a modular component system that lets the team assemble new service and package pages quickly, all tuned for SEO, Core Web Vitals and conversion.',
     techStack: ['Next.js', 'Framer Motion', 'Lucide React', 'Tailwind CSS'],
     role: 'Lead Designer & Frontend Engineer',
     features: [
@@ -208,9 +208,9 @@ export const projects: Project[] = [
   },
   {
     id: 'rentpay',
-    title: 'RentPay — Property Rent Tracker',
+    title: 'RentPay: Property Rent Tracker',
     description: 'A full-stack property and rent-management app with real-time cloud sync, letting landlords track properties, tenants and monthly payments across multiple currencies.',
-    longDescription: 'RentPay is a full-stack rental-management application I built to give small landlords a clear, real-time view of their portfolio. Property, tenant and payment records sync live across devices through Supabase (Postgres + realtime subscriptions), with a resilient offline-first design that transparently falls back to local storage when the cloud is unavailable. It tracks monthly rent status across properties, supports multiple currencies, and exports statements — all behind a clean, single-page interface.',
+    longDescription: 'RentPay is a full-stack rental-management application I built to give small landlords a clear, real-time view of their portfolio. Property, tenant and payment records sync live across devices through Supabase (Postgres + realtime subscriptions), with a resilient offline-first design that transparently falls back to local storage when the cloud is unavailable. It tracks monthly rent status across properties, supports multiple currencies, and exports statements, all behind a clean, single-page interface.',
     techStack: ['React', 'Vite', 'Supabase', 'PostgreSQL', 'Lucide React'],
     role: 'Full-Stack Engineer',
     features: [
@@ -242,14 +242,14 @@ export const projects: Project[] = [
   },
   {
     id: 'akonta',
-    title: 'Akonta — Market Ledger App',
+    title: 'Akonta: Market Ledger App',
     description: 'A bilingual (English/Twi), offline-first mobile bookkeeping app that replaces the paper notebook for Ghanaian market traders, with icon-based and voice-driven sales entry.',
-    longDescription: 'Akonta (Twi for "account") is a React Native / Expo mobile app I built to bring digital bookkeeping to informal market traders in Ghana. It is designed around real constraints: low literacy, intermittent connectivity, and budget Android phones. Every core feature — recording sales, managing inventory, and seeing daily profit — works fully offline on an on-device SQLite database. Traders record a sale in seconds by tapping product icons, or by speaking (English recognized on-device; Twi via an online path). The entire interface is bilingual English/Twi and switches instantly.',
+    longDescription: 'Akonta (Twi for "account") is a React Native / Expo mobile app I built to bring digital bookkeeping to informal market traders in Ghana. It is designed around real constraints: low literacy, intermittent connectivity, and budget Android phones. Every core feature, from recording sales and managing inventory to seeing daily profit, works fully offline on an on-device SQLite database. Traders record a sale in seconds by tapping product icons, or by speaking (English recognized on-device; Twi via an online path). The entire interface is bilingual English/Twi and switches instantly.',
     techStack: ['React Native', 'Expo', 'TypeScript', 'SQLite', 'Zustand', 'i18next'],
     role: 'Mobile Engineer & Product Designer',
     features: [
       'Fully offline-first: sales, inventory and profit computed on-device via SQLite (WAL mode)',
-      'Icon-based quick sale entry — record a sale in under 5 seconds',
+      'Icon-based quick sale entry to record a sale in under 5 seconds',
       'Voice entry with an NLP parser (Levenshtein fuzzy matching, EN/Twi numbers)',
       'Instant daily profit, revenue and cost dashboard',
       'Bilingual English/Twi UI with instant language switching',
@@ -257,7 +257,7 @@ export const projects: Project[] = [
     ],
     challenges: [
       'Designing for low-literacy, Twi-first users through icon-driven interaction rather than text',
-      'Delivering a genuinely offline experience — local SQLite with no server or account',
+      'Delivering a genuinely offline experience with local SQLite and no server or account',
       'Keeping the app lightweight for budget Android phones (stripped ~50–100MB of on-device ML weight)'
     ],
     impact: 'A feature-complete, offline-first MVP that turns end-of-day "how much did I make?" into an instant answer for market traders.',

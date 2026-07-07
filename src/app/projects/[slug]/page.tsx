@@ -207,7 +207,7 @@ export default function ProjectPage() {
                <div className="flex-1 max-w-md mx-auto h-6 bg-background/50 rounded flex items-center px-3 gap-2 min-w-0">
                   <Globe size={10} className="text-muted-foreground shrink-0" />
                   <span className="text-[10px] text-muted-foreground truncate">
-                    {viewMode === 'live' && project.link ? project.link : `${project.id} — visual preview`}
+                    {viewMode === 'live' && project.link ? project.link : `${project.id} visual preview`}
                   </span>
                </div>
                {project.link && (
@@ -222,7 +222,7 @@ export default function ProjectPage() {
                )}
             </div>
 
-            {/* Content area — tall for the live demo so the app shows fully */}
+            {/* Content area, tall for the live demo so the app shows fully */}
             <div
               className={cn(
                 "relative bg-white overflow-hidden",

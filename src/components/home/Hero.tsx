@@ -73,7 +73,7 @@ export default function Hero() {
           className="mt-8 flex items-center justify-center gap-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60"
         >
           <span className="w-8 h-[1px] bg-border" />
-          Featured: <a href="/projects/fleet-management-dashboard" className="text-accent/80 hover:text-accent transition-colors underline underline-offset-4 decoration-accent/20">Fleetly — Fleet Management Platform</a>
+          Featured: <a href="/projects/fleet-management-dashboard" className="text-accent/80 hover:text-accent transition-colors underline underline-offset-4 decoration-accent/20">Fleetly: Fleet Management Platform</a>
           <span className="w-8 h-[1px] bg-border" />
         </motion.div>
 

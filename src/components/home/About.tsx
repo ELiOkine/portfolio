@@ -19,10 +19,10 @@ export default function About() {
           </h2>
           <div className="space-y-6 text-lg text-muted-foreground font-normal leading-relaxed">
             <p>
-              I&apos;m Emmanuel Okine, a software engineer and designer based in Accra, Ghana. Over the past two years I&apos;ve shipped production software across fintech, logistics, and education—leading frontend architecture on real products that move money, track fleets, and serve real users.
+              I&apos;m Emmanuel Okine, a software engineer and designer based in Accra, Ghana. Over the past two years I&apos;ve shipped production software across fintech, logistics, and education, leading frontend architecture on real products that move money, track fleets, and serve real users.
             </p>
             <p>
-              I care about systems thinking, clean technical foundations, and design that&apos;s judged by how well it works. I like owning problems end-to-end—from data model to pixel—and turning complex requirements into interfaces people actually understand.
+              I care about systems thinking, clean technical foundations, and design that&apos;s judged by how well it works. I like owning problems end to end, from data model to pixel, and turning complex requirements into interfaces people actually understand.
             </p>
           </div>
           

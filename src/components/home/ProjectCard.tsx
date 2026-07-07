@@ -23,7 +23,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         href={`/projects/${project.id}`}
         className="flex flex-col h-full overflow-hidden rounded-xl border border-border bg-muted/5 shadow-sm hover:shadow-xl hover:border-accent/40 transition-all duration-300"
       >
-        {/* Clean screenshot — no text over it */}
+        {/* Clean screenshot, no text over it */}
         <div className="relative aspect-video overflow-hidden bg-muted/20">
           <Image
             src={project.image}
@@ -36,7 +36,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
         </div>
 
-        {/* Text on a solid panel — always readable */}
+        {/* Text on a solid panel, always readable */}
         <div className="flex flex-col flex-1 p-5">
           <span className="text-[10px] font-bold text-accent uppercase tracking-widest mb-2">
             {project.category}
