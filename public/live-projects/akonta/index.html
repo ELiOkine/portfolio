@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akonta — Market Ledger Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <script type="module" src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
+  <style>
+    :root {
+      --blue: #1A6CA8; --blue-light: #E8F1F8; --green: #27AE60; --green-light: #E8F8EF;
+      --amber: #F39C12; --amber-light: #FEF5E4; --red: #E74C3C;
+      --bg: #F4F6F9; --surface: #FFFFFF; --border: #E2E8F0;
+      --text: #1A202C; --muted: #718096; --dim: #A0AEC0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Nunito', system-ui, sans-serif;
+      background: #0F172A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      min-height: 100vh;
+    }
+    .device {
+      width: min(390px, 100%);
+      background: #0F172A;
+      border-radius: 36px;
+      padding: 10px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+    }
+    .screen {
+      border-radius: 28px;
+      overflow: hidden;
+      background: var(--bg);
+      height: min(780px, calc(100vh - 32px));
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .status {
+      height: 24px;
+      padding: 5px 14px 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.58rem;
+      font-weight: 700;
+      color: #334155;
+      flex-shrink: 0;
+    }
+    .view {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px 14px 6px;
+      display: none;
+    }
+    .view.active { display: block; }
+    .tabbar {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      display: flex;
+      padding: 6px 2px 10px;
+      flex-shrink: 0;
+    }
+    .tab {
+      flex: 1;
+      text-align: center;
+      font-size: 0.5rem;
+      font-weight: 700;
+      color: var(--dim);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 4px 0;
+    }
+    .tab.on { color: var(--blue); }
+    .tab ion-icon { font-size: 1.1rem; }
+
+    .greeting { font-size: 0.92rem; font-weight: 800; }
+    .shop { font-size: 1.05rem; font-weight: 900; letter-spacing: -0.3px; }
+    .date-r { display: flex; align-items: center; gap: 3px; font-size: 0.6rem; color: var(--muted); font-weight: 600; margin-top: 2px; }
+    .home-h { display: flex; justify-content: space-between; margin-bottom: 8px; align-items: flex-start; }
+    .gear { width: 36px; height: 36px; border-radius: 10px; background: var(--surface); border: 1px solid var(--border); display: grid; place-items: center; color: var(--blue); }
+
+    .profit-hero {
+      background: var(--blue);
+      border-radius: 20px;
+      padding: 14px 14px 0;
+      margin-bottom: 10px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(26,108,168,0.2);
+    }
+    .profit-hero::before {
+      content: '';
+      position: absolute;
+      top: -28px; right: -18px;
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+    }
+    .profit-lbl { font-size: 0.66rem; font-weight: 600; color: rgba(255,255,255,0.9); display: flex; justify-content: space-between; align-items: center; }
+    .wallet-ico { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,0.2); display: grid; place-items: center; color: #fff; }
+    .profit-amt { font-size: 1.75rem; font-weight: 900; color: #fff; letter-spacing: -1px; margin: 4px 0; }
+    .trend { display: inline-flex; align-items: center; gap: 3px; background: rgba(255,255,255,0.18); border-radius: 99px; padding: 3px 8px; font-size: 0.56rem; font-weight: 800; color: #fff; }
+    .stats-row { display: flex; background: var(--surface); border-radius: 14px 14px 0 0; margin: 12px -14px 0; padding: 10px 2px; }
+    .stat { flex: 1; text-align: center; font-size: 0.5rem; }
+    .stat + .stat { border-left: 1px solid var(--border); }
+    .stat .lbl { font-weight: 800; color: var(--dim); text-transform: uppercase; letter-spacing: 0.4px; }
+    .stat .val { font-size: 0.72rem; font-weight: 900; margin-top: 2px; }
+
+    .qs-zone { background: var(--surface); border-radius: 14px; padding: 10px; border: 1px solid var(--border); margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .qs-h { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; font-size: 0.8rem; font-weight: 900; }
+    .bolt { width: 28px; height: 28px; border-radius: 8px; background: var(--amber-light); color: var(--amber); display: grid; place-items: center; }
+    .voice-cta {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--blue); border-radius: 14px; padding: 10px;
+      margin-bottom: 8px; cursor: pointer; border: none; width: 100%;
+      font-family: inherit; text-align: left;
+    }
+    .mic-c { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.25); display: grid; place-items: center; color: #fff; flex-shrink: 0; }
+    .voice-cta .t1 { font-size: 0.8rem; font-weight: 900; color: #fff; }
+    .voice-cta .t2 { font-size: 0.56rem; color: rgba(255,255,255,0.88); margin-top: 1px; }
+
+    .chip-strip { display: flex; gap: 6px; flex-wrap: wrap; }
+    .chip {
+      width: 64px; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 10px; padding: 6px 4px; text-align: center;
+      font-size: 0.52rem; font-weight: 800; cursor: pointer;
+    }
+    .chip .pr { color: var(--blue); font-weight: 900; margin-top: 2px; }
+    .picon { width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; margin: 0 auto; }
+    .picon.prov { background: #EAF7F0; color: #27AE60; }
+    .picon.hh { background: #EAF7F0; color: #27AE60; }
+    .picon.low { background: var(--amber-light); color: var(--amber); }
+
+    .alert { display: flex; gap: 8px; background: var(--surface); border: 1px solid #F0D48A; border-left: 3px solid var(--amber); border-radius: 14px; padding: 9px; margin-bottom: 8px; font-size: 0.6rem; }
+    .alert .t { font-weight: 900; color: #9A6700; }
+    .alert .b { color: var(--muted); margin-top: 1px; }
+    .aico { width: 28px; height: 28px; border-radius: 8px; background: var(--amber-light); color: var(--amber); display: grid; place-items: center; flex-shrink: 0; }
+
+    .sec-lbl { font-size: 0.52rem; font-weight: 800; color: var(--dim); text-transform: uppercase; letter-spacing: 0.07em; margin: 8px 0 4px; display: flex; align-items: center; gap: 3px; }
+    .tx { display: flex; justify-content: space-between; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; margin-bottom: 5px; font-size: 0.64rem; }
+    .tx .amt { color: var(--green); font-weight: 900; }
+
+    .screen-title { font-size: 1.05rem; font-weight: 900; margin-bottom: 4px; }
+    .sub { font-size: 0.62rem; color: var(--muted); margin: -2px 0 8px; font-weight: 600; }
+    .search { display: flex; align-items: center; gap: 5px; background: var(--surface); border: 1px solid var(--border); border-radius: 11px; padding: 9px 10px; font-size: 0.66rem; color: var(--dim); margin-bottom: 8px; }
+    .prod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .prod { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 10px 6px; text-align: center; min-height: 110px; cursor: pointer; }
+    .prod.low { border-color: var(--amber); background: var(--amber-light); }
+    .prod .nm { font-size: 0.68rem; font-weight: 800; margin-top: 5px; }
+    .prod .st { font-size: 0.54rem; color: var(--muted); }
+    .prod .pr { font-size: 0.72rem; font-weight: 900; color: var(--blue); }
+
+    .inv-row { display: flex; gap: 8px; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 9px; margin-bottom: 6px; font-size: 0.64rem; }
+    .stepper { display: flex; gap: 4px; align-items: center; }
+    .stepper button { width: 26px; height: 26px; border: none; border-radius: 7px; background: var(--blue); color: #fff; font-weight: 900; cursor: pointer; font-size: 0.9rem; }
+    .stepper span { font-weight: 900; min-width: 18px; text-align: center; }
+
+    .pill-row { display: flex; gap: 5px; margin-bottom: 8px; }
+    .pill { flex: 1; text-align: center; padding: 7px; border-radius: 9px; font-size: 0.6rem; font-weight: 800; background: var(--surface); border: 1px solid var(--border); color: var(--muted); cursor: pointer; }
+    .pill.on { background: var(--blue); color: #fff; border-color: var(--blue); }
+
+    .set-sec { font-size: 0.54rem; font-weight: 800; color: var(--dim); text-transform: uppercase; letter-spacing: 0.06em; margin: 10px 0 5px; }
+    .set-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 6px; overflow: hidden; }
+    .set-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; font-size: 0.68rem; }
+    .set-row + .set-row { border-top: 1px solid var(--border); }
+    .set-l { display: flex; gap: 8px; align-items: center; }
+    .set-i { width: 30px; height: 30px; border-radius: 8px; background: var(--blue-light); color: var(--blue); display: grid; place-items: center; }
+
+    .modal-bg {
+      position: absolute; inset: 0; background: rgba(0,0,0,0.45);
+      display: none; align-items: flex-end; padding: 10px; z-index: 50;
+    }
+    .modal-bg.show { display: flex; }
+    .sheet { background: var(--surface); border-radius: 18px 18px 12px 12px; width: 100%; padding: 14px; animation: slideUp 0.25s ease; }
+    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .sheet h4 { text-align: center; font-size: 0.9rem; font-weight: 900; }
+    .heard { text-align: center; font-size: 0.6rem; color: var(--muted); font-style: italic; margin: 5px 0 10px; }
+    .sline { display: flex; gap: 8px; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 0.66rem; }
+    .btn-r { display: flex; gap: 8px; margin-top: 10px; }
+    .btn { flex: 1; padding: 11px; border-radius: 11px; text-align: center; font-weight: 800; font-size: 0.72rem; cursor: pointer; border: none; font-family: inherit; }
+    .btn.p { background: var(--green); color: #fff; }
+    .btn.g { background: var(--bg); color: var(--muted); }
+
+    .toast {
+      position: absolute; top: 36px; left: 50%; transform: translateX(-50%) translateY(-8px);
+      background: var(--green); color: #fff; padding: 8px 16px; border-radius: 99px;
+      font-size: 0.64rem; font-weight: 800; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s; z-index: 60; white-space: nowrap;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    .splash {
+      position: absolute; inset: 0; background: var(--bg); z-index: 100;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+      transition: opacity 0.4s;
+    }
+    .splash.hide { opacity: 0; pointer-events: none; }
+    .splash img { border-radius: 22px; box-shadow: 0 8px 24px rgba(26,108,168,0.2); }
+    .splash p { font-size: 0.72rem; color: var(--muted); font-weight: 600; }
+    .load-track { width: 130px; height: 4px; background: var(--border); border-radius: 4px; overflow: hidden; }
+    .load-fill { width: 70%; height: 100%; background: var(--blue); animation: load 1.8s ease infinite; }
+    @keyframes load { 0%,100% { width: 30%; } 50% { width: 85%; } }
+
+    .demo-badge {
+      position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%);
+      background: rgba(15,23,42,0.85); color: #94A3B8; font-size: 0.62rem; font-weight: 700;
+      padding: 5px 12px; border-radius: 99px; backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.08); z-index: 200;
+    }
+  </style>
+</head>
+<body>
+  <div class="device">
+    <div class="screen" id="app">
+      <div class="splash" id="splash">
+        <img src="/live-projects/akonta/assets/Akontalogo.png" alt="Akonta" width="88" height="88" />
+        <p>Preparing your market ledger…</p>
+        <div class="load-track"><div class="load-fill"></div></div>
+      </div>
+
+      <div class="status"><span>9:41</span><span>●●●</span></div>
+      <div class="toast" id="toast">Sale recorded!</div>
+
+      <!-- HOME -->
+      <div class="view active" id="view-home">
+        <div class="home-h">
+          <div>
+            <div class="greeting">Good morning Emmanuel 👋</div>
+            <div class="shop">Okine Provisions</div>
+            <div class="date-r"><ion-icon name="calendar-outline" style="font-size:0.65rem"></ion-icon> Monday, July 7</div>
+          </div>
+          <div class="gear"><ion-icon name="settings-outline"></ion-icon></div>
+        </div>
+        <div class="profit-hero">
+          <div class="profit-lbl"><span>Today's Profit</span><div class="wallet-ico"><ion-icon name="wallet-outline"></ion-icon></div></div>
+          <div class="profit-amt" id="profit-amt">GHS 47.50</div>
+          <div class="trend"><ion-icon name="trending-up-outline"></ion-icon> Up today</div>
+          <div class="stats-row">
+            <div class="stat"><div class="lbl">Revenue</div><div class="val" style="color:var(--green)" id="revenue">GHS 120</div></div>
+            <div class="stat"><div class="lbl">Cost</div><div class="val" style="color:var(--red)">GHS 72.50</div></div>
+            <div class="stat"><div class="lbl">Sales</div><div class="val" id="sales-count">18</div></div>
+          </div>
+        </div>
+        <div class="qs-zone">
+          <div class="qs-h"><div class="bolt"><ion-icon name="flash-outline"></ion-icon></div> Quick Sell</div>
+          <button class="voice-cta" id="voice-btn">
+            <div class="mic-c"><ion-icon name="mic"></ion-icon></div>
+            <div style="flex:1"><div class="t1">Record Sale</div><div class="t2">Tap to speak your sale</div></div>
+            <ion-icon name="chevron-forward-outline" style="color:rgba(255,255,255,0.7)"></ion-icon>
+          </button>
+          <div style="font-size:0.56rem;color:var(--muted);font-weight:600;margin-bottom:5px">Or tap a product:</div>
+          <div class="chip-strip">
+            <div class="chip" data-product="Milo" data-price="8"><div class="picon prov"><ion-icon name="basket-outline"></ion-icon></div><div>Milo</div><div class="pr">GHS 8</div></div>
+            <div class="chip" data-product="Soap" data-price="5"><div class="picon hh"><ion-icon name="home-outline"></ion-icon></div><div>Soap</div><div class="pr">GHS 5</div></div>
+            <div class="chip" data-product="Peak Milk" data-price="8"><div class="picon low"><ion-icon name="cafe-outline"></ion-icon></div><div>Peak</div><div class="pr">GHS 8</div></div>
+          </div>
+        </div>
+        <div class="alert"><div class="aico"><ion-icon name="warning-outline"></ion-icon></div><div><div class="t">Low stock</div><div class="b">Peak Milk (3 left)</div></div></div>
+        <div class="sec-lbl"><ion-icon name="layers-outline"></ion-icon> Today · <span id="tx-count">18</span> transactions</div>
+        <div id="tx-list">
+          <div class="tx"><span><b>Milo</b> ×2 · voice</span><span class="amt">GHS 16</span></div>
+          <div class="tx"><span><b>Soap</b> ×1 · tap</span><span class="amt">GHS 5</span></div>
+        </div>
+      </div>
+
+      <!-- SELL -->
+      <div class="view" id="view-sell">
+        <div class="screen-title">Quick Sell</div>
+        <button class="voice-cta" id="voice-btn-2" style="margin-bottom:10px">
+          <div class="mic-c"><ion-icon name="mic"></ion-icon></div>
+          <div style="flex:1"><div class="t1">Tap and speak to sell</div><div class="t2">e.g. "2 Milo, 3 Soap"</div></div>
+        </button>
+        <div class="search"><ion-icon name="search-outline"></ion-icon> Search products...</div>
+        <div class="prod-grid">
+          <div class="prod sell-item" data-product="Milo" data-price="8"><div class="picon prov"><ion-icon name="basket-outline"></ion-icon></div><div class="nm">Milo</div><div class="st">24 tin</div><div class="pr">GHS 8.00</div></div>
+          <div class="prod low sell-item" data-product="Peak Milk" data-price="8"><div class="picon low"><ion-icon name="cafe-outline"></ion-icon></div><div class="nm">Peak Milk</div><div class="st">3 tin</div><div class="pr">GHS 8.00</div></div>
+          <div class="prod sell-item" data-product="Plantain" data-price="2"><div style="width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#229954,#1E8449);margin:0 auto"></div><div class="nm">Plantain</div><div class="st">18 pcs</div><div class="pr">GHS 2.00</div></div>
+          <div class="prod sell-item" data-product="Soap" data-price="5"><div class="picon hh"><ion-icon name="home-outline"></ion-icon></div><div class="nm">Soap</div><div class="st">12 pcs</div><div class="pr">GHS 5.00</div></div>
+        </div>
+      </div>
+
+      <!-- STOCK -->
+      <div class="view" id="view-stock">
+        <div class="screen-title">My Stock</div>
+        <div class="sub">12 products</div>
+        <div class="search"><ion-icon name="search-outline"></ion-icon> Search products...</div>
+        <div class="inv-row">
+          <div class="picon prov"><ion-icon name="basket-outline"></ion-icon></div>
+          <div style="flex:1"><b>Milo</b><div style="font-size:0.54rem;color:var(--muted)">Provisions · Buy 6 / Sell 8</div></div>
+          <div class="stepper"><button onclick="adjStock(this,-1)">−</button><span>24</span><button onclick="adjStock(this,1)">+</button></div>
+        </div>
+        <div class="inv-row" style="border-color:var(--amber);background:var(--amber-light)">
+          <div class="picon low"><ion-icon name="cafe-outline"></ion-icon></div>
+          <div style="flex:1"><b>Peak Milk</b><div style="font-size:0.54rem;color:#9A6700">Low · 3 tin</div></div>
+          <div class="stepper"><button onclick="adjStock(this,-1)">−</button><span>3</span><button onclick="adjStock(this,1)">+</button></div>
+        </div>
+        <div class="inv-row">
+          <div class="picon hh"><ion-icon name="home-outline"></ion-icon></div>
+          <div style="flex:1"><b>Soap</b><div style="font-size:0.54rem;color:var(--muted)">Household · Buy 3 / Sell 5</div></div>
+          <div class="stepper"><button onclick="adjStock(this,-1)">−</button><span>12</span><button onclick="adjStock(this,1)">+</button></div>
+        </div>
+      </div>
+
+      <!-- HISTORY -->
+      <div class="view" id="view-history">
+        <div class="screen-title">Transaction History</div>
+        <div class="sub">24 items</div>
+        <div class="pill-row">
+          <div class="pill">Today</div>
+          <div class="pill on">7 Days</div>
+          <div class="pill">All</div>
+        </div>
+        <div class="search"><ion-icon name="search-outline"></ion-icon> Search product</div>
+        <div class="tx"><span><b>10:42</b><br>Milo ×2 · Soap</span><span class="amt">GHS 21</span></div>
+        <div class="tx"><span><b>09:15</b><br>Plantain ×5</span><span class="amt">GHS 10</span></div>
+        <div class="tx"><span><b>08:30</b><br>Peak Milk ×1</span><span class="amt">GHS 8</span></div>
+        <div class="tx"><span><b>Yesterday</b><br>Milo ×3 · voice</span><span class="amt">GHS 24</span></div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="view" id="view-settings">
+        <div class="screen-title">Settings</div>
+        <div class="sub">12 products</div>
+        <div class="set-sec">Your Shop</div>
+        <div class="set-card"><div class="set-row"><div class="set-l"><div class="set-i"><ion-icon name="storefront-outline"></ion-icon></div><div><b>Okine Provisions</b><div style="font-size:0.54rem;color:var(--muted)">Tap to edit</div></div></div></div></div>
+        <div class="set-sec">Today's Summary</div>
+        <div class="set-card" style="display:flex;padding:10px 0">
+          <div style="flex:1;text-align:center"><b id="settings-profit">GHS 47.50</b><div style="font-size:0.5rem;color:var(--muted)">Net Profit</div></div>
+          <div style="flex:1;text-align:center;border-left:1px solid var(--border)"><b id="settings-sales">18</b><div style="font-size:0.5rem;color:var(--muted)">Sales</div></div>
+        </div>
+        <div class="set-sec">Voice Engine</div>
+        <div class="set-card"><div class="set-row" style="background:var(--blue-light)"><div class="set-l"><div class="set-i" style="background:var(--blue);color:#fff"><ion-icon name="flash-outline"></ion-icon></div><div><b>Groq Whisper Large</b><div style="font-size:0.54rem;color:var(--muted)">Fast & accurate (cloud)</div></div></div><ion-icon name="checkmark" style="color:var(--blue)"></ion-icon></div></div>
+        <div class="set-sec">Language</div>
+        <div class="set-card"><div class="set-row"><b>English / Twi</b><span style="font-size:0.56rem;color:var(--blue);font-weight:800">EN</span></div></div>
+        <div class="set-sec">Security</div>
+        <div class="set-card"><div class="set-row"><div class="set-l"><div class="set-i"><ion-icon name="lock-closed-outline"></ion-icon></div><b>PIN Lock</b></div><ion-icon name="chevron-forward-outline" style="color:var(--dim)"></ion-icon></div></div>
+      </div>
+
+      <!-- Confirm modal -->
+      <div class="modal-bg" id="modal">
+        <div class="sheet">
+          <h4>Confirm Sale</h4>
+          <div class="heard" id="modal-heard">Tap to confirm</div>
+          <div class="sline" id="modal-line">
+            <div class="picon prov" style="width:26px;height:26px;border-radius:7px"><ion-icon name="basket-outline"></ion-icon></div>
+            <div style="flex:1"><b id="modal-product">Milo</b> <span id="modal-qty">1</span></div>
+            <b id="modal-total">GHS 8</b>
+          </div>
+          <div class="btn-r">
+            <button class="btn g" id="modal-cancel">Cancel</button>
+            <button class="btn p" id="modal-confirm">Confirm Sale</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabbar">
+        <button class="tab on" data-view="home"><ion-icon name="home-outline"></ion-icon>Home</button>
+        <button class="tab" data-view="sell"><ion-icon name="cart-outline"></ion-icon>Sell</button>
+        <button class="tab" data-view="stock"><ion-icon name="cube-outline"></ion-icon>Stock</button>
+        <button class="tab" data-view="settings"><ion-icon name="settings-outline"></ion-icon>Settings</button>
+        <button class="tab" data-view="history"><ion-icon name="time-outline"></ion-icon>History</button>
+      </div>
+    </div>
+  </div>
+  <div class="demo-badge">Interactive demo · sample data</div>
+
+  <script>
+    let profit = 47.50, revenue = 120, sales = 18;
+    let pendingProduct = '', pendingPrice = 0;
+
+    setTimeout(() => document.getElementById('splash').classList.add('hide'), 1800);
+
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const view = tab.dataset.view;
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
+        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+        tab.classList.add('on');
+        document.getElementById('view-' + view).classList.add('active');
+      });
+    });
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2200);
+    }
+
+    function openModal(product, price, heard) {
+      pendingProduct = product;
+      pendingPrice = price;
+      document.getElementById('modal-product').textContent = product;
+      document.getElementById('modal-qty').textContent = '1';
+      document.getElementById('modal-total').textContent = 'GHS ' + price.toFixed(2);
+      document.getElementById('modal-heard').textContent = heard || ('Tap sale: ' + product);
+      document.getElementById('modal').classList.add('show');
+    }
+
+    document.getElementById('modal-cancel').onclick = () => document.getElementById('modal').classList.remove('show');
+    document.getElementById('modal-confirm').onclick = () => {
+      document.getElementById('modal').classList.remove('show');
+      const margin = pendingPrice * 0.35;
+      profit += margin;
+      revenue += pendingPrice;
+      sales++;
+      document.getElementById('profit-amt').textContent = 'GHS ' + profit.toFixed(2);
+      document.getElementById('revenue').textContent = 'GHS ' + revenue.toFixed(0);
+      document.getElementById('sales-count').textContent = sales;
+      document.getElementById('tx-count').textContent = sales;
+      document.getElementById('settings-profit').textContent = 'GHS ' + profit.toFixed(2);
+      document.getElementById('settings-sales').textContent = sales;
+      const tx = document.createElement('div');
+      tx.className = 'tx';
+      tx.innerHTML = '<span><b>' + pendingProduct + '</b> ×1 · tap</span><span class="amt">GHS ' + pendingPrice + '</span>';
+      document.getElementById('tx-list').prepend(tx);
+      showToast('Sale recorded! +' + pendingProduct);
+    };
+
+    document.querySelectorAll('.chip, .sell-item').forEach(el => {
+      el.addEventListener('click', () => {
+        const product = el.dataset.product;
+        const price = parseFloat(el.dataset.price);
+        openModal(product, price);
+      });
+    });
+
+    document.getElementById('voice-btn').onclick = () => openModal('Milo', 8, 'Heard: "one Milo"');
+    document.getElementById('voice-btn-2').onclick = () => openModal('Milo', 8, 'Heard: "two Milo one Soap"');
+
+    function adjStock(btn, delta) {
+      const span = btn.parentElement.querySelector('span');
+      const val = Math.max(0, parseInt(span.textContent) + delta);
+      span.textContent = val;
+    }
+  </script>
+</body>
+</html>

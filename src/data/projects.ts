@@ -30,6 +30,44 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'ismartpay',
+    title: 'iSmartPay: Fintech Platform',
+    description: 'A production fintech platform spanning 15 feature modules including disbursements, payroll, wallet, collections, settlements, invoicing, utility payments and SMS, with 2FA auth, a permissions engine, multi-language support and PDF reporting.',
+    longDescription: 'iSmartPay is a full-scale digital finance platform I led on the frontend, built as a modular React 19 application organized by feature domain. It covers the complete money-movement lifecycle for businesses and individuals: onboarding and KYC verification, wallet top-ups and transfers, single and bulk disbursements, payroll runs, collections, settlements, invoicing, and utility bill payments (electricity, water, TV, internet, airtime). It ships secure two-factor authentication, a role-based permissions engine, session inactivity handling, in-app SMS, multi-language support, and on-the-fly PDF report generation, all backed by a service layer with Zod validation, error boundaries, Sentry monitoring and a Vitest test suite.',
+    techStack: ['React 19', 'Vite 7', 'React Query', 'Zod', 'Chart.js', 'jsPDF', 'i18next', 'Sentry', 'Vitest'],
+    role: 'Frontend Lead',
+    features: [
+      'Single and bulk disbursements with real-time status tracking',
+      'Wallet, collections, settlements and payroll modules',
+      'Utility bill payments for electricity, water, TV, internet and airtime',
+      'Invoicing and on-the-fly PDF report generation (jsPDF)',
+      'Secure 2FA authentication with a role-based permissions engine',
+      'Multi-language UI (i18next) with light/dark theming',
+      'In-app SMS, notifications and session inactivity protection'
+    ],
+    challenges: [
+      'Structuring a 15-module fintech codebase (feature-based) that stays maintainable as scope grows',
+      'Enforcing data accuracy and security across real-time financial flows with Zod validation and error boundaries',
+      'Building a permissions engine that gates routes and UI per user role and access level'
+    ],
+    impact: 'Processed over 800,000 GH₵ in transaction volume across live disbursement and collection flows.',
+    metrics: [
+      { label: 'Volume Processed', value: '800k GH₵+', description: 'Total transaction value processed.' },
+      { label: 'Feature Modules', value: '15', description: 'From disbursements and payroll to utilities and SMS.' },
+      { label: 'Uptime', value: '99.9%', description: 'Reliability of critical disbursement flows.' }
+    ],
+    architecture: [
+      'Feature-based module architecture with a shared service layer and lazy-loaded routes.',
+      'React Query for server-state caching, with Zod schema validation on all inputs.',
+      'Role-based permissions engine gating routes and UI, plus 2FA and session inactivity handling.',
+      'Sentry-integrated error boundaries and a Vitest + React Testing Library suite (70% coverage threshold).'
+    ],
+    category: 'Engineering',
+    image: '/projects/ismartpay.png',
+    link: '/live-projects/ismartpay/index.html',
+    directEmbed: true
+  },
+  {
     id: 'fleet-management-dashboard',
     title: 'Fleetly: Fleet Management Platform',
     description: 'An enterprise fleet operations suite spanning 15+ modules, from vehicles, drivers, maintenance, fuel and safety to financials and a live tracking map, plus dedicated workshop and supplier partner portals.',
@@ -69,76 +107,6 @@ export const projects: Project[] = [
     directEmbed: true
   },
   {
-    id: 'ismartpay',
-    title: 'iSmartPay: Fintech Platform',
-    description: 'A production fintech platform spanning 15 feature modules including disbursements, payroll, wallet, collections, settlements, invoicing, utility payments and SMS, with 2FA auth, a permissions engine, multi-language support and PDF reporting.',
-    longDescription: 'iSmartPay is a full-scale digital finance platform I led on the frontend, built as a modular React 19 application organized by feature domain. It covers the complete money-movement lifecycle for businesses and individuals: onboarding and KYC verification, wallet top-ups and transfers, single and bulk disbursements, payroll runs, collections, settlements, invoicing, and utility bill payments (electricity, water, TV, internet, airtime). It ships secure two-factor authentication, a role-based permissions engine, session inactivity handling, in-app SMS, multi-language support, and on-the-fly PDF report generation, all backed by a service layer with Zod validation, error boundaries, Sentry monitoring and a Vitest test suite.',
-    techStack: ['React 19', 'Vite 7', 'React Query', 'Zod', 'Chart.js', 'jsPDF', 'i18next', 'Sentry', 'Vitest'],
-    role: 'Frontend Lead',
-    features: [
-      'Single and bulk disbursements with real-time status tracking',
-      'Wallet, collections, settlements and payroll modules',
-      'Utility bill payments for electricity, water, TV, internet and airtime',
-      'Invoicing and on-the-fly PDF report generation (jsPDF)',
-      'Secure 2FA authentication with a role-based permissions engine',
-      'Multi-language UI (i18next) with light/dark theming',
-      'In-app SMS, notifications and session inactivity protection'
-    ],
-    challenges: [
-      'Structuring a 15-module fintech codebase (feature-based) that stays maintainable as scope grows',
-      'Enforcing data accuracy and security across real-time financial flows with Zod validation and error boundaries',
-      'Building a permissions engine that gates routes and UI per user role and access level'
-    ],
-    impact: 'Processed over 800,000 GH₵ in transaction volume across live disbursement and collection flows.',
-    metrics: [
-      { label: 'Volume Processed', value: '800k GH₵+', description: 'Total transaction value processed.' },
-      { label: 'Feature Modules', value: '15', description: 'From disbursements and payroll to utilities and SMS.' },
-      { label: 'Uptime', value: '99.9%', description: 'Reliability of critical disbursement flows.' }
-    ],
-    architecture: [
-      'Feature-based module architecture with a shared service layer and lazy-loaded routes.',
-      'React Query for server-state caching, with Zod schema validation on all inputs.',
-      'Role-based permissions engine gating routes and UI, plus 2FA and session inactivity handling.',
-      'Sentry-integrated error boundaries and a Vitest + React Testing Library suite (70% coverage threshold).'
-    ],
-    category: 'Engineering',
-    image: '/projects/ismartpay.png',
-    link: '/live-projects/ismartpay/index.html',
-    directEmbed: true
-  },
-  {
-    id: 'jayee',
-    title: 'University Admissions Portal',
-    description: 'A multi-step application system for Higher Education, handling 10,000+ student applications annually.',
-    longDescription: 'Architected and built a robust admissions portal for Jayee University College. Implemented a 5-step application engine with state persistence, document validation, and real-time status tracking.',
-    techStack: ['React 19', 'Tailwind CSS', 'Zustand', 'React Hook Form', 'Zod', 'Framer Motion'],
-    role: 'Software Engineer',
-    features: [
-      '5-step persistent application engine',
-      'Asynchronous document upload with MIME validation',
-      'Automated application status notifications',
-      'Administrative dashboard for application review'
-    ],
-    challenges: [
-      'Implementing a reliable multi-step form state management that survives page reloads',
-      'Handling concurrent file uploads under heavy load during admissions peaks'
-    ],
-    impact: 'Replaced a paper-based system, reducing processing time by 80%.',
-    metrics: [
-      { label: 'Annual Applications', value: '10k+', description: 'Handled during peak admission periods.' },
-      { label: 'Time Saved', value: '80%', description: 'Reduction in manual processing time.' },
-      { label: 'Error Rate', value: '<1%', description: 'Incomplete or invalid form submissions.' }
-    ],
-    architecture: [
-      'Stateless multi-step engine with local persistence.',
-      'Zod-driven schema validation for complex form inputs.',
-      'Direct-to-S3 asynchronous document upload pipeline.'
-    ],
-    category: 'Engineering',
-    image: '/projects/jayee.png',
-    link: '/live-projects/jayee/index.html'
-  },
-  {
     id: 'bundle-platform',
     title: 'White-Label Bundle Platform',
     description: 'A reusable airtime & data-bundle purchase platform white-labeled and deployed for 5+ Ghanaian organizations including Telecel, NHIS, SSNIT, GPAA and the Registered Midwives Association.',
@@ -174,37 +142,36 @@ export const projects: Project[] = [
     directEmbed: true
   },
   {
-    id: 'hayapay',
-    title: 'HayaPay: HR & Payroll Platform Site',
-    description: 'Marketing site for HayaPay, an HR and payroll outsourcing platform for the modern African enterprise, built for performance, SEO and conversion.',
-    longDescription: 'Designed and built the marketing site for HayaPay, an HR and payroll outsourcing platform serving enterprises across Africa. Statically exported with Next.js for edge-fast delivery, the site pairs a bold, animated hero with a modular component system that lets the team assemble new service and package pages quickly, all tuned for SEO, Core Web Vitals and conversion.',
-    techStack: ['Next.js', 'Framer Motion', 'Lucide React', 'Tailwind CSS'],
-    role: 'Lead Designer & Frontend Engineer',
+    id: 'jayee',
+    title: 'University Admissions Portal',
+    description: 'A multi-step application system for Higher Education, handling 10,000+ student applications annually.',
+    longDescription: 'Architected and built a robust admissions portal for Jayee University College. Implemented a 5-step application engine with state persistence, document validation, and real-time status tracking.',
+    techStack: ['React 19', 'Tailwind CSS', 'Zustand', 'React Hook Form', 'Zod', 'Framer Motion'],
+    role: 'Software Engineer',
     features: [
-      'Statically exported Next.js site with SEO-optimized architecture',
-      'Modular, reusable component library for rapid page assembly',
-      'Scroll-driven Framer Motion animations',
-      'Fully responsive across all device categories'
+      '5-step persistent application engine',
+      'Asynchronous document upload with MIME validation',
+      'Automated application status notifications',
+      'Administrative dashboard for application review'
     ],
     challenges: [
-      'Reducing LCP and FID metrics while maintaining high visual fidelity',
-      'Implementing a seamless navigation flow across multiple service lines'
+      'Implementing a reliable multi-step form state management that survives page reloads',
+      'Handling concurrent file uploads under heavy load during admissions peaks'
     ],
-    impact: 'Increased average session duration by 40% post-launch.',
+    impact: 'Replaced a paper-based system, reducing processing time by 80%.',
     metrics: [
-      { label: 'Session Duration', value: '+40%', description: 'Increase in average time on site post-launch.' },
-      { label: 'Framework', value: 'Next.js', description: 'Statically exported for edge-speed delivery.' },
-      { label: 'Coverage', value: '50+', description: 'African markets addressed in the messaging.' }
+      { label: 'Annual Applications', value: '10k+', description: 'Handled during peak admission periods.' },
+      { label: 'Time Saved', value: '80%', description: 'Reduction in manual processing time.' },
+      { label: 'Error Rate', value: '<1%', description: 'Incomplete or invalid form submissions.' }
     ],
     architecture: [
-      'Statically exported Next.js site for CDN-first, edge-fast delivery.',
-      'Reusable, modular marketing component library for rapid page assembly.',
-      'Scroll-driven Framer Motion animations with intersection-observer triggers.'
+      'Stateless multi-step engine with local persistence.',
+      'Zod-driven schema validation for complex form inputs.',
+      'Direct-to-S3 asynchronous document upload pipeline.'
     ],
-    category: 'Design',
-    image: '/projects/hayapay.png',
-    link: '/live-projects/hayapay/index.html',
-    directEmbed: true
+    category: 'Engineering',
+    image: '/projects/jayee.png',
+    link: '/live-projects/jayee/index.html'
   },
   {
     id: 'rentpay',
@@ -241,37 +208,36 @@ export const projects: Project[] = [
     directEmbed: true
   },
   {
-    id: 'akonta',
-    title: 'Akonta: Market Ledger App',
-    description: 'A bilingual (English/Twi), offline-first mobile bookkeeping app that replaces the paper notebook for Ghanaian market traders, with icon-based and voice-driven sales entry.',
-    longDescription: 'Akonta (Twi for "account") is a React Native / Expo mobile app I built to bring digital bookkeeping to informal market traders in Ghana. It is designed around real constraints: low literacy, intermittent connectivity, and budget Android phones. Every core feature, from recording sales and managing inventory to seeing daily profit, works fully offline on an on-device SQLite database. Traders record a sale in seconds by tapping product icons, or by speaking (English recognized on-device; Twi via an online path). The entire interface is bilingual English/Twi and switches instantly.',
-    techStack: ['React Native', 'Expo', 'TypeScript', 'SQLite', 'Zustand', 'i18next'],
-    role: 'Mobile Engineer & Product Designer',
+    id: 'hayapay',
+    title: 'HayaPay: HR & Payroll Platform Site',
+    description: 'Marketing site for HayaPay, an HR and payroll outsourcing platform for the modern African enterprise, built for performance, SEO and conversion.',
+    longDescription: 'Designed and built the marketing site for HayaPay, an HR and payroll outsourcing platform serving enterprises across Africa. Statically exported with Next.js for edge-fast delivery, the site pairs a bold, animated hero with a modular component system that lets the team assemble new service and package pages quickly, all tuned for SEO, Core Web Vitals and conversion.',
+    techStack: ['Next.js', 'Framer Motion', 'Lucide React', 'Tailwind CSS'],
+    role: 'Lead Designer & Frontend Engineer',
     features: [
-      'Fully offline-first: sales, inventory and profit computed on-device via SQLite (WAL mode)',
-      'Icon-based quick sale entry to record a sale in under 5 seconds',
-      'Voice entry with an NLP parser (Levenshtein fuzzy matching, EN/Twi numbers)',
-      'Instant daily profit, revenue and cost dashboard',
-      'Bilingual English/Twi UI with instant language switching',
-      'Low-stock local notifications and optional PIN lock'
+      'Statically exported Next.js site with SEO-optimized architecture',
+      'Modular, reusable component library for rapid page assembly',
+      'Scroll-driven Framer Motion animations',
+      'Fully responsive across all device categories'
     ],
     challenges: [
-      'Designing for low-literacy, Twi-first users through icon-driven interaction rather than text',
-      'Delivering a genuinely offline experience with local SQLite and no server or account',
-      'Keeping the app lightweight for budget Android phones (stripped ~50–100MB of on-device ML weight)'
+      'Reducing LCP and FID metrics while maintaining high visual fidelity',
+      'Implementing a seamless navigation flow across multiple service lines'
     ],
-    impact: 'A feature-complete, offline-first MVP that turns end-of-day "how much did I make?" into an instant answer for market traders.',
+    impact: 'Increased average session duration by 40% post-launch.',
     metrics: [
-      { label: 'Works Offline', value: '100%', description: 'All core features run with no internet.' },
-      { label: 'Sale Entry', value: '<5s', description: 'From product tap to recorded sale.' },
-      { label: 'Languages', value: 'EN / Twi', description: 'Fully bilingual, instant switching.' }
+      { label: 'Session Duration', value: '+40%', description: 'Increase in average time on site post-launch.' },
+      { label: 'Framework', value: 'Next.js', description: 'Statically exported for edge-speed delivery.' },
+      { label: 'Coverage', value: '50+', description: 'African markets addressed in the messaging.' }
     ],
     architecture: [
-      'On-device SQLite (WAL mode, indexed) as the single source of truth.',
-      'Zustand global store hydrated from the local database.',
-      'i18next-driven bilingual layer covering every screen and alert.'
+      'Statically exported Next.js site for CDN-first, edge-fast delivery.',
+      'Reusable, modular marketing component library for rapid page assembly.',
+      'Scroll-driven Framer Motion animations with intersection-observer triggers.'
     ],
-    category: 'Engineering',
-    image: '/projects/akonta.png'
-  }
+    category: 'Design',
+    image: '/projects/hayapay.png',
+    link: '/live-projects/hayapay/index.html',
+    directEmbed: true
+  },
 ];

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { CheckCircle2 } from 'lucide-react';
 
 const skills = [
@@ -14,16 +15,30 @@ export default function About() {
     <section id="about" className="py-24 px-6 border-t border-border bg-background">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
         <div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-8">
-            Engineered for <span className="text-accent underline decoration-accent/10 underline-offset-4">Impact</span>.
-          </h2>
-          <div className="space-y-6 text-lg text-muted-foreground font-normal leading-relaxed">
-            <p>
-              I&apos;m Emmanuel Okine, a software engineer and designer based in Accra, Ghana. Over the past two years I&apos;ve shipped production software across fintech, logistics, and education, leading frontend architecture on real products that move money, track fleets, and serve real users.
-            </p>
-            <p>
-              I care about systems thinking, clean technical foundations, and design that&apos;s judged by how well it works. I like owning problems end to end, from data model to pixel, and turning complex requirements into interfaces people actually understand.
-            </p>
+          <div className="flex flex-col sm:flex-row gap-8 items-start mb-10">
+            <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border border-border shadow-xl shrink-0">
+              <Image
+                src="/Emma.jpeg"
+                alt="Emmanuel Okine"
+                fill
+                className="object-cover object-top"
+                sizes="144px"
+                priority
+              />
+            </div>
+            <div className="flex-1 min-w-0">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+                Engineered for <span className="text-accent underline decoration-accent/10 underline-offset-4">Impact</span>.
+              </h2>
+              <div className="space-y-5 text-lg text-muted-foreground font-normal leading-relaxed">
+                <p>
+                  I&apos;m Emmanuel Okine, a software engineer and designer based in Accra, Ghana. Over the past two years I&apos;ve shipped production software across fintech, logistics, and education, leading frontend architecture on real products that move money, track fleets, and serve real users.
+                </p>
+                <p>
+                  I care about systems thinking, clean technical foundations, and design that&apos;s judged by how well it works. I like owning problems end to end, from data model to pixel, and turning complex requirements into interfaces people actually understand.
+                </p>
+              </div>
+            </div>
           </div>
           
           <div className="mt-12 grid grid-cols-3 gap-8 pt-8 border-t border-border">
