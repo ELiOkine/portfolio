@@ -339,7 +339,11 @@
           <div style="flex:1;text-align:center;border-left:1px solid var(--border)"><b id="settings-sales">18</b><div style="font-size:0.5rem;color:var(--muted)">Sales</div></div>
         </div>
         <div class="set-sec">Voice Engine</div>
-        <div class="set-card"><div class="set-row" style="background:var(--blue-light)"><div class="set-l"><div class="set-i" style="background:var(--blue);color:#fff"><ion-icon name="flash-outline"></ion-icon></div><div><b>Groq Whisper Large</b><div style="font-size:0.54rem;color:var(--muted)">Fast & accurate (cloud)</div></div></div><ion-icon name="checkmark" style="color:var(--blue)"></ion-icon></div></div>
+        <div class="set-card">
+          <div class="set-row"><div class="set-l"><div class="set-i"><ion-icon name="phone-portrait-outline"></ion-icon></div><div><b>Engine v1</b><div style="font-size:0.54rem;color:var(--muted)">On-device · works offline</div></div></div></div>
+          <div class="set-row" style="background:var(--blue-light)"><div class="set-l"><div class="set-i" style="background:var(--blue);color:#fff"><ion-icon name="flash-outline"></ion-icon></div><div><b>Engine v2</b><div style="font-size:0.54rem;color:var(--muted)">Fast & accurate (cloud)</div></div></div><ion-icon name="checkmark" style="color:var(--blue)"></ion-icon></div>
+          <div class="set-row"><div class="set-l"><div class="set-i"><ion-icon name="cloud-outline"></ion-icon></div><div><b>Engine v3</b><div style="font-size:0.54rem;color:var(--muted)">Free cloud fallback</div></div></div></div>
+        </div>
         <div class="set-sec">Language</div>
         <div class="set-card"><div class="set-row"><b>English / Twi</b><span style="font-size:0.56rem;color:var(--blue);font-weight:800">EN</span></div></div>
         <div class="set-sec">Security</div>
@@ -349,13 +353,10 @@
       <!-- Confirm modal -->
       <div class="modal-bg" id="modal">
         <div class="sheet">
-          <h4>Confirm Sale</h4>
+          <h4 id="modal-title">Confirm Sale</h4>
           <div class="heard" id="modal-heard">Tap to confirm</div>
-          <div class="sline" id="modal-line">
-            <div class="picon prov" style="width:26px;height:26px;border-radius:7px"><ion-icon name="basket-outline"></ion-icon></div>
-            <div style="flex:1"><b id="modal-product">Milo</b> <span id="modal-qty">1</span></div>
-            <b id="modal-total">GHS 8</b>
-          </div>
+          <div id="modal-lines"></div>
+          <div style="text-align:right;font-weight:900;color:var(--blue);font-size:0.95rem;margin-top:8px" id="modal-total">GHS 0.00</div>
           <div class="btn-r">
             <button class="btn g" id="modal-cancel">Cancel</button>
             <button class="btn p" id="modal-confirm">Confirm Sale</button>
@@ -376,15 +377,50 @@
 
   <script>
     let profit = 47.50, revenue = 120, sales = 18;
-    let pendingProduct = '', pendingPrice = 0;
+    let pendingItems = [];
+    let lastMethod = 'tap';
+
+    // Product catalog with spoken aliases — mirrors the app's NLP matcher.
+    const CATALOG = [
+      { name: 'Milo', price: 8, aliases: ['milo', 'mylo', 'melo'] },
+      { name: 'Soap', price: 5, aliases: ['soap', 'soaps', 'soup'] },
+      { name: 'Peak Milk', price: 8, aliases: ['peak milk', 'peak', 'milk'] },
+      { name: 'Plantain', price: 2, aliases: ['plantain', 'plantains', 'plantin'] },
+    ];
+    const NUMWORDS = { a: 1, an: 1, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10 };
+    const wordToNum = (w) => (/^\d+$/.test(w) ? parseInt(w, 10) : (NUMWORDS[w] ?? null));
+
+    // Parse a spoken transcript into { name, qty, price } line items.
+    function parseSale(transcript) {
+      const words = transcript.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(Boolean);
+      const items = [];
+      CATALOG.forEach((prod) => {
+        prod.aliases.some((alias) => {
+          const aw = alias.split(' ');
+          for (let i = 0; i <= words.length - aw.length; i++) {
+            if (aw.every((a, j) => words[i + j] === a)) {
+              let qty = 1;
+              for (let k = i - 1; k >= Math.max(0, i - 2); k--) {
+                const n = wordToNum(words[k]);
+                if (n) { qty = n; break; }
+              }
+              if (!items.find((it) => it.name === prod.name)) items.push({ name: prod.name, qty, price: prod.price });
+              return true;
+            }
+          }
+          return false;
+        });
+      });
+      return items;
+    }
 
     setTimeout(() => document.getElementById('splash').classList.add('hide'), 1800);
 
-    document.querySelectorAll('.tab').forEach(tab => {
+    document.querySelectorAll('.tab').forEach((tab) => {
       tab.addEventListener('click', () => {
         const view = tab.dataset.view;
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
-        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+        document.querySelectorAll('.tab').forEach((t) => t.classList.remove('on'));
+        document.querySelectorAll('.view').forEach((v) => v.classList.remove('active'));
         tab.classList.add('on');
         document.getElementById('view-' + view).classList.add('active');
       });
@@ -394,54 +430,110 @@
       const t = document.getElementById('toast');
       t.textContent = msg;
       t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 2200);
+      setTimeout(() => t.classList.remove('show'), 2600);
     }
 
-    function openModal(product, price, heard) {
-      pendingProduct = product;
-      pendingPrice = price;
-      document.getElementById('modal-product').textContent = product;
-      document.getElementById('modal-qty').textContent = '1';
-      document.getElementById('modal-total').textContent = 'GHS ' + price.toFixed(2);
-      document.getElementById('modal-heard').textContent = heard || ('Tap sale: ' + product);
-      document.getElementById('modal').classList.add('show');
-    }
-
-    document.getElementById('modal-cancel').onclick = () => document.getElementById('modal').classList.remove('show');
-    document.getElementById('modal-confirm').onclick = () => {
-      document.getElementById('modal').classList.remove('show');
-      const margin = pendingPrice * 0.35;
-      profit += margin;
-      revenue += pendingPrice;
-      sales++;
+    function updateStats() {
       document.getElementById('profit-amt').textContent = 'GHS ' + profit.toFixed(2);
       document.getElementById('revenue').textContent = 'GHS ' + revenue.toFixed(0);
       document.getElementById('sales-count').textContent = sales;
       document.getElementById('tx-count').textContent = sales;
       document.getElementById('settings-profit').textContent = 'GHS ' + profit.toFixed(2);
       document.getElementById('settings-sales').textContent = sales;
-      const tx = document.createElement('div');
-      tx.className = 'tx';
-      tx.innerHTML = '<span><b>' + pendingProduct + '</b> ×1 · tap</span><span class="amt">GHS ' + pendingPrice + '</span>';
-      document.getElementById('tx-list').prepend(tx);
-      showToast('Sale recorded! +' + pendingProduct);
+    }
+
+    function openModal(items, heard) {
+      if (!items || items.length === 0) return;
+      pendingItems = items;
+      document.getElementById('modal-title').textContent = items.length > 1 ? (items.length + ' items found') : 'Confirm Sale';
+      document.getElementById('modal-heard').textContent = heard || 'Tap to confirm';
+      const linesEl = document.getElementById('modal-lines');
+      linesEl.innerHTML = '';
+      let total = 0;
+      items.forEach((it) => {
+        total += it.qty * it.price;
+        const row = document.createElement('div');
+        row.className = 'sline';
+        row.innerHTML = '<div class="picon prov" style="width:26px;height:26px;border-radius:7px"><ion-icon name="basket-outline"></ion-icon></div>'
+          + '<div style="flex:1"><b>' + it.name + '</b> ×' + it.qty + '</div><b>GHS ' + (it.qty * it.price) + '</b>';
+        linesEl.appendChild(row);
+      });
+      document.getElementById('modal-total').textContent = 'GHS ' + total.toFixed(2);
+      document.getElementById('modal').classList.add('show');
+    }
+
+    document.getElementById('modal-cancel').onclick = () => document.getElementById('modal').classList.remove('show');
+    document.getElementById('modal-confirm').onclick = () => {
+      document.getElementById('modal').classList.remove('show');
+      const label = [];
+      pendingItems.forEach((it) => {
+        const line = it.qty * it.price;
+        revenue += line;
+        profit += line * 0.35;
+        sales += 1;
+        label.push(it.name + ' ×' + it.qty);
+        const tx = document.createElement('div');
+        tx.className = 'tx';
+        tx.innerHTML = '<span><b>' + it.name + '</b> ×' + it.qty + ' · ' + lastMethod + '</span><span class="amt">GHS ' + line + '</span>';
+        document.getElementById('tx-list').prepend(tx);
+      });
+      updateStats();
+      showToast('Sale recorded! ' + label.join(', '));
     };
 
-    document.querySelectorAll('.chip, .sell-item').forEach(el => {
+    document.querySelectorAll('.chip, .sell-item').forEach((el) => {
       el.addEventListener('click', () => {
-        const product = el.dataset.product;
-        const price = parseFloat(el.dataset.price);
-        openModal(product, price);
+        lastMethod = 'tap';
+        openModal([{ name: el.dataset.product, qty: 1, price: parseFloat(el.dataset.price) }], 'Tap sale: ' + el.dataset.product);
       });
     });
 
-    document.getElementById('voice-btn').onclick = () => openModal('Milo', 8, 'Heard: "one Milo"');
-    document.getElementById('voice-btn-2').onclick = () => openModal('Milo', 8, 'Heard: "two Milo one Soap"');
+    // ─── Real voice: browser Web Speech API (on-device English, no keys) ──────
+    let listening = false;
+    function setListening(on) {
+      listening = on;
+      document.querySelectorAll('.voice-cta .t1').forEach((el) => {
+        el.textContent = on ? 'Listening… speak now' : (el.dataset.default || el.textContent);
+      });
+    }
+    document.querySelectorAll('.voice-cta .t1').forEach((el) => { el.dataset.default = el.textContent; });
+
+    function startVoice() {
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      lastMethod = 'voice';
+      if (!SR) {
+        // Browser without speech support — show a representative sample.
+        showToast('Voice needs Chrome. Showing a sample sale.');
+        openModal(parseSale('two Milo one Soap'), 'Sample: "two Milo, one Soap"');
+        return;
+      }
+      const rec = new SR();
+      rec.lang = 'en-GH';
+      rec.interimResults = false;
+      rec.maxAlternatives = 3;
+      setListening(true);
+      showToast('Listening… say e.g. "two Milo one Soap"');
+      rec.onresult = (e) => {
+        setListening(false);
+        const transcript = e.results[0][0].transcript;
+        const items = parseSale(transcript);
+        if (items.length) openModal(items, 'Heard: "' + transcript + '"');
+        else showToast('Heard "' + transcript + '" — no product matched');
+      };
+      rec.onerror = (e) => {
+        setListening(false);
+        showToast(e.error === 'not-allowed' ? 'Microphone permission blocked' : 'Did not hear anything — try again');
+      };
+      rec.onend = () => setListening(false);
+      try { rec.start(); } catch (_) { setListening(false); }
+    }
+
+    document.getElementById('voice-btn').onclick = startVoice;
+    document.getElementById('voice-btn-2').onclick = startVoice;
 
     function adjStock(btn, delta) {
       const span = btn.parentElement.querySelector('span');
-      const val = Math.max(0, parseInt(span.textContent) + delta);
-      span.textContent = val;
+      span.textContent = Math.max(0, parseInt(span.textContent, 10) + delta);
     }
   </script>
 </body>

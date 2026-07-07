@@ -261,6 +261,7 @@ export default function ProjectPage() {
                       srcDoc={patchedHtml || undefined}
                       className="w-full h-full border-none"
                       title={`${project.title} Live Preview`}
+                      allow="microphone; camera"
                     />
                   </motion.div>
                 )}
