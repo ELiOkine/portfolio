@@ -2,7 +2,7 @@
 
 import { useParams, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ExternalLink, Github, CheckCircle2, ChevronRight, Globe, Monitor, Code2 } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Github, CheckCircle2, ChevronRight, Globe, Monitor, Code2, Smartphone } from 'lucide-react';
 import { projects } from '@/data/projects';
 import { cn } from '@/lib/utils';
 import { useState, useEffect, useMemo } from 'react';
@@ -190,7 +190,7 @@ export default function ProjectPage() {
                     viewMode === 'live' ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
                   )}
                 >
-                  <Globe size={14} /> Live System
+                  {project.appetizeKey ? <><Smartphone size={14} /> Real App</> : <><Globe size={14} /> Live System</>}
                 </button>
               </div>
             )}
@@ -207,7 +207,9 @@ export default function ProjectPage() {
                <div className="flex-1 max-w-md mx-auto h-6 bg-background/50 rounded flex items-center px-3 gap-2 min-w-0">
                   <Globe size={10} className="text-muted-foreground shrink-0" />
                   <span className="text-[10px] text-muted-foreground truncate">
-                    {viewMode === 'live' && project.link ? project.link : `${project.id} visual preview`}
+                    {viewMode === 'live'
+                      ? (project.appetizeKey ? 'Real app running on a cloud Android device' : (project.link || `${project.id} live`))
+                      : `${project.id} visual preview`}
                   </span>
                </div>
                {project.link && (
@@ -256,13 +258,22 @@ export default function ProjectPage() {
                     transition={{ duration: 0.4 }}
                     className="absolute inset-0 bg-white"
                   >
-                    <iframe
-                      src={!patchedHtml ? project.link : undefined}
-                      srcDoc={patchedHtml || undefined}
-                      className="w-full h-full border-none"
-                      title={`${project.title} Live Preview`}
-                      allow="microphone; camera"
-                    />
+                    {project.appetizeKey ? (
+                      <iframe
+                        src={`https://appetize.io/embed/${project.appetizeKey}?device=pixel7&osVersion=13.0&scale=auto&autoplay=false&screenOnly=false&deviceColor=black`}
+                        className="w-full h-full border-none bg-neutral-100"
+                        title={`${project.title} Real App`}
+                        allow="microphone; camera"
+                      />
+                    ) : (
+                      <iframe
+                        src={!patchedHtml ? project.link : undefined}
+                        srcDoc={patchedHtml || undefined}
+                        className="w-full h-full border-none"
+                        title={`${project.title} Live Preview`}
+                        allow="microphone; camera"
+                      />
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -271,10 +282,23 @@ export default function ProjectPage() {
 
           {viewMode === 'live' && (
             <p className="mt-3 text-xs text-muted-foreground/70 text-center">
-              Interactive demo running on sample data.{' '}
-              <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-medium">
-                Open full screen ↗
-              </a>
+              {project.appetizeKey ? (
+                <>
+                  Tap the screen to launch the real app on a cloud device (takes a few seconds to boot).{' '}
+                  {project.link && (
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-medium">
+                      Prefer a quick preview? Open the demo ↗
+                    </a>
+                  )}
+                </>
+              ) : (
+                <>
+                  Interactive demo running on sample data.{' '}
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-medium">
+                    Open full screen ↗
+                  </a>
+                </>
+              )}
             </p>
           )}
         </section>

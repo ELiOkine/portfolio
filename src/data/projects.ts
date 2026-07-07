@@ -26,6 +26,12 @@ export interface Project {
    * (sub-path) asset bases and their own demo bootstrap.
    */
   directEmbed?: boolean;
+  /**
+   * Appetize.io public key. When set, the live tab streams the real native app
+   * (e.g. an Android APK) in-browser via an Appetize player, so viewers can test
+   * the genuine app with no download.
+   */
+  appetizeKey?: string;
 }
 
 export const projects: Project[] = [
@@ -175,7 +181,8 @@ export const projects: Project[] = [
     category: 'Engineering',
     image: '/projects/akonta.png',
     link: '/live-projects/akonta/index.html',
-    directEmbed: true
+    directEmbed: true,
+    appetizeKey: ''
   },
   {
     id: 'jayee',
