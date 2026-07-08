@@ -422,11 +422,34 @@ export default function ProjectPage() {
               </div>
             </section>
 
+            {/* Key Decisions Section */}
+            {project.keyDecisions && project.keyDecisions.length > 0 && (
+              <section>
+                <h2 className="text-2xl font-bold tracking-tight mb-8 flex items-baseline gap-3">
+                  <span className="text-accent text-sm font-bold tabular-nums">04.</span>
+                  Key Decisions
+                </h2>
+                <div className="space-y-4">
+                  {project.keyDecisions.map((kd, i) => (
+                    <div key={i} className="p-8 rounded-lg border border-border bg-muted/5 hover-rise hover:border-accent/40 hover:shadow-lg">
+                      <div className="flex items-start gap-4 mb-3">
+                        <span className="text-accent text-sm font-bold tabular-nums pt-1">{String(i + 1).padStart(2, '0')}</span>
+                        <h3 className="text-xl font-bold leading-snug">{kd.decision}</h3>
+                      </div>
+                      <p className="text-base text-muted-foreground leading-relaxed pl-9">
+                        {kd.reasoning}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
             {/* System Architecture Section */}
             {project.architecture && project.architecture.length > 0 && (
               <section>
                 <h2 className="text-2xl font-bold tracking-tight mb-8 flex items-baseline gap-3">
-                  <span className="text-accent text-sm font-bold tabular-nums">04.</span>
+                  <span className="text-accent text-sm font-bold tabular-nums">{project.keyDecisions && project.keyDecisions.length > 0 ? '05.' : '04.'}</span>
                   System Architecture
                 </h2>
                 <div className="space-y-8">

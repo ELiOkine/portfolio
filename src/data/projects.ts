@@ -16,6 +16,8 @@ export interface Project {
   impact?: string;
   metrics?: ProjectMetric[];
   architecture?: string[];
+  /** 3-5 significant decisions with the reasoning behind them (case-study depth). */
+  keyDecisions?: { decision: string; reasoning: string }[];
   category: 'Engineering' | 'Design' | 'Fullstack';
   /**
    * Honest maturity label shown as a badge.
@@ -80,6 +82,12 @@ export const projects: Project[] = [
       'Role-based permissions engine gating routes and UI, plus 2FA and session inactivity handling.',
       'Sentry-integrated error boundaries and a Vitest + React Testing Library suite (70% coverage threshold).'
     ],
+    keyDecisions: [
+      { decision: 'Organized the codebase by business domain, not technical layer', reasoning: 'With 15 modules, folder-by-feature (disbursements, payroll, wallet) meant each domain could grow, be tested and be reasoned about independently, instead of a giant shared "components" and "services" pile that every engineer fights over.' },
+      { decision: 'Put a single validated service layer between the UI and the API', reasoning: 'Every request and response passes through Zod schemas, so malformed financial data fails loudly at the boundary rather than silently corrupting a balance or a payroll run three screens later.' },
+      { decision: 'Centralized access control in a permissions engine', reasoning: 'Rather than scattering role checks through components, one engine gates both routes and individual UI controls per role, which keeps access rules auditable in a single place, essential when money movement is involved.' },
+      { decision: 'Standardized all server state on React Query', reasoning: 'Caching, refetching and consistent loading/error states came for free across every module, so I was not hand-rolling data fetching and cache invalidation screen by screen.' },
+    ],
     category: 'Engineering',
     stage: 'Production',
     stageNote: 'Live product with a real REST API, database, 2FA auth and paying users. The embedded preview is a sandboxed build running on sample data so it is safe to explore publicly.',
@@ -122,6 +130,12 @@ export const projects: Project[] = [
       'Role-aware routing with protected routes and separate authentication for partner portals.',
       'Shared component and design-system layer (base inputs, modals, tables, badges) reused across every module.'
     ],
+    keyDecisions: [
+      { decision: 'Modeled operator, workshop and supplier as first-class roles', reasoning: 'Each portal has its own protected route tree and authentication rather than toggling UI inside one shared app, so every role stays cohesive and access boundaries are enforced at the routing layer.' },
+      { decision: 'Wrapped the API layer with a graceful fallback', reasoning: 'Fleet operators work from depots and roadside with flaky connectivity, so the service layer degrades to cached/sample state instead of throwing, keeping the dashboard usable when a service is briefly unreachable.' },
+      { decision: 'Extracted one shared design-system layer', reasoning: 'Base inputs, tables, modals and badges live in a single reusable layer across 15+ modules, so the product feels consistent and a new module is assembled from proven parts instead of rebuilt.' },
+      { decision: 'Added a natural-language AI copilot (Groq)', reasoning: 'Operators can ask questions about fleet state in plain English instead of hunting through screens; I chose Groq specifically for its low-latency responses so the assistant feels instant.' },
+    ],
     category: 'Fullstack',
     stage: 'Production',
     stageNote: 'Shipped fleet operations platform backed by a live REST API and role-based auth. The public preview here runs on sample data so it can be explored without a login.',
@@ -158,6 +172,12 @@ export const projects: Project[] = [
       'Configuration-driven theming layer that re-skins the platform per organization.',
       'Shared component core with per-client catalog and verification modules.',
       'Dockerized build pipeline with nginx serving optimized static assets.'
+    ],
+    keyDecisions: [
+      { decision: 'Re-skinned per client from configuration instead of forking', reasoning: 'Branding, catalog and verification rules are driven by config, so one codebase serves 5+ very different institutions. A bespoke build became a repeatable product, and there is no drift between forks to maintain.' },
+      { decision: 'Isolated only the per-client logic behind a shared core', reasoning: 'Catalog and identity-verification modules are the only client-specific parts; everything else is shared, so a fix or improvement ships to every deployment at once rather than client by client.' },
+      { decision: 'Optimized for low-end devices and older browsers first', reasoning: 'The user base runs budget phones on constrained networks, so I prioritized accessibility, small payloads and resilience over heavy visuals, treating the low-end case as the default rather than the exception.' },
+      { decision: 'Containerized delivery with Docker + nginx', reasoning: 'Each deployment ships as an identical, reproducible container served through nginx, so behaviour is consistent regardless of the client hosting environment.' },
     ],
     category: 'Fullstack',
     stage: 'Production',

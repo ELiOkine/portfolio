@@ -37,10 +37,13 @@ export default function Hero() {
           )}
           <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-8 leading-[0.95]">
             Building functional <br /> 
-            software with <span className="text-accent underline decoration-accent/10 underline-offset-8">intent</span>.
+            software with <span className="text-gradient">intent</span>.
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed font-normal">
-            Software Engineer &amp; UI/UX Designer building scalable frontend architectures and high-conversion UX for real-world fintech, logistics, and education products.
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-6 leading-relaxed font-normal">
+            I&apos;m a software engineer and designer in Accra building fast, reliable products for fintech and logistics teams: payment and disbursement flows, operational dashboards, and onboarding that hold up on real-world devices and networks.
+          </p>
+          <p className="text-sm md:text-base text-muted-foreground/70 max-w-xl mx-auto mb-12 font-medium">
+            I love turning messy, high-stakes requirements into interfaces people actually understand.
           </p>
         </motion.div>
 
@@ -51,17 +54,17 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-3"
         >
           <a
-            href="#projects"
-            className="px-6 py-3 bg-primary text-primary-foreground rounded-md font-bold flex items-center gap-2 hover:bg-black transition-all"
+            href="#contact"
+            className="px-6 py-3 bg-accent text-accent-foreground rounded-md font-bold flex items-center gap-2 shadow-lg shadow-accent/20 hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5 active:translate-y-0 transition-all"
           >
-            Selected Projects
+            Let&apos;s work together
             <ArrowRight size={18} />
           </a>
           <a
-            href="#contact"
-            className="px-6 py-3 bg-secondary border border-border rounded-md font-bold hover:bg-muted transition-colors"
+            href="#projects"
+            className="px-6 py-3 bg-secondary border border-border rounded-md font-bold hover:bg-muted hover:-translate-y-0.5 active:translate-y-0 transition-all"
           >
-            Contact
+            View selected work
           </a>
         </motion.div>
 
@@ -73,7 +76,7 @@ export default function Hero() {
           className="mt-8 flex items-center justify-center gap-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60"
         >
           <span className="w-8 h-[1px] bg-border" />
-          Featured: <a href="/projects/fleet-management-dashboard" className="text-accent/80 hover:text-accent transition-colors underline underline-offset-4 decoration-accent/20">Fleetly: Fleet Management Platform</a>
+          Featured: <a href="/projects/fleet-management-dashboard" className="text-accent hover:text-accent link-underline transition-colors">Fleetly: Fleet Management Platform</a>
           <span className="w-8 h-[1px] bg-border" />
         </motion.div>
 
@@ -89,7 +92,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.2 + i * 0.05, ease: 'easeOut' }}
-              className="p-8 rounded-lg border border-border text-left bg-background"
+              className="p-8 rounded-lg border border-border text-left bg-background hover-rise hover:border-accent/40 hover:shadow-lg"
             >
               <item.icon className="text-accent mb-4" size={24} />
               <h3 className="font-bold text-lg mb-2">{item.title}</h3>

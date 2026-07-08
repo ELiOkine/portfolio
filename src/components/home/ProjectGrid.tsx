@@ -20,7 +20,7 @@ export default function ProjectGrid() {
         <div className="flex flex-col md:flex-row items-baseline justify-between mb-12 gap-6">
           <div className="max-w-2xl">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-              Selected <span className="text-accent underline decoration-accent/10 underline-offset-4">Work</span>
+              Selected <span className="text-gradient">Work</span>
             </h2>
             <p className="text-lg text-muted-foreground font-medium">
               A collection of functional systems built with modern web technologies.

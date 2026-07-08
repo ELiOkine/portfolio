@@ -28,7 +28,7 @@ export default function About() {
             </div>
             <div className="flex-1 min-w-0">
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-                Engineered for <span className="text-accent underline decoration-accent/10 underline-offset-4">Impact</span>.
+                Engineered for <span className="text-gradient">Impact</span>.
               </h2>
               <div className="space-y-5 text-lg text-muted-foreground font-normal leading-relaxed">
                 <p>
@@ -57,6 +57,24 @@ export default function About() {
                 <div className="text-3xl font-bold text-foreground">100%</div>
                 <div className="text-[10px] uppercase font-bold tracking-tight text-muted-foreground mt-1">Deployment Rate</div>
              </div>
+          </div>
+
+          <div className="mt-12 pt-8 border-t border-border">
+             <h3 className="text-[10px] font-bold uppercase tracking-widest text-accent mb-6">How I work</h3>
+             <ul className="space-y-4">
+               {[
+                 { t: 'I own problems end to end.', d: 'From data model to pixel, I take responsibility for the whole slice, not just my ticket.' },
+                 { t: 'I design for real constraints.', d: 'Slow networks, budget devices and non-technical users are the default I build against, not the edge case.' },
+                 { t: 'I communicate early and often.', d: 'I flag trade-offs and unknowns quickly, so there are no surprises late in a build.' },
+               ].map((v) => (
+                 <li key={v.t} className="flex items-start gap-3">
+                   <CheckCircle2 className="text-accent mt-0.5 shrink-0" size={18} />
+                   <p className="text-base text-muted-foreground leading-relaxed">
+                     <span className="font-bold text-foreground">{v.t}</span> {v.d}
+                   </p>
+                 </li>
+               ))}
+             </ul>
           </div>
         </div>
 
