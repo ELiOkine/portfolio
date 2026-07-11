@@ -11,8 +11,9 @@ export default function Home() {
       <About />
 
       {/* Contact CTA Section */}
-      <section id="contact" className="py-32 px-6 text-center border-t border-border bg-background">
-        <div className="max-w-3xl mx-auto">
+      <section id="contact" className="py-32 px-6 text-center border-t border-border bg-white relative overflow-hidden">
+        <div className="absolute inset-0 hero-mesh opacity-60 pointer-events-none" />
+        <div className="max-w-3xl mx-auto relative">
           {site.available && (
             <div className="inline-flex items-center gap-2 mb-8 px-3 py-1.5 rounded-full border border-accent/20 bg-accent/5 text-accent text-xs font-bold uppercase tracking-widest">
               <span className="relative flex h-2 w-2">
@@ -29,7 +30,7 @@ export default function Home() {
             Open to engineering roles and product/design projects. Tell me what you&apos;re building and I&apos;ll tell you how I&apos;d approach it.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href={mailto} className="px-8 py-4 bg-accent text-accent-foreground rounded-md font-bold text-base shadow-lg shadow-accent/20 hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5 active:translate-y-0 transition-all">
+            <a href={mailto} className="px-8 py-4 bg-accent text-accent-foreground rounded-xl font-bold text-base shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5 active:translate-y-0 transition-all">
               Let&apos;s work together
             </a>
             <a href={site.resume} download className="text-base font-bold link-underline hover:text-accent transition-colors">

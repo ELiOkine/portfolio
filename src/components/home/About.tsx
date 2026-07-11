@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { CheckCircle2 } from 'lucide-react';
 
 const skills = [
@@ -12,36 +11,23 @@ const skills = [
 
 export default function About() {
   return (
-    <section id="about" className="py-24 px-6 border-t border-border bg-background">
+    <section id="about" className="py-24 px-6 border-t border-border bg-white">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
         <div>
-          <div className="flex flex-col sm:flex-row gap-8 items-start mb-10">
-            <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border border-border shadow-xl shrink-0">
-              <Image
-                src="/Emma.jpeg"
-                alt="Emmanuel Okine"
-                fill
-                className="object-cover object-top"
-                sizes="144px"
-                priority
-              />
-            </div>
-            <div className="flex-1 min-w-0">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-                Engineered for <span className="text-gradient">Impact</span>.
-              </h2>
-              <div className="space-y-5 text-lg text-muted-foreground font-normal leading-relaxed">
-                <p>
-                  I&apos;m Emmanuel Okine, a software engineer and designer in Accra, Ghana. I got into this work through a simple frustration: so much of the software that reaches people here is built for fast phones and reliable internet that most users don&apos;t actually have. Closing that gap, between how apps are designed and how they&apos;re really used, is what pulled me in.
-                </p>
-                <p>
-                  Over the past two years that has taken me deep into fintech and logistics: leading frontend architecture on products that move money (iSmartPay), run vehicle fleets (Fleetly), and put bookkeeping in the hands of market traders who have never touched a spreadsheet (Akonta). Different domains, same throughline: high stakes, messy real-world constraints, and users who don&apos;t get a second chance if the software fails them.
-                </p>
-                <p>
-                  The problem I keep coming back to is reliability under pressure: how a screen behaves when the network drops mid-payment, how an interface stays legible for a low-literacy user, how a 15-module codebase stays maintainable as it grows. I like owning problems end to end, from data model to pixel, and I judge design by one thing: how well it works.
-                </p>
-              </div>
-            </div>
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent mb-4">About</p>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-8 leading-[1.05]">
+            Engineered for <span className="text-gradient">Impact</span>.
+          </h2>
+          <div className="space-y-5 text-lg text-muted-foreground font-normal leading-relaxed">
+            <p>
+              I got into this work through a simple frustration: so much of the software that reaches people here is built for fast phones and reliable internet that most users don&apos;t actually have. Closing that gap is what pulled me in.
+            </p>
+            <p>
+              Over the past two years that has taken me deep into fintech and logistics: leading frontend architecture on products that move money (iSmartPay), run vehicle fleets (Fleetly), and put bookkeeping in the hands of market traders who have never touched a spreadsheet (Akonta).
+            </p>
+            <p>
+              The problem I keep coming back to is reliability under pressure: how a screen behaves when the network drops mid-payment, how an interface stays legible for a low-literacy user, how a 15-module codebase stays maintainable as it grows.
+            </p>
           </div>
           
           <div className="mt-12 grid grid-cols-3 gap-8 pt-8 border-t border-border">
@@ -86,7 +72,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="p-6 rounded-lg border border-border bg-muted/10"
+              className="p-6 rounded-2xl border border-border bg-muted/30 premium-card"
             >
               <h3 className="text-sm font-bold text-accent uppercase tracking-wider mb-6">{skill.category}</h3>
               <ul className="space-y-3">
@@ -103,7 +89,7 @@ export default function About() {
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="p-8 rounded-lg border border-accent/20 bg-accent/5 flex flex-col justify-center text-left"
+              className="p-8 rounded-2xl border border-accent/20 bg-accent/[0.04] flex flex-col justify-center text-left"
             >
               <p className="text-sm font-bold text-accent mb-4 uppercase tracking-widest">Philosophy</p>
               <h3 className="text-xl font-bold leading-tight">"Design is not just what it looks like and feels like. Design is how it works."</h3>

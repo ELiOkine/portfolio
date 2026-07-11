@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -29,14 +30,22 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4',
-        scrolled ? 'glass py-3' : 'bg-transparent'
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6',
+        scrolled ? 'py-3 border-b border-border/80 bg-white/85 backdrop-blur-xl shadow-sm' : 'py-5 bg-transparent'
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold tracking-tight flex items-center gap-3">
-          <span className="w-9 h-9 bg-primary text-primary-foreground rounded-lg flex items-center justify-center text-sm font-bold">EO</span>
-          <span className="hidden sm:inline-block">Emmanuel Okine</span>
+        <Link href="/" className="text-xl font-bold tracking-tight flex items-center gap-3 group">
+          <span className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-border group-hover:ring-accent/40 transition-all shrink-0">
+            <Image
+              src="/Emma.jpeg"
+              alt=""
+              fill
+              sizes="36px"
+              className="object-cover object-top"
+            />
+          </span>
+          <span className="hidden sm:inline-block">{site.name}</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -59,7 +68,7 @@ export default function Navbar() {
               <Linkedin size={20} />
             </a>
           </div>
-          <a href={mailto} className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm font-bold hover:bg-accent transition-colors">
+          <a href={mailto} className="px-4 py-2 bg-accent text-accent-foreground rounded-xl text-sm font-bold shadow-md shadow-accent/20 hover:shadow-lg hover:shadow-accent/25 transition-all">
             Let&apos;s talk
           </a>
         </div>

@@ -21,7 +21,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     >
       <Link
         href={`/projects/${project.id}`}
-        className="flex flex-col h-full overflow-hidden rounded-xl border border-border bg-muted/5 shadow-sm hover:shadow-xl hover:border-accent/40 hover-rise"
+        className="flex flex-col h-full overflow-hidden rounded-2xl border border-border bg-white shadow-sm hover:shadow-xl hover:border-accent/30 hover-rise"
       >
         {/* Clean screenshot, no text over it */}
         <div className="relative aspect-video overflow-hidden bg-muted/20">

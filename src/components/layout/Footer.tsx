@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import { site, mailto } from '@/lib/site';
 
@@ -7,8 +8,10 @@ export default function Footer() {
     <footer className="border-t border-border py-12 px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
         <div>
-          <Link href="/" className="text-xl font-bold tracking-tight flex items-center gap-3 mb-4">
-            <span className="w-9 h-9 bg-primary text-primary-foreground rounded-lg flex items-center justify-center text-sm font-bold">EO</span>
+          <Link href="/" className="text-xl font-bold tracking-tight flex items-center gap-3 mb-4 group">
+            <span className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-border group-hover:ring-accent/40 transition-all shrink-0">
+              <Image src="/Emma.jpeg" alt="" fill sizes="36px" className="object-cover object-top" />
+            </span>
             <span>{site.name}</span>
           </Link>
           <p className="text-muted-foreground text-sm max-w-sm leading-relaxed">
