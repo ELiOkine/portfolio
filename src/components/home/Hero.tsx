@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { ArrowRight, MapPin } from 'lucide-react';
 import { site } from '@/lib/site';
 
-const focusAreas = ['Fintech', 'Logistics', 'Product UI'];
+const focusAreas = ['Fintech', 'Logistics', 'UI/UX'];
 
 export default function Hero() {
   return (
