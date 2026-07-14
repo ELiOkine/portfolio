@@ -15,27 +15,65 @@ export default function Image() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          background: '#f6f5f1',
-          padding: '72px 80px',
+          background: '#f3f0ea',
+          padding: '70px 80px',
           fontFamily: 'Georgia, serif',
-          color: '#121212',
+          color: '#141210',
         }}
       >
-        <div style={{ display: 'flex', fontSize: '22px', color: '#5a5853', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+        <div
+          style={{
+            display: 'flex',
+            fontSize: '20px',
+            color: '#9a7340',
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+          }}
+        >
           {site.location}
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', fontSize: '72px', fontWeight: 500, letterSpacing: '-2px', lineHeight: 1.05 }}>
-            {site.name}
+          <div style={{ display: 'flex', fontSize: '88px', fontWeight: 500, letterSpacing: '-3px', lineHeight: 0.95 }}>
+            Emmanuel
           </div>
-          <div style={{ display: 'flex', fontSize: '32px', color: '#5a5853', marginTop: '20px', fontFamily: 'sans-serif' }}>
+          <div
+            style={{
+              display: 'flex',
+              fontSize: '88px',
+              fontWeight: 400,
+              fontStyle: 'italic',
+              letterSpacing: '-3px',
+              lineHeight: 0.95,
+              color: 'rgba(20,18,16,0.72)',
+            }}
+          >
+            Okine
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              fontSize: '28px',
+              color: '#6a645c',
+              marginTop: '28px',
+              fontFamily: 'sans-serif',
+            }}
+          >
             {site.role}
           </div>
         </div>
 
-        <div style={{ display: 'flex', fontSize: '22px', color: '#5a5853', fontFamily: 'sans-serif' }}>
-          Fintech · Logistics · Product interfaces
+        <div
+          style={{
+            display: 'flex',
+            fontSize: '20px',
+            color: '#6a645c',
+            fontFamily: 'sans-serif',
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+          }}
+        >
+          Fintech · Logistics · Interfaces
         </div>
       </div>
     ),

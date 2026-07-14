@@ -31,11 +31,8 @@ export default function Navbar() {
       )}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between">
-        <Link href="/" className="font-serif text-lg font-medium tracking-tight">
-          {site.name.split(' ')[0]}
-          <span className="text-muted-foreground font-sans text-sm font-normal ml-2 hidden sm:inline">
-            {site.role.split('&')[0].trim()}
-          </span>
+        <Link href="/" className="font-serif text-xl font-medium tracking-tight">
+          EO
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
