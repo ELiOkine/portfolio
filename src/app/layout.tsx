@@ -1,23 +1,31 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans, Fraunces, JetBrains_Mono } from "next/font/google";
 import "./styles.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const sans = DM_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const serif = Fraunces({
+  variable: "--font-serif",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const mono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://emmanuel-okine.vercel.app"),
   title: "Emmanuel Okine | Software Engineer & UI/UX Designer",
-  description: "Software Engineer & UI/UX Designer building functional, high-impact digital products across fintech, logistics, and education.",
+  description: "Software engineer and designer in Accra building payment systems, operational dashboards, and product interfaces for fintech and logistics.",
   keywords: [
     "Emmanuel Okine",
     "Software Engineer",
@@ -26,20 +34,20 @@ export const metadata: Metadata = {
     "React",
     "Next.js",
     "TypeScript",
-    "Fleet Management",
     "Fintech",
+    "Accra",
   ],
   authors: [{ name: "Emmanuel Okine" }],
   openGraph: {
     title: "Emmanuel Okine | Software Engineer & UI/UX Designer",
-    description: "Software Engineer & UI/UX Designer building functional, high-impact digital products across fintech, logistics, and education.",
+    description: "Software engineer and designer in Accra building payment systems, operational dashboards, and product interfaces for fintech and logistics.",
     type: "website",
     siteName: "Emmanuel Okine",
   },
   twitter: {
     card: "summary_large_image",
     title: "Emmanuel Okine | Software Engineer & UI/UX Designer",
-    description: "Software Engineer & UI/UX Designer building functional, high-impact digital products.",
+    description: "Software engineer and designer building functional products across fintech and logistics.",
   },
 };
 
@@ -51,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${sans.variable} ${serif.variable} ${mono.variable} antialiased min-h-screen flex flex-col`}
       >
         <Navbar />
         <main className="flex-grow">

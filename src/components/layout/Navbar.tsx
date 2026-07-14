@@ -2,16 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { site, mailto } from '@/lib/site';
 
 const navLinks = [
-  { name: 'Projects', href: '#projects' },
+  { name: 'Work', href: '#projects' },
   { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -20,9 +18,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -31,81 +27,65 @@ export default function Navbar() {
     <nav
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6',
-        scrolled ? 'py-3 border-b border-border/80 bg-white/85 backdrop-blur-xl shadow-sm' : 'py-5 bg-transparent'
+        scrolled ? 'py-3 border-b border-border bg-background/90 backdrop-blur-md' : 'py-5 bg-transparent'
       )}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold tracking-tight flex items-center gap-3 group">
-          <span className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-border group-hover:ring-accent/40 transition-all shrink-0">
-            <Image
-              src="/Emma.jpeg"
-              alt=""
-              fill
-              sizes="36px"
-              className="object-cover object-top"
-            />
+      <div className="max-w-6xl mx-auto flex items-center justify-between">
+        <Link href="/" className="font-serif text-lg font-medium tracking-tight">
+          {site.name.split(' ')[0]}
+          <span className="text-muted-foreground font-sans text-sm font-normal ml-2 hidden sm:inline">
+            {site.role.split('&')[0].trim()}
           </span>
-          <span className="hidden sm:inline-block">{site.name}</span>
         </Link>
 
-        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-medium hover:text-accent transition-colors"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               {link.name}
             </Link>
           ))}
-          <div className="h-4 w-px bg-border mx-2" />
-          <div className="flex items-center gap-4">
-            <a href={site.socials.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-accent transition-colors">
-              <Github size={20} />
-            </a>
-            <a href={site.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-accent transition-colors">
-              <Linkedin size={20} />
-            </a>
-          </div>
-          <a href={mailto} className="px-4 py-2 bg-accent text-accent-foreground rounded-xl text-sm font-bold shadow-md shadow-accent/20 hover:shadow-lg hover:shadow-accent/25 transition-all">
-            Let&apos;s talk
+          <a
+            href={mailto}
+            className="text-sm font-medium text-foreground border-b border-foreground/30 pb-0.5 hover:border-accent hover:text-accent transition-colors"
+          >
+            Email
           </a>
         </div>
 
-        {/* Mobile Toggle */}
         <button
-          className="md:hidden p-2 hover:bg-muted rounded-full transition-colors"
+          className="md:hidden p-2 text-foreground"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile Nav */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-background border-b border-border md:hidden flex flex-col p-6 gap-6 shadow-xl"
+            exit={{ opacity: 0, y: -8 }}
+            className="absolute top-full left-0 right-0 bg-background border-b border-border md:hidden flex flex-col p-6 gap-5"
           >
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-lg font-medium hover:text-accent transition-colors"
+                className="text-base font-medium"
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
               </Link>
             ))}
-            <div className="flex gap-6 mt-2">
-              <a href={site.socials.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-accent transition-colors"><Github size={24} /></a>
-              <a href={site.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-accent transition-colors"><Linkedin size={24} /></a>
-              <a href={mailto} aria-label="Email" className="hover:text-accent transition-colors"><Mail size={24} /></a>
-            </div>
+            <a href={mailto} className="text-base font-medium text-accent" onClick={() => setIsOpen(false)}>
+              {site.email}
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
