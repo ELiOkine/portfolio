@@ -28,7 +28,7 @@ export default function ProjectGrid() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 sm:mb-14 md:mb-16 gap-6 sm:gap-8">
           <div className="max-w-2xl min-w-0">
             <p className="text-xs font-medium uppercase tracking-[0.22em] text-gold mb-4">
-              Selected work
+              My work
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl font-medium tracking-tight leading-[1.05]">
               Systems that move money, fleets, and people.

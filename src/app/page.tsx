@@ -37,7 +37,7 @@ export default function Home() {
               </a>
               <a
                 href={site.resume}
-                download
+                download={site.resumeFilename}
                 className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 border border-white/35 text-primary-foreground text-sm font-semibold hover:bg-white/10 hover:border-white/60 transition-colors"
               >
                 See my résumé

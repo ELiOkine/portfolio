@@ -32,7 +32,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 min-w-0">
         <Link href="/" className="font-serif text-lg sm:text-xl font-medium tracking-tight hover:text-accent transition-colors shrink-0">
-          Emmanuel<span className="text-gold">.</span>
+          {site.name}<span className="text-gold">.</span>
         </Link>
 
         <div className="hidden lg:flex items-center gap-6 xl:gap-8 min-w-0">
@@ -53,7 +53,7 @@ export default function Navbar() {
           </a>
           <a
             href={site.resume}
-            download
+            download={site.resumeFilename}
             className="inline-flex items-center px-3.5 py-2 text-sm font-semibold bg-primary text-primary-foreground hover:bg-accent transition-colors whitespace-nowrap"
           >
             See my résumé
@@ -63,7 +63,7 @@ export default function Navbar() {
         <div className="lg:hidden flex items-center gap-2 shrink-0">
           <a
             href={site.resume}
-            download
+            download={site.resumeFilename}
             className="inline-flex items-center px-3 py-1.5 text-xs font-semibold bg-primary text-primary-foreground whitespace-nowrap"
           >
             See résumé
@@ -98,7 +98,7 @@ export default function Navbar() {
             ))}
             <a
               href={site.resume}
-              download
+              download={site.resumeFilename}
               className="text-base font-semibold"
               onClick={() => setIsOpen(false)}
             >

@@ -5,6 +5,7 @@ export const site = {
   location: 'Accra, Ghana',
   available: true,
   resume: '/resume.pdf',
+  resumeFilename: "Emmanuel Okine's Resume.pdf",
   socials: {
     github: 'https://github.com/ELiOkine',
     linkedin: 'https://www.linkedin.com/in/emmanuel-okine-75b47a22b/',

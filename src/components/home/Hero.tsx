@@ -96,7 +96,7 @@ export default function Hero() {
               </a>
               <a
                 href={site.resume}
-                download
+                download={site.resumeFilename}
                 className="inline-flex items-center justify-center w-full sm:w-auto px-5 py-3 text-sm font-semibold border border-foreground/20 hover:border-accent hover:text-accent transition-colors"
               >
                 See my résumé
