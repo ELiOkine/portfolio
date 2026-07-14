@@ -1,247 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emmanuel Okine - Resume</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.5;
-            color: #111827;
-            background-color: #f3f4f6;
-            margin: 0;
-            padding: 0;
-            -webkit-print-color-adjust: exact;
-        }
-        .page {
-            width: 210mm;
-            min-height: 297mm;
-            padding: 18mm 20mm;
-            margin: 10mm auto;
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        @media print {
-            @page { size: A4; margin: 0; }
-            body { background: white; margin: 0; padding: 0; }
-            .page { margin: 0; box-shadow: none; width: 210mm; min-height: 297mm; padding: 15mm 18mm; }
-            .no-print { display: none; }
-        }
-        h1, h2, h3 { color: #111827; font-weight: 700; }
-        .section-title {
-            border-bottom: 2px solid #111827;
-            padding-bottom: 4px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: 0.875rem;
-        }
-        .item-title { font-size: 1rem; font-weight: 700; }
-        .item-subtitle { font-size: 0.875rem; font-weight: 600; color: #374151; }
-        .item-date { font-size: 0.875rem; color: #6b7280; font-weight: 500; white-space: nowrap; }
-        ul { list-style-type: none; padding: 0; margin: 0; }
-        li {
-            position: relative;
-            padding-left: 1.25rem;
-            margin-bottom: 6px;
-            font-size: 0.875rem;
-            color: #4b5563;
-        }
-        li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #047857;
-            font-weight: bold;
-        }
-        .metric { font-weight: 600; color: #111827; }
-        a { text-decoration: none; color: inherit; }
-        a:hover { text-decoration: underline; }
-        .exp-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 4px; }
-        .skills-grid { display: grid; gap: 6px; font-size: 0.875rem; }
-        .skills-grid span.label { font-weight: 700; color: #111827; }
-    </style>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Emmanuel Okine - Resume</title>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <style>
+ body {
+ font-family: 'Inter', sans-serif;
+ line-height: 1.5;
+ color: #111827;
+ background-color: #f3f4f6;
+ margin: 0;
+ padding: 0;
+ -webkit-print-color-adjust: exact;
+ }
+ .page {
+ width: 210mm;
+ min-height: 297mm;
+ padding: 18mm 20mm;
+ margin: 10mm auto;
+ background: white;
+ box-shadow: 0 0 10px rgba(0,0,0,0.1);
+ }
+ @media print {
+ @page { size: A4; margin: 0; }
+ body { background: white; margin: 0; padding: 0; }
+ .page { margin: 0; box-shadow: none; width: 210mm; min-height: 297mm; padding: 15mm 18mm; }
+ .no-print { display: none; }
+ }
+ h1, h2, h3 { color: #111827; font-weight: 700; }
+ .section-title {
+ border-bottom: 2px solid #111827;
+ padding-bottom: 4px;
+ margin-bottom: 12px;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+ font-size: 0.875rem;
+ }
+ .item-title { font-size: 1rem; font-weight: 700; }
+ .item-subtitle { font-size: 0.875rem; font-weight: 600; color: #374151; }
+ .item-date { font-size: 0.875rem; color: #6b7280; font-weight: 500; white-space: nowrap; }
+ ul { list-style-type: none; padding: 0; margin: 0; }
+ li {
+ position: relative;
+ padding-left: 1.25rem;
+ margin-bottom: 6px;
+ font-size: 0.875rem;
+ color: #4b5563;
+ }
+ li::before {
+ content: "•";
+ position: absolute;
+ left: 0;
+ color: #047857;
+ font-weight: bold;
+ }
+ .metric { font-weight: 600; color: #111827; }
+ a { text-decoration: none; color: inherit; }
+ a:hover { text-decoration: underline; }
+ .exp-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 4px; }
+ .skills-grid { display: grid; gap: 6px; font-size: 0.875rem; }
+ .skills-grid span.label { font-weight: 700; color: #111827; }
+ </style>
 </head>
 <body>
-    <div class="no-print fixed top-4 right-4 z-50">
-        <button onclick="window.print()" class="bg-black text-white px-6 py-2 rounded-md font-bold shadow-lg hover:bg-zinc-800 transition-all">
-            Download PDF
-        </button>
-    </div>
+ <div class="no-print fixed top-4 right-4 z-50">
+ <button onclick="window.print()" class="bg-black text-white px-6 py-2 rounded-md font-bold shadow-lg hover:bg-zinc-800 transition-all">
+ Download PDF
+ </button>
+ </div>
 
-    <div class="page">
-        <header class="text-center mb-7">
-            <h1 class="text-3xl tracking-tight mb-2">Emmanuel Okine</h1>
-            <p class="text-sm font-semibold text-gray-700 mb-3">Software Engineer &amp; UI/UX Designer</p>
-            <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-sm text-gray-600 font-medium mb-3">
-                <span>Accra, Ghana</span>
-                <span>•</span>
-                <a href="mailto:emmanuelokine452@gmail.com">emmanuelokine452@gmail.com</a>
-                <span>•</span>
-                <a href="https://www.linkedin.com/in/emmanuel-okine-75b47a22b/">LinkedIn</a>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:14px;">
-                <a href="https://emmanuel-okine.vercel.app" style="display:inline-block;padding:6px 12px;border:1.5px solid #121212;font-size:12px;font-weight:700;letter-spacing:0.02em;">
-                    Portfolio → emmanuel-okine.vercel.app
-                </a>
-                <a href="https://github.com/ELiOkine" style="display:inline-block;padding:6px 12px;border:1.5px solid #121212;font-size:12px;font-weight:700;letter-spacing:0.02em;">
-                    GitHub → github.com/ELiOkine
-                </a>
-            </div>
-            <p class="mt-2 max-w-3xl mx-auto text-sm text-gray-700 leading-relaxed">
-                Frontend engineer and product designer with 2+ years shipping production software across fintech, logistics, and education.
-                I build payment flows, operational dashboards, and mobile-first products that work on real devices, slow networks, and with non-technical users.
-            </p>
-        </header>
+ <div class="page">
+ <header class="text-center mb-7">
+ <h1 class="text-3xl tracking-tight mb-2">Emmanuel Okine</h1>
+ <p class="text-sm font-semibold text-gray-700 mb-3">Software Engineer &amp; UI/UX Designer</p>
+ <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-sm text-gray-600 font-medium mb-3">
+ <span>Accra, Ghana</span>
+ <span>•</span>
+ <a href="mailto:emmanuelokine452@gmail.com">emmanuelokine452@gmail.com</a>
+ <span>•</span>
+ <a href="https://www.linkedin.com/in/emmanuel-okine-75b47a22b/">LinkedIn</a>
+ </div>
+ <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:14px;">
+ <a href="https://emmanuel-okine.vercel.app" style="display:inline-block;padding:6px 12px;border:1.5px solid #121212;font-size:12px;font-weight:700;letter-spacing:0.02em;">
+ Portfolio → emmanuel-okine.vercel.app
+ </a>
+ <a href="https://github.com/ELiOkine" style="display:inline-block;padding:6px 12px;border:1.5px solid #121212;font-size:12px;font-weight:700;letter-spacing:0.02em;">
+ GitHub → github.com/ELiOkine
+ </a>
+ </div>
+ <p class="mt-2 max-w-3xl mx-auto text-sm text-gray-700 leading-relaxed">
+ Frontend engineer and product designer with 2+ years shipping production software across fintech, logistics, and education.
+ I build payment flows, operational dashboards, and mobile first products that work on real devices, slow networks, and with non technical users.
+ </p>
+ </header>
 
-        <section class="mb-7">
-            <h2 class="section-title">Professional Experience</h2>
-            <div style="display:flex;flex-direction:column;gap:18px;">
+ <section class="mb-7">
+ <h2 class="section-title">Professional Experience</h2>
+ <div style="display:flex;flex-direction:column;gap:18px;">
 
-                <div>
-                    <div class="exp-row">
-                        <div>
-                            <div class="item-title">iSmart International Ghana</div>
-                            <div class="item-subtitle">Frontend Lead</div>
-                        </div>
-                        <div class="item-date">Sept 2024 – Present</div>
-                    </div>
-                    <ul>
-                        <li>Led frontend development for <span class="metric">iSmartPay</span>, a production fintech platform spanning 15 modules (disbursements, payroll, wallet, collections, settlements, invoicing, utilities, SMS).</li>
-                        <li>Processed over <span class="metric">800,000 GH₵</span> in live transaction volume across disbursement and collection flows.</li>
-                        <li>Built a feature-based React 19 architecture with React Query, Zod validation, role-based permissions, 2FA, and PDF report generation.</li>
-                        <li>Maintained <span class="metric">99.9% uptime</span> on critical money-movement flows with Sentry monitoring and a Vitest test suite (70% coverage threshold).</li>
-                    </ul>
-                </div>
+ <div>
+ <div class="exp-row">
+ <div>
+ <div class="item-title">iSmart International Ghana</div>
+ <div class="item-subtitle">Frontend Lead</div>
+ </div>
+ <div class="item-date">Sept 2025 to Present</div>
+ </div>
+ <ul>
+ <li>Led frontend development for <span class="metric">iSmartPay</span>, a production fintech platform spanning 15 modules (disbursements, payroll, wallet, collections, settlements, invoicing, utilities, SMS).</li>
+ <li>Processed over <span class="metric">800,000 GH₵</span> in live transaction volume across disbursement and collection flows.</li>
+ <li>Built a feature based React 19 architecture with React Query, Zod validation, role based permissions, 2FA, and PDF report generation.</li>
+ <li>Maintained <span class="metric">99.9% uptime</span> on critical money movement flows with Sentry monitoring and a Vitest test suite (70% coverage threshold).</li>
+ <li>Productized a white label airtime and data bundle platform for Telecel, NHIS, SSNIT, GPAA and more: <span class="metric">5+ organizations</span>, including benefits for <span class="metric">12,000+ NHIS employees</span>.</li>
+ <li>Built a configuration-driven theming layer so one codebase re skinned per client without forking; optimized for low end devices and constrained networks.</li>
+ </ul>
+ </div>
 
-                <div>
-                    <div class="exp-row">
-                        <div>
-                            <div class="item-title">Fleetly (Fleet Management Platform)</div>
-                            <div class="item-subtitle">Lead Frontend Engineer</div>
-                        </div>
-                        <div class="item-date">Jan 2025 – July 2025</div>
-                    </div>
-                    <ul>
-                        <li>Architected a 15+ module fleet operations suite for operators, workshop partners, and parts suppliers behind one SaaS interface.</li>
-                        <li>Built vehicle lifecycle, maintenance, fuel, safety, financials, live tracking (Leaflet), and an AI fleet copilot (Groq) for natural-language queries.</li>
-                        <li>Designed a resilient Axios service layer against a live REST API with graceful offline degradation for depot and field use.</li>
-                        <li>Unified a shared design-system layer (inputs, modals, tables, badges) reused across every module and partner portal.</li>
-                    </ul>
-                </div>
+ <div>
+ <div class="exp-row">
+ <div>
+ <div class="item-title">Fleetly (Fleet Management Platform)</div>
+ <div class="item-subtitle">Lead Frontend Engineer</div>
+ </div>
+ <div class="item-date">Jan 2025 to July 2025</div>
+ </div>
+ <ul>
+ <li>Architected a 15+ module fleet operations suite for operators, workshop partners, and parts suppliers behind one SaaS interface.</li>
+ <li>Built vehicle lifecycle, maintenance, fuel, safety, financials, live tracking (Leaflet), and an AI fleet copilot (Groq) for natural language queries.</li>
+ <li>Designed a resilient Axios service layer against a live REST API with graceful offline degradation for depot and field use.</li>
+ <li>Unified a shared design system layer (inputs, modals, tables, badges) reused across every module and partner portal.</li>
+ </ul>
+ </div>
 
-                <div>
-                    <div class="exp-row">
-                        <div>
-                            <div class="item-title">White-Label Bundle Platform (Telecel, NHIS, SSNIT, GPAA)</div>
-                            <div class="item-subtitle">Frontend Engineer &amp; UI/UX Designer</div>
-                        </div>
-                        <div class="item-date">2024 – Present</div>
-                    </div>
-                    <ul>
-                        <li>Productized a themeable airtime and data-bundle platform deployed for <span class="metric">5+ organizations</span>, serving <span class="metric">12,000+ NHIS employees</span>.</li>
-                        <li>Built a configuration-driven theming layer so one codebase re-skinned per client without forking.</li>
-                        <li>Optimized for low-end devices, older browsers, and low-bandwidth conditions common across the user base.</li>
-                    </ul>
-                </div>
+ <div>
+ <div class="exp-row">
+ <div>
+ <div class="item-title">Jayee University College</div>
+ <div class="item-subtitle">Software Engineer (Contract)</div>
+ </div>
+ <div class="item-date">Oct 2023 to Dec 2024</div>
+ </div>
+ <ul>
+ <li>Built a multi-step admissions portal handling <span class="metric">10,000+ annual applications</span> with document upload and status tracking.</li>
+ <li>Reduced manual processing time by <span class="metric">80%</span>; achieved &lt;1% invalid submission rate with Zod-driven validation.</li>
+ </ul>
+ </div>
 
-                <div>
-                    <div class="exp-row">
-                        <div>
-                            <div class="item-title">Jayee University College</div>
-                            <div class="item-subtitle">Software Engineer (Contract)</div>
-                        </div>
-                        <div class="item-date">Oct 2023 – Dec 2024</div>
-                    </div>
-                    <ul>
-                        <li>Built a multi-step admissions portal handling <span class="metric">10,000+ annual applications</span> with document upload and status tracking.</li>
-                        <li>Reduced manual processing time by <span class="metric">80%</span>; achieved &lt;1% invalid submission rate with Zod-driven validation.</li>
-                    </ul>
-                </div>
+ <div>
+ <div class="exp-row">
+ <div>
+ <div class="item-title">S&amp;P Global · S&amp;P Dow Jones Indices</div>
+ <div class="item-subtitle">Product Management Insight (London, UK)</div>
+ </div>
+ <div class="item-date">August 2025</div>
+ </div>
+ <ul>
+ <li>Observed the product lifecycle of global financial index products, benchmark positioning, and index methodology.</li>
+ </ul>
+ </div>
+ </div>
+ </section>
 
-                <div>
-                    <div class="exp-row">
-                        <div>
-                            <div class="item-title">S&amp;P Global – S&amp;P Dow Jones Indices</div>
-                            <div class="item-subtitle">Product Management Insight (London, UK)</div>
-                        </div>
-                        <div class="item-date">August 2025</div>
-                    </div>
-                    <ul>
-                        <li>Observed the product lifecycle of global financial index products, benchmark positioning, and index methodology.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+ <section class="mb-7">
+ <h2 class="section-title">Selected Projects</h2>
+ <div style="display:flex;flex-direction:column;gap:12px;">
+ <div>
+ <div class="item-title">Akonta: Market Ledger App <span class="item-date font-normal">(React Native, Expo, SQLite, TypeScript)</span></div>
+ <ul>
+ <li>Offline first mobile bookkeeping app for Ghanaian market traders with icon based and voice driven sales entry (English/Twi).</li>
+ <li>On device SQLite (WAL mode), bilingual i18next UI, NLP product matching, and sale entry in under 5 seconds.</li>
+ </ul>
+ </div>
+ <div>
+ <div class="item-title">RentPay: Property Rent Tracker <span class="item-date font-normal">(React, Supabase, PostgreSQL)</span></div>
+ <ul>
+ <li>Full stack rent management with realtime Supabase sync, row level security, and offline local storage fallback.</li>
+ </ul>
+ </div>
+ <div>
+ <div class="item-title">HayaPay Marketing Site <span class="item-date font-normal">(Next.js, Framer Motion, Tailwind CSS)</span></div>
+ <ul>
+ <li>Statically exported marketing site; increased average session duration by <span class="metric">40%</span> post-launch.</li>
+ </ul>
+ </div>
+ </div>
+ </section>
 
-        <section class="mb-7">
-            <h2 class="section-title">Selected Projects</h2>
-            <div style="display:flex;flex-direction:column;gap:12px;">
-                <div>
-                    <div class="item-title">Akonta – Market Ledger App <span class="item-date font-normal">(React Native, Expo, SQLite, TypeScript)</span></div>
-                    <ul>
-                        <li>Offline-first mobile bookkeeping app for Ghanaian market traders with icon-based and voice-driven sales entry (English/Twi).</li>
-                        <li>On-device SQLite (WAL mode), bilingual i18next UI, NLP product matching, and sale entry in under 5 seconds.</li>
-                    </ul>
-                </div>
-                <div>
-                    <div class="item-title">RentPay – Property Rent Tracker <span class="item-date font-normal">(React, Supabase, PostgreSQL)</span></div>
-                    <ul>
-                        <li>Full-stack rent management with realtime Supabase sync, row-level security, and offline local-storage fallback.</li>
-                    </ul>
-                </div>
-                <div>
-                    <div class="item-title">HayaPay Marketing Site <span class="item-date font-normal">(Next.js, Framer Motion, Tailwind CSS)</span></div>
-                    <ul>
-                        <li>Statically exported marketing site; increased average session duration by <span class="metric">40%</span> post-launch.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+ <section class="mb-7">
+ <h2 class="section-title">Technical Skills</h2>
+ <div class="skills-grid">
+ <div><span class="label">Languages:</span> TypeScript, JavaScript, Java</div>
+ <div><span class="label">Frontend:</span> React 19, Next.js, TypeScript, Tailwind CSS, Vite, Zustand, React Query, Framer Motion, React Native, Expo</div>
+ <div><span class="label">Backend &amp; Data:</span> Node.js, Express, PostgreSQL, Supabase, Prisma, SQLite, REST APIs, Zod</div>
+ <div><span class="label">Design:</span> UI/UX Design, Figma, Design Systems, Prototyping, Accessibility first UI</div>
+ <div><span class="label">Tools:</span> Git, Docker, nginx, Vitest, Sentry, CI/CD, i18next, jsPDF, Chart.js</div>
+ </div>
+ </section>
 
-        <section class="mb-7">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div><span class="label">Frontend:</span> React 19, Next.js, TypeScript, Tailwind CSS, Vite, Zustand, React Query, Framer Motion, React Native, Expo</div>
-                <div><span class="label">Backend &amp; Data:</span> Node.js, Express, PostgreSQL, Supabase, Prisma, SQLite, REST APIs, Zod</div>
-                <div><span class="label">Design:</span> UI/UX Design, Figma, Design Systems, Prototyping, Accessibility-first UI</div>
-                <div><span class="label">Tools:</span> Git, Docker, nginx, Vitest, Sentry, CI/CD, i18next, jsPDF, Chart.js</div>
-            </div>
-        </section>
+ <section class="mb-7">
+ <h2 class="section-title">Education</h2>
+ <div style="display:flex;flex-direction:column;gap:12px;">
+ <div class="exp-row">
+ <div>
+ <div class="item-title">Ashesi University College</div>
+ <div class="item-subtitle">BSc. Computer Science</div>
+ </div>
+ <div class="item-date">Jan 2022 to July 2025</div>
+ </div>
+ <div class="exp-row">
+ <div>
+ <div class="item-title">University of Cambridge to PACE</div>
+ <div class="item-subtitle">Data Science with Machine Learning &amp; AI (Career Accelerator)</div>
+ </div>
+ <div class="item-date">Sept 2025 to July 2026</div>
+ </div>
+ </div>
+ </section>
 
-        <section class="mb-7">
-            <h2 class="section-title">Education</h2>
-            <div style="display:flex;flex-direction:column;gap:12px;">
-                <div class="exp-row">
-                    <div>
-                        <div class="item-title">Ashesi University College</div>
-                        <div class="item-subtitle">BSc. Computer Science</div>
-                    </div>
-                    <div class="item-date">Jan 2022 – July 2025</div>
-                </div>
-                <div class="exp-row">
-                    <div>
-                        <div class="item-title">University of Cambridge – PACE</div>
-                        <div class="item-subtitle">Data Science with Machine Learning &amp; AI (Career Accelerator)</div>
-                    </div>
-                    <div class="item-date">Sept 2025 – July 2026</div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="section-title">Leadership</h2>
-            <div class="exp-row text-sm mb-2">
-                <div><span class="font-bold">Member of Parliament</span>, Ashesi University Council</div>
-                <div class="item-date">Jan 2024 – Dec 2024</div>
-            </div>
-            <div class="exp-row text-sm">
-                <div><span class="font-bold">Vetting Committee Member</span>, Judicial Electoral Council</div>
-                <div class="item-date">Oct 2024 – Dec 2024</div>
-            </div>
-        </section>
-    </div>
+ <section>
+ <h2 class="section-title">Leadership</h2>
+ <div class="exp-row text-sm mb-2">
+ <div><span class="font-bold">Member of Parliament</span>, Ashesi University Council</div>
+ <div class="item-date">Jan 2024 to Dec 2024</div>
+ </div>
+ <div class="exp-row text-sm">
+ <div><span class="font-bold">Vetting Committee Member</span>, Judicial Electoral Council</div>
+ <div class="item-date">Oct 2024 to Dec 2024</div>
+ </div>
+ </section>
+ </div>
 </body>
 </html>

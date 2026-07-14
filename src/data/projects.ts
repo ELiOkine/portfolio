@@ -53,9 +53,9 @@ export const projects: Project[] = [
     id: 'ismartpay',
     title: 'iSmartPay: Fintech Platform',
     description: 'A production fintech platform spanning 15 feature modules including disbursements, payroll, wallet, collections, settlements, invoicing, utility payments and SMS, with 2FA auth, a permissions engine, multi language support and PDF reporting.',
-    longDescription: 'iSmartPay is a full scale digital finance platform I led on the frontend, built as a modular React 19 application organized by feature domain. It covers the complete money movement lifecycle for businesses and individuals: onboarding and KYC verification, wallet top ups and transfers, single and bulk disbursements, payroll runs, collections, settlements, invoicing, and utility bill payments (electricity, water, TV, internet, airtime). It ships secure two factor authentication, a role based permissions engine, session inactivity handling, in app SMS, multi language support, and on the fly PDF report generation, all backed by a service layer with Zod validation, error boundaries, Sentry monitoring and a Vitest test suite.',
+    longDescription: 'iSmartPay is a full scale digital finance platform I led on the frontend at iSmart International Ghana starting September 2025, built as a modular React 19 application organized by feature domain. It covers the complete money movement lifecycle for businesses and individuals: onboarding and KYC verification, wallet top ups and transfers, single and bulk disbursements, payroll runs, collections, settlements, invoicing, and utility bill payments (electricity, water, TV, internet, airtime). It ships secure two factor authentication, a role based permissions engine, session inactivity handling, in app SMS, multi language support, and on the fly PDF report generation, all backed by a service layer with Zod validation, error boundaries, Sentry monitoring and a Vitest test suite.',
     techStack: ['React 19', 'Vite 7', 'React Query', 'Zod', 'Chart.js', 'jsPDF', 'i18next', 'Sentry', 'Vitest'],
-    role: 'Frontend Lead',
+    role: 'Frontend Lead · iSmart International Ghana · Sept 2025 to Present',
     features: [
       'Single and bulk disbursements with real time status tracking',
       'Wallet, collections, settlements and payroll modules',
@@ -90,8 +90,9 @@ export const projects: Project[] = [
     ],
     category: 'Engineering',
     stage: 'Production',
-    stageNote: 'Live product with a real REST API, database, 2FA auth and paying users. The embedded preview is a sandboxed build running on sample data so it is safe to explore publicly.',
+    stageNote: 'Live product at iSmart International Ghana since September 2025, with a real REST API, database, 2FA auth and paying users. The embedded preview is a sandboxed build running on sample data so it is safe to explore publicly.',
     liveUrl: 'https://stgpayportal.ismartghana.com',
+    clients: ['iSmart International Ghana'],
     image: '/projects/ismartpay.png',
     link: '/live-projects/ismartpay/index.html',
     directEmbed: true
@@ -146,10 +147,10 @@ export const projects: Project[] = [
   {
     id: 'bundle-platform',
     title: 'White Label Bundle Platform',
-    description: 'A reusable airtime & data bundle purchase platform white labeled and deployed for 5+ Ghanaian organizations including Telecel, NHIS, SSNIT, GPAA and the Registered Midwives Association.',
-    longDescription: 'A single, themeable frontend platform for buying institution specific airtime and data bundles, productized and re skinned for multiple Ghanaian organizations. Each deployment ships its own branding, catalog and identity verification rules while sharing one battle tested codebase, turning a bespoke build into a repeatable product. The live demo shown here is the Telecel deployment, the most feature complete instance, containerized with Docker and served via nginx.',
+    description: 'A reusable airtime & data bundle purchase platform built at iSmart International Ghana in 2025, white labeled and deployed for 5+ Ghanaian organizations including Telecel, NHIS, SSNIT, GPAA and the Registered Midwives Association.',
+    longDescription: 'Built at iSmart International Ghana in 2025: a single, themeable frontend platform for buying institution specific airtime and data bundles, productized and re skinned for multiple Ghanaian organizations. Each deployment ships its own branding, catalog and identity verification rules while sharing one battle tested codebase, turning a bespoke build into a repeatable product. The live demo shown here is the Telecel deployment, the most feature complete instance, containerized with Docker and served via nginx.',
     techStack: ['React', 'Vite', 'Tailwind CSS', 'Docker', 'nginx'],
-    role: 'Frontend Engineer & UI/UX Designer',
+    role: 'Frontend Engineer & UI/UX Designer · iSmart International Ghana · 2025',
     features: [
       'Themeable, white label architecture re skinned per organization',
       'Multi step bundle purchase flow with phone number and staff ID verification',
@@ -181,9 +182,9 @@ export const projects: Project[] = [
     ],
     category: 'Fullstack',
     stage: 'Production',
-    stageNote: 'Deployed for 5+ real organizations against their live provisioning APIs. The embedded preview is the Telecel deployment running on sample data.',
+    stageNote: 'Built at iSmart International Ghana in 2025 and deployed for 5+ real organizations against their live provisioning APIs. The embedded preview is the Telecel deployment running on sample data.',
     liveUrl: 'https://studentbundle.ismartghana.com',
-    clients: ['Telecel', 'NHIS', 'SSNIT', 'GPAA', 'Registered Midwives Association'],
+    clients: ['iSmart International Ghana', 'Telecel', 'NHIS', 'SSNIT', 'GPAA', 'Registered Midwives Association'],
     image: '/projects/bundles.png',
     link: '/live-projects/telecel/index.html',
     directEmbed: true

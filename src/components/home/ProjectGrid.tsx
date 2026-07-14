@@ -15,25 +15,25 @@ export default function ProjectGrid() {
   });
 
   return (
-    <section id="projects" className="relative py-28 md:py-36 px-6 border-t border-border bg-surface overflow-hidden">
+    <section id="projects" className="relative py-20 sm:py-28 md:py-36 px-4 sm:px-6 border-t border-border bg-surface overflow-hidden">
       {/* Oversized section watermark */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-8 top-8 font-serif text-[clamp(6rem,22vw,16rem)] leading-none text-foreground/[0.035] select-none tracking-[-0.05em]"
+        className="pointer-events-none absolute -right-8 top-8 font-serif text-[clamp(4rem,18vw,16rem)] leading-none text-foreground/[0.035] select-none tracking-tight"
       >
         Work
       </div>
 
-      <div className="max-w-7xl mx-auto relative">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-14 md:mb-16 gap-8">
-          <div className="max-w-2xl">
+      <div className="max-w-7xl mx-auto relative min-w-0">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 sm:mb-14 md:mb-16 gap-6 sm:gap-8">
+          <div className="max-w-2xl min-w-0">
             <p className="text-xs font-medium uppercase tracking-[0.22em] text-gold mb-4">
               Selected work
             </p>
-            <h2 className="font-serif text-4xl md:text-6xl font-medium tracking-tight leading-[1.05]">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl font-medium tracking-tight leading-[1.05]">
               Systems that move money, fleets, and people.
             </h2>
-            <p className="mt-5 text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
+            <p className="mt-4 sm:mt-5 text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
               Each production piece opens a working preview. Click through, click around, try the live system on this site.
             </p>
           </div>

@@ -74,6 +74,27 @@ body {
   hyphens: none;
   -webkit-hyphens: none;
   -ms-hyphens: none;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Safer fluid type helpers used in hero / sections */
+.fluid-display {
+  font-size: clamp(2.6rem, 9vw + 0.5rem, 8.5rem);
+  line-height: 0.92;
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 
 .font-serif {

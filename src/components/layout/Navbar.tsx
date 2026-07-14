@@ -30,12 +30,12 @@ export default function Navbar() {
         scrolled ? 'py-3 border-b border-border bg-background/90 backdrop-blur-md' : 'py-5 bg-transparent'
       )}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link href="/" className="font-serif text-xl font-medium tracking-tight hover:text-accent transition-colors">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 min-w-0">
+        <Link href="/" className="font-serif text-lg sm:text-xl font-medium tracking-tight hover:text-accent transition-colors shrink-0">
           Emmanuel<span className="text-gold">.</span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6 xl:gap-8 min-w-0">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -47,19 +47,35 @@ export default function Navbar() {
           ))}
           <a
             href={mailto}
-            className="text-sm font-medium text-foreground border-b border-foreground/30 pb-0.5 hover:border-accent hover:text-accent transition-colors"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             Email
           </a>
+          <a
+            href={site.resume}
+            download
+            className="inline-flex items-center px-3.5 py-2 text-sm font-semibold bg-primary text-primary-foreground hover:bg-accent transition-colors whitespace-nowrap"
+          >
+            See my résumé
+          </a>
         </div>
 
-        <button
-          className="md:hidden p-2 text-foreground"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label={isOpen ? 'Close menu' : 'Open menu'}
-        >
-          {isOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="lg:hidden flex items-center gap-2 shrink-0">
+          <a
+            href={site.resume}
+            download
+            className="inline-flex items-center px-3 py-1.5 text-xs font-semibold bg-primary text-primary-foreground whitespace-nowrap"
+          >
+            See résumé
+          </a>
+          <button
+            className="p-2 text-foreground"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          >
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -68,7 +84,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="absolute top-full left-0 right-0 bg-background border-b border-border md:hidden flex flex-col p-6 gap-5"
+            className="absolute top-full left-0 right-0 bg-background border-b border-border lg:hidden flex flex-col p-5 sm:p-6 gap-4 max-h-[80vh] overflow-y-auto"
           >
             {navLinks.map((link) => (
               <Link
@@ -80,6 +96,14 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
+            <a
+              href={site.resume}
+              download
+              className="text-base font-semibold"
+              onClick={() => setIsOpen(false)}
+            >
+              See my résumé
+            </a>
             <a href={mailto} className="text-base font-medium text-accent" onClick={() => setIsOpen(false)}>
               {site.email}
             </a>

@@ -92,8 +92,8 @@ export default function ProjectPage() {
   const prevProject = projects[(currentIndex - 1 + projects.length) % projects.length];
 
   return (
-    <article className="min-h-screen pt-32 pb-24 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto">
+    <article className="min-h-screen pt-28 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 md:px-12 overflow-x-hidden">
+      <div className="max-w-7xl mx-auto min-w-0">
         {/* Navigation */}
         <motion.button
           initial={{ opacity: 0, x: -10 }}
@@ -128,10 +128,10 @@ export default function ProjectPage() {
                 </span>
               ))}
             </div>
-            <h1 className="font-serif text-5xl md:text-7xl font-medium tracking-tight mb-8 leading-[0.95]">
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl font-medium tracking-tight mb-6 sm:mb-8 leading-[0.95] break-words">
               {project.title}
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground font-normal leading-relaxed max-w-3xl">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-normal leading-relaxed max-w-3xl">
               {project.description}
             </p>
             {project.stageNote && (
@@ -278,7 +278,7 @@ export default function ProjectPage() {
             <div
               className={cn(
                 "relative bg-white overflow-hidden",
-                viewMode === 'live' ? "h-[80vh] min-h-[560px]" : "aspect-video"
+                viewMode === 'live' ? "h-[70vh] sm:h-[80vh] min-h-[420px] sm:min-h-[560px]" : "aspect-video"
               )}
             >
               <AnimatePresence mode="wait">

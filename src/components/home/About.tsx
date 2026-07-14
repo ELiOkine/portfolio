@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion';
 
 const skills = [
-  { category: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Zustand', 'React Query'] },
+  { category: 'Languages', items: ['TypeScript', 'JavaScript', 'Java'] },
+  { category: 'Frontend', items: ['React', 'Next.js', 'Tailwind CSS', 'Zustand', 'React Query'] },
   { category: 'Design', items: ['UI/UX', 'Figma', 'Design systems', 'Prototyping', 'Accessibility'] },
   { category: 'Backend & tools', items: ['Node.js', 'PostgreSQL', 'Supabase', 'SQLite', 'Docker', 'Vitest', 'Sentry'] },
 ];
@@ -45,7 +46,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="mt-14 grid grid-cols-3 gap-6 pt-10 border-t border-border">
+          <div className="mt-14 grid grid-cols-3 gap-3 sm:gap-6 pt-10 border-t border-border">
             {[
               { v: '2+', l: 'Years shipping' },
               { v: '5+', l: 'Live deployments' },
@@ -57,9 +58,10 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 + i * 0.08, duration: 0.45, ease }}
+                className="min-w-0"
               >
-                <div className="font-serif text-3xl md:text-4xl font-medium tracking-tight">{stat.v}</div>
-                <div className="text-xs text-muted-foreground mt-2 tracking-wide">{stat.l}</div>
+                <div className="font-serif text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight">{stat.v}</div>
+                <div className="text-[10px] sm:text-xs text-muted-foreground mt-2 tracking-wide leading-snug">{stat.l}</div>
               </motion.div>
             ))}
           </div>
