@@ -16,7 +16,7 @@ export interface Project {
   impact?: string;
   metrics?: ProjectMetric[];
   architecture?: string[];
-  /** 3-5 significant decisions with the reasoning behind them (case-study depth). */
+  /** 3 to 5 significant decisions with the reasoning behind them (case study depth). */
   keyDecisions?: { decision: string; reasoning: string }[];
   category: 'Engineering' | 'Design' | 'Fullstack';
   /**
@@ -25,7 +25,7 @@ export interface Project {
    * 'Concept'    = build/prototype presented as an interactive demo.
    */
   stage: 'Production' | 'Concept';
-  /** One-line note clarifying exactly what "production" or "concept" means here. */
+  /** One line note clarifying exactly what "production" or "concept" means here. */
   stageNote?: string;
   link?: string;
   github?: string;
@@ -35,14 +35,14 @@ export interface Project {
   clients?: string[];
   image: string;
   /**
-   * When true, the live preview loads the project's built index.html directly in the iframe
-   * instead of fetching + runtime-patching it. Use for builds that already ship correct
-   * (sub-path) asset bases and their own demo bootstrap.
+   * When true, the live preview loads the project built index.html directly in the iframe
+   * instead of fetching + runtime patching it. Use for builds that already ship correct
+   * (sub path) asset bases and their own demo bootstrap.
    */
   directEmbed?: boolean;
   /**
    * Appetize.io public key. When set, the live tab streams the real native app
-   * (e.g. an Android APK) in-browser via an Appetize player, so viewers can test
+   * (e.g. an Android APK) in browser via an Appetize player, so viewers can test
    * the genuine app with no download.
    */
   appetizeKey?: string;
@@ -52,22 +52,22 @@ export const projects: Project[] = [
   {
     id: 'ismartpay',
     title: 'iSmartPay: Fintech Platform',
-    description: 'A production fintech platform spanning 15 feature modules including disbursements, payroll, wallet, collections, settlements, invoicing, utility payments and SMS, with 2FA auth, a permissions engine, multi-language support and PDF reporting.',
-    longDescription: 'iSmartPay is a full-scale digital finance platform I led on the frontend, built as a modular React 19 application organized by feature domain. It covers the complete money-movement lifecycle for businesses and individuals: onboarding and KYC verification, wallet top-ups and transfers, single and bulk disbursements, payroll runs, collections, settlements, invoicing, and utility bill payments (electricity, water, TV, internet, airtime). It ships secure two-factor authentication, a role-based permissions engine, session inactivity handling, in-app SMS, multi-language support, and on-the-fly PDF report generation, all backed by a service layer with Zod validation, error boundaries, Sentry monitoring and a Vitest test suite.',
+    description: 'A production fintech platform spanning 15 feature modules including disbursements, payroll, wallet, collections, settlements, invoicing, utility payments and SMS, with 2FA auth, a permissions engine, multi language support and PDF reporting.',
+    longDescription: 'iSmartPay is a full scale digital finance platform I led on the frontend, built as a modular React 19 application organized by feature domain. It covers the complete money movement lifecycle for businesses and individuals: onboarding and KYC verification, wallet top ups and transfers, single and bulk disbursements, payroll runs, collections, settlements, invoicing, and utility bill payments (electricity, water, TV, internet, airtime). It ships secure two factor authentication, a role based permissions engine, session inactivity handling, in app SMS, multi language support, and on the fly PDF report generation, all backed by a service layer with Zod validation, error boundaries, Sentry monitoring and a Vitest test suite.',
     techStack: ['React 19', 'Vite 7', 'React Query', 'Zod', 'Chart.js', 'jsPDF', 'i18next', 'Sentry', 'Vitest'],
     role: 'Frontend Lead',
     features: [
-      'Single and bulk disbursements with real-time status tracking',
+      'Single and bulk disbursements with real time status tracking',
       'Wallet, collections, settlements and payroll modules',
       'Utility bill payments for electricity, water, TV, internet and airtime',
-      'Invoicing and on-the-fly PDF report generation (jsPDF)',
-      'Secure 2FA authentication with a role-based permissions engine',
-      'Multi-language UI (i18next) with light/dark theming',
-      'In-app SMS, notifications and session inactivity protection'
+      'Invoicing and on the fly PDF report generation (jsPDF)',
+      'Secure 2FA authentication with a role based permissions engine',
+      'Multi language UI (i18next) with light/dark theming',
+      'In app SMS, notifications and session inactivity protection'
     ],
     challenges: [
-      'Structuring a 15-module fintech codebase (feature-based) that stays maintainable as scope grows',
-      'Enforcing data accuracy and security across real-time financial flows with Zod validation and error boundaries',
+      'Structuring a 15 module fintech codebase (feature based) that stays maintainable as scope grows',
+      'Enforcing data accuracy and security across real time financial flows with Zod validation and error boundaries',
       'Building a permissions engine that gates routes and UI per user role and access level'
     ],
     impact: 'Processed over 800,000 GH₵ in transaction volume across live disbursement and collection flows.',
@@ -77,16 +77,16 @@ export const projects: Project[] = [
       { label: 'Uptime', value: '99.9%', description: 'Reliability of critical disbursement flows.' }
     ],
     architecture: [
-      'Feature-based module architecture with a shared service layer and lazy-loaded routes.',
-      'React Query for server-state caching, with Zod schema validation on all inputs.',
-      'Role-based permissions engine gating routes and UI, plus 2FA and session inactivity handling.',
-      'Sentry-integrated error boundaries and a Vitest + React Testing Library suite (70% coverage threshold).'
+      'Feature based module architecture with a shared service layer and lazy loaded routes.',
+      'React Query for server state caching, with Zod schema validation on all inputs.',
+      'Role based permissions engine gating routes and UI, plus 2FA and session inactivity handling.',
+      'Sentry integrated error boundaries and a Vitest + React Testing Library suite (70% coverage threshold).'
     ],
     keyDecisions: [
-      { decision: 'Organized the codebase by business domain, not technical layer', reasoning: 'With 15 modules, folder-by-feature (disbursements, payroll, wallet) meant each domain could grow, be tested and be reasoned about independently, instead of a giant shared "components" and "services" pile that every engineer fights over.' },
+      { decision: 'Organized the codebase by business domain, not technical layer', reasoning: 'With 15 modules, folder by feature (disbursements, payroll, wallet) meant each domain could grow, be tested and be reasoned about independently, instead of a giant shared "components" and "services" pile that every engineer fights over.' },
       { decision: 'Put a single validated service layer between the UI and the API', reasoning: 'Every request and response passes through Zod schemas, so malformed financial data fails loudly at the boundary rather than silently corrupting a balance or a payroll run three screens later.' },
       { decision: 'Centralized access control in a permissions engine', reasoning: 'Rather than scattering role checks through components, one engine gates both routes and individual UI controls per role, which keeps access rules auditable in a single place, essential when money movement is involved.' },
-      { decision: 'Standardized all server state on React Query', reasoning: 'Caching, refetching and consistent loading/error states came for free across every module, so I was not hand-rolling data fetching and cache invalidation screen by screen.' },
+      { decision: 'Standardized all server state on React Query', reasoning: 'Caching, refetching and consistent loading/error states came for free across every module, so I was not hand rolling data fetching and cache invalidation screen by screen.' },
     ],
     category: 'Engineering',
     stage: 'Production',
@@ -101,20 +101,20 @@ export const projects: Project[] = [
     title: 'Fleetly: Fleet Management Platform',
     description: 'An enterprise fleet operations suite spanning 15+ modules, from vehicles, drivers, maintenance, fuel and safety to financials and a live tracking map, plus dedicated workshop and supplier partner portals.',
     longDescription: 'Fleetly is a comprehensive fleet management platform I architected and built on the frontend. It unifies the entire operational lifecycle of a vehicle fleet, from onboarding vehicles and drivers, through maintenance work orders, fuel and expense tracking, safety incidents and insurance claims, to reporting and a marketplace, behind a single, cohesive SaaS interface. Beyond the core operator dashboard, it ships two full partner experiences: a Workshop portal for service providers (job cards, quotes, invoicing, technician dispatch and revenue) and a Supplier portal for parts catalogs and fulfillment. An AI copilot, powered by Groq, lets operators query fleet state in natural language.',
-    techStack: ['React 19', 'Vite 7', 'React Router 7', 'Tailwind CSS', 'Recharts', 'React-Leaflet', 'Axios', 'Groq AI'],
+    techStack: ['React 19', 'Vite 7', 'React Router 7', 'Tailwind CSS', 'Recharts', 'React Leaflet', 'Axios', 'Groq AI'],
     role: 'Lead Frontend Engineer',
     features: [
-      'Operator dashboard with fleet-health KPIs, alerts and guided onboarding',
+      'Operator dashboard with fleet health KPIs, alerts and guided onboarding',
       'Full vehicle lifecycle: makes/models/trims, groups, status & ownership history',
       'Maintenance suite: work orders, service programs, schedules, reminders and issues',
-      'Driver management with a multi-step registration wizard and camera capture',
+      'Driver management with a multi step registration wizard and camera capture',
       'Fuel, financials, safety, insurance, documents, parts and reporting modules',
       'Interactive live tracking map built on Leaflet',
-      'AI fleet copilot (Groq) for natural-language operational queries',
+      'AI fleet copilot (Groq) for natural language operational queries',
       'Dedicated Workshop and Supplier partner portals with their own auth and flows'
     ],
     challenges: [
-      'Architecting a 15+ module, multi-role application (operator, workshop, supplier) with maintainable, feature-based structure',
+      'Architecting a 15+ module, multi role application (operator, workshop, supplier) with maintainable, feature based structure',
       'Building a resilient data layer against a live REST API, with a fallback wrapper so the UI degrades gracefully when the network drops',
       'Keeping a large React 19 codebase performant while unifying a consistent design system across all modules'
     ],
@@ -122,45 +122,45 @@ export const projects: Project[] = [
     metrics: [
       { label: 'Operational Modules', value: '15+', description: 'From vehicles and maintenance to financials and safety.' },
       { label: 'Partner Portals', value: '3 roles', description: 'Fleet operator, workshop provider and parts supplier.' },
-      { label: 'AI Copilot', value: 'Natural language', description: 'Groq-powered assistant answers fleet questions in plain English.' }
+      { label: 'AI Copilot', value: 'Natural language', description: 'Groq powered assistant answers fleet questions in plain English.' }
     ],
     architecture: [
-      'Feature-based module architecture organized by domain (fleet, drivers, maintenance, service-providers).',
+      'Feature based module architecture organized by domain (fleet, drivers, maintenance, service providers).',
       'Axios service layer against a REST API, with a fallback wrapper for graceful offline degradation.',
-      'Role-aware routing with protected routes and separate authentication for partner portals.',
-      'Shared component and design-system layer (base inputs, modals, tables, badges) reused across every module.'
+      'Role aware routing with protected routes and separate authentication for partner portals.',
+      'Shared component and design system layer (base inputs, modals, tables, badges) reused across every module.'
     ],
     keyDecisions: [
-      { decision: 'Modeled operator, workshop and supplier as first-class roles', reasoning: 'Each portal has its own protected route tree and authentication rather than toggling UI inside one shared app, so every role stays cohesive and access boundaries are enforced at the routing layer.' },
+      { decision: 'Modeled operator, workshop and supplier as first class roles', reasoning: 'Each portal has its own protected route tree and authentication rather than toggling UI inside one shared app, so every role stays cohesive and access boundaries are enforced at the routing layer.' },
       { decision: 'Wrapped the API layer with a graceful fallback', reasoning: 'Fleet operators work from depots and roadside with flaky connectivity, so the service layer degrades to cached/sample state instead of throwing, keeping the dashboard usable when a service is briefly unreachable.' },
-      { decision: 'Extracted one shared design-system layer', reasoning: 'Base inputs, tables, modals and badges live in a single reusable layer across 15+ modules, so the product feels consistent and a new module is assembled from proven parts instead of rebuilt.' },
-      { decision: 'Added a natural-language AI copilot (Groq)', reasoning: 'Operators can ask questions about fleet state in plain English instead of hunting through screens; I chose Groq specifically for its low-latency responses so the assistant feels instant.' },
+      { decision: 'Extracted one shared design system layer', reasoning: 'Base inputs, tables, modals and badges live in a single reusable layer across 15+ modules, so the product feels consistent and a new module is assembled from proven parts instead of rebuilt.' },
+      { decision: 'Added a natural language AI copilot (Groq)', reasoning: 'Operators can ask questions about fleet state in plain English instead of hunting through screens; I chose Groq specifically for its low latency responses so the assistant feels instant.' },
     ],
     category: 'Fullstack',
     stage: 'Production',
-    stageNote: 'Shipped fleet operations platform backed by a live REST API and role-based auth. The public preview here runs on sample data so it can be explored without a login.',
+    stageNote: 'Shipped fleet operations platform backed by a live REST API and role based auth. The public preview here runs on sample data so it can be explored without a login.',
     image: '/projects/fleet.png',
     link: '/live-projects/fleet/index.html',
     directEmbed: true
   },
   {
     id: 'bundle-platform',
-    title: 'White-Label Bundle Platform',
-    description: 'A reusable airtime & data-bundle purchase platform white-labeled and deployed for 5+ Ghanaian organizations including Telecel, NHIS, SSNIT, GPAA and the Registered Midwives Association.',
-    longDescription: 'A single, themeable frontend platform for buying institution-specific airtime and data bundles, productized and re-skinned for multiple Ghanaian organizations. Each deployment ships its own branding, catalog and identity-verification rules while sharing one battle-tested codebase, turning a bespoke build into a repeatable product. The live demo shown here is the Telecel deployment, the most feature-complete instance, containerized with Docker and served via nginx.',
+    title: 'White Label Bundle Platform',
+    description: 'A reusable airtime & data bundle purchase platform white labeled and deployed for 5+ Ghanaian organizations including Telecel, NHIS, SSNIT, GPAA and the Registered Midwives Association.',
+    longDescription: 'A single, themeable frontend platform for buying institution specific airtime and data bundles, productized and re skinned for multiple Ghanaian organizations. Each deployment ships its own branding, catalog and identity verification rules while sharing one battle tested codebase, turning a bespoke build into a repeatable product. The live demo shown here is the Telecel deployment, the most feature complete instance, containerized with Docker and served via nginx.',
     techStack: ['React', 'Vite', 'Tailwind CSS', 'Docker', 'nginx'],
     role: 'Frontend Engineer & UI/UX Designer',
     features: [
-      'Themeable, white-label architecture re-skinned per organization',
-      'Multi-step bundle purchase flow with phone-number and staff-ID verification',
-      'Organization-specific catalogs, branding and validation rules',
-      'Responsive, accessibility-first UI tuned for low-end devices and older browsers',
+      'Themeable, white label architecture re skinned per organization',
+      'Multi step bundle purchase flow with phone number and staff ID verification',
+      'Organization specific catalogs, branding and validation rules',
+      'Responsive, accessibility first UI tuned for low end devices and older browsers',
       'Dockerized builds served through nginx for consistent deployment'
     ],
     challenges: [
-      'Designing one codebase flexible enough to re-brand for very different institutions without forking',
+      'Designing one codebase flexible enough to re brand for very different institutions without forking',
       'Adhering to strict corporate identity guidelines per client while keeping a shared component core',
-      'Optimizing for older browsers and low-bandwidth conditions common across the user base'
+      'Optimizing for older browsers and low bandwidth conditions common across the user base'
     ],
     impact: 'Turned a bespoke build into a repeatable product deployed across 5+ organizations, including benefit distribution for 12,000+ NHIS employees.',
     metrics: [
@@ -169,14 +169,14 @@ export const projects: Project[] = [
       { label: 'Codebase', value: '1 core', description: 'Shared, themeable frontend across all brands.' }
     ],
     architecture: [
-      'Configuration-driven theming layer that re-skins the platform per organization.',
-      'Shared component core with per-client catalog and verification modules.',
+      'Configuration driven theming layer that re skins the platform per organization.',
+      'Shared component core with per client catalog and verification modules.',
       'Dockerized build pipeline with nginx serving optimized static assets.'
     ],
     keyDecisions: [
-      { decision: 'Re-skinned per client from configuration instead of forking', reasoning: 'Branding, catalog and verification rules are driven by config, so one codebase serves 5+ very different institutions. A bespoke build became a repeatable product, and there is no drift between forks to maintain.' },
-      { decision: 'Isolated only the per-client logic behind a shared core', reasoning: 'Catalog and identity-verification modules are the only client-specific parts; everything else is shared, so a fix or improvement ships to every deployment at once rather than client by client.' },
-      { decision: 'Optimized for low-end devices and older browsers first', reasoning: 'The user base runs budget phones on constrained networks, so I prioritized accessibility, small payloads and resilience over heavy visuals, treating the low-end case as the default rather than the exception.' },
+      { decision: 'Re skinned per client from configuration instead of forking', reasoning: 'Branding, catalog and verification rules are driven by config, so one codebase serves 5+ very different institutions. A bespoke build became a repeatable product, and there is no drift between forks to maintain.' },
+      { decision: 'Isolated only the per client logic behind a shared core', reasoning: 'Catalog and identity verification modules are the only client specific parts; everything else is shared, so a fix or improvement ships to every deployment at once rather than client by client.' },
+      { decision: 'Optimized for low end devices and older browsers first', reasoning: 'The user base runs budget phones on constrained networks, so I prioritized accessibility, small payloads and resilience over heavy visuals, treating the low end case as the default rather than the exception.' },
       { decision: 'Containerized delivery with Docker + nginx', reasoning: 'Each deployment ships as an identical, reproducible container served through nginx, so behaviour is consistent regardless of the client hosting environment.' },
     ],
     category: 'Fullstack',
@@ -191,37 +191,37 @@ export const projects: Project[] = [
   {
     id: 'akonta',
     title: 'Akonta: Market Ledger App',
-    description: 'A bilingual (English/Twi), offline-first mobile bookkeeping app that replaces the paper notebook for Ghanaian market traders, with icon-based and voice-driven sales entry.',
-    longDescription: 'Akonta (Twi for "account") is a React Native / Expo mobile app I built to bring digital bookkeeping to informal market traders in Ghana. It is designed around real constraints: low literacy, intermittent connectivity, and budget Android phones. Every core feature, from recording sales and managing inventory to seeing daily profit, works fully offline on an on-device SQLite database. Traders record a sale in seconds by tapping product icons, or by speaking (English recognized on-device; Twi via an online path). The entire interface is bilingual English/Twi and switches instantly.',
+    description: 'A bilingual (English/Twi), offline first mobile bookkeeping app that replaces the paper notebook for Ghanaian market traders, with icon based and voice driven sales entry.',
+    longDescription: 'Akonta (Twi for "account") is a React Native / Expo mobile app I built to bring digital bookkeeping to informal market traders in Ghana. It is designed around real constraints: low literacy, intermittent connectivity, and budget Android phones. Every core feature, from recording sales and managing inventory to seeing daily profit, works fully offline on an on device SQLite database. Traders record a sale in seconds by tapping product icons, or by speaking (English recognized on device; Twi via an online path). The entire interface is bilingual English/Twi and switches instantly.',
     techStack: ['React Native', 'Expo', 'TypeScript', 'SQLite', 'Zustand', 'i18next'],
     role: 'Mobile Engineer & Product Designer',
     features: [
-      'Fully offline-first: sales, inventory and profit computed on-device via SQLite (WAL mode)',
-      'Icon-based quick sale entry to record a sale in under 5 seconds',
+      'Fully offline first: sales, inventory and profit computed on device via SQLite (WAL mode)',
+      'Icon based quick sale entry to record a sale in under 5 seconds',
       'Voice entry with an NLP parser (Levenshtein fuzzy matching, EN/Twi numbers)',
       'Instant daily profit, revenue and cost dashboard',
       'Bilingual English/Twi UI with instant language switching',
-      'Low-stock local notifications and optional PIN lock'
+      'Low stock local notifications and optional PIN lock'
     ],
     challenges: [
-      'Designing for low-literacy, Twi-first users through icon-driven interaction rather than text',
+      'Designing for low literacy, Twi first users through icon driven interaction rather than text',
       'Delivering a genuinely offline experience with local SQLite and no server or account',
-      'Keeping the app lightweight for budget Android phones (stripped ~50–100MB of on-device ML weight)'
+      'Keeping the app lightweight for budget Android phones (stripped ~50 to 100MB of on device ML weight)'
     ],
-    impact: 'A feature-complete, offline-first MVP that turns end-of-day "how much did I make?" into an instant answer for market traders.',
+    impact: 'A feature complete, offline first MVP that turns end of day "how much did I make?" into an instant answer for market traders.',
     metrics: [
       { label: 'Works Offline', value: '100%', description: 'All core features run with no internet.' },
       { label: 'Sale Entry', value: '<5s', description: 'From product tap to recorded sale.' },
       { label: 'Languages', value: 'EN / Twi', description: 'Fully bilingual, instant switching.' }
     ],
     architecture: [
-      'On-device SQLite (WAL mode, indexed) as the single source of truth.',
+      'On device SQLite (WAL mode, indexed) as the single source of truth.',
       'Zustand global store hydrated from the local database.',
-      'i18next-driven bilingual layer covering every screen and alert.'
+      'i18next driven bilingual layer covering every screen and alert.'
     ],
     category: 'Engineering',
     stage: 'Concept',
-    stageNote: 'A working, self-funded MVP. Offline-first is a deliberate product decision for its users, not a demo limitation: it runs entirely on an on-device SQLite database.',
+    stageNote: 'A working, self funded MVP. Offline first is a deliberate product decision for its users, not a demo limitation: it runs entirely on an on device SQLite database.',
     image: '/projects/akonta.png',
     link: '/live-projects/akonta/index.html',
     directEmbed: true,
@@ -230,34 +230,34 @@ export const projects: Project[] = [
   {
     id: 'jayee',
     title: 'University Admissions Portal',
-    description: 'A multi-step application system for Higher Education, handling 10,000+ student applications annually.',
-    longDescription: 'Architected and built a robust admissions portal for Jayee University College. Implemented a 5-step application engine with state persistence, document validation, and real-time status tracking.',
+    description: 'A multi step application system for Higher Education, handling 10,000+ student applications annually.',
+    longDescription: 'Architected and built a robust admissions portal for Jayee University College. Implemented a 5 step application engine with state persistence, document validation, and real time status tracking.',
     techStack: ['React 19', 'Tailwind CSS', 'Zustand', 'React Hook Form', 'Zod', 'Framer Motion'],
     role: 'Software Engineer',
     features: [
-      '5-step persistent application engine',
+      '5 step persistent application engine',
       'Asynchronous document upload with MIME validation',
       'Automated application status notifications',
       'Administrative dashboard for application review'
     ],
     challenges: [
-      'Implementing a reliable multi-step form state management that survives page reloads',
+      'Implementing a reliable multi step form state management that survives page reloads',
       'Handling concurrent file uploads under heavy load during admissions peaks'
     ],
-    impact: 'Replaced a paper-based system, reducing processing time by 80%.',
+    impact: 'Replaced a paper based system, reducing processing time by 80%.',
     metrics: [
       { label: 'Annual Applications', value: '10k+', description: 'Handled during peak admission periods.' },
       { label: 'Time Saved', value: '80%', description: 'Reduction in manual processing time.' },
       { label: 'Error Rate', value: '<1%', description: 'Incomplete or invalid form submissions.' }
     ],
     architecture: [
-      'Stateless multi-step engine with local persistence.',
-      'Zod-driven schema validation for complex form inputs.',
-      'Direct-to-S3 asynchronous document upload pipeline.'
+      'Stateless multi step engine with local persistence.',
+      'Zod driven schema validation for complex form inputs.',
+      'Direct to S3 asynchronous document upload pipeline.'
     ],
     category: 'Engineering',
     stage: 'Production',
-    stageNote: 'Live admissions system that replaced a paper-based process, handling real student applications with document upload and status tracking.',
+    stageNote: 'Live admissions system that replaced a paper based process, handling real student applications with document upload and status tracking.',
     clients: ['Jayee University College'],
     image: '/projects/jayee.png',
     link: '/live-projects/jayee/index.html'
@@ -265,35 +265,35 @@ export const projects: Project[] = [
   {
     id: 'rentpay',
     title: 'RentPay: Property Rent Tracker',
-    description: 'A full-stack property and rent-management app with real-time cloud sync, letting landlords track properties, tenants and monthly payments across multiple currencies.',
-    longDescription: 'RentPay is a full-stack rental-management application I built to give small landlords a clear, real-time view of their portfolio. Property, tenant and payment records sync live across devices through Supabase (Postgres + realtime subscriptions), with a resilient offline-first design that transparently falls back to local storage when the cloud is unavailable. It tracks monthly rent status across properties, supports multiple currencies, and exports statements, all behind a clean, single-page interface.',
+    description: 'A full stack property and rent management app with real time cloud sync, letting landlords track properties, tenants and monthly payments across multiple currencies.',
+    longDescription: 'RentPay is a full stack rental management application I built to give small landlords a clear, real time view of their portfolio. Property, tenant and payment records sync live across devices through Supabase (Postgres + realtime subscriptions), with a resilient offline first design that transparently falls back to local storage when the cloud is unavailable. It tracks monthly rent status across properties, supports multiple currencies, and exports statements, all behind a clean, single page interface.',
     techStack: ['React', 'Vite', 'Supabase', 'PostgreSQL', 'Lucide React'],
-    role: 'Full-Stack Engineer',
+    role: 'Full Stack Engineer',
     features: [
-      'Real-time cloud sync via Supabase Postgres + realtime subscriptions',
-      'Offline-first design with automatic local-storage fallback',
-      'Property, tenant and monthly-payment tracking with status at a glance',
-      'Multi-currency support (GH₵ / USD)',
+      'Real time cloud sync via Supabase Postgres + realtime subscriptions',
+      'Offline first design with automatic local storage fallback',
+      'Property, tenant and monthly payment tracking with status at a glance',
+      'Multi currency support (GH₵ / USD)',
       'Data export and yearly payment overviews'
     ],
     challenges: [
       'Designing a data model that stays consistent across realtime cloud sync and offline local storage',
-      'Building an app that degrades gracefully from cloud mode to local-only without code changes'
+      'Building an app that degrades gracefully from cloud mode to local only without code changes'
     ],
-    impact: 'A full-stack, real-time rent tracker with a Postgres backend that keeps a landlord\u2019s entire portfolio in sync, and keeps working when the network drops.',
+    impact: 'A full stack, real time rent tracker with a Postgres backend that keeps a landlord’s entire portfolio in sync, and keeps working when the network drops.',
     metrics: [
-      { label: 'Backend', value: 'Supabase', description: 'Postgres with row-level security and realtime subscriptions.' },
+      { label: 'Backend', value: 'Supabase', description: 'Postgres with row level security and realtime subscriptions.' },
       { label: 'Sync', value: 'Realtime', description: 'Changes broadcast live to every connected device.' },
-      { label: 'Resilience', value: 'Offline fallback', description: 'Degrades to local storage when the cloud is unreachable, then re-syncs.' }
+      { label: 'Resilience', value: 'Offline fallback', description: 'Degrades to local storage when the cloud is unreachable, then re syncs.' }
     ],
     architecture: [
-      'JSONB-backed Postgres schema with row-level security policies.',
+      'JSONB backed Postgres schema with row level security policies.',
       'Realtime subscriptions to broadcast changes to every connected client.',
       'Storage abstraction that swaps between Supabase and local storage at runtime.'
     ],
     category: 'Fullstack',
     stage: 'Concept',
-    stageNote: 'A self-directed full-stack build with a real Supabase/Postgres backend, realtime sync and offline resilience.',
+    stageNote: 'A self directed full stack build with a real Supabase/Postgres backend, realtime sync and offline resilience.',
     image: '/projects/rentpay.png',
     link: '/live-projects/rentpay/index.html',
     directEmbed: true
@@ -302,33 +302,33 @@ export const projects: Project[] = [
     id: 'hayapay',
     title: 'HayaPay: HR & Payroll Platform Site',
     description: 'Marketing site for HayaPay, an HR and payroll outsourcing platform for the modern African enterprise, built for performance, SEO and conversion.',
-    longDescription: 'Designed and built the marketing site for HayaPay, an HR and payroll outsourcing platform serving enterprises across Africa. Statically exported with Next.js for edge-fast delivery, the site pairs a bold, animated hero with a modular component system that lets the team assemble new service and package pages quickly, all tuned for SEO, Core Web Vitals and conversion.',
+    longDescription: 'Designed and built the marketing site for HayaPay, an HR and payroll outsourcing platform serving enterprises across Africa. Statically exported with Next.js for edge fast delivery, the site pairs a bold, animated hero with a modular component system that lets the team assemble new service and package pages quickly, all tuned for SEO, Core Web Vitals and conversion.',
     techStack: ['Next.js', 'Framer Motion', 'Lucide React', 'Tailwind CSS'],
     role: 'Lead Designer & Frontend Engineer',
     features: [
-      'Statically exported Next.js site with SEO-optimized architecture',
+      'Statically exported Next.js site with SEO optimized architecture',
       'Modular, reusable component library for rapid page assembly',
-      'Scroll-driven Framer Motion animations',
+      'Scroll driven Framer Motion animations',
       'Fully responsive across all device categories'
     ],
     challenges: [
       'Reducing LCP and FID metrics while maintaining high visual fidelity',
       'Implementing a seamless navigation flow across multiple service lines'
     ],
-    impact: 'Increased average session duration by 40% post-launch.',
+    impact: 'Increased average session duration by 40% post launch.',
     metrics: [
-      { label: 'Session Duration', value: '+40%', description: 'Increase in average time on site post-launch.' },
-      { label: 'Framework', value: 'Next.js', description: 'Statically exported for edge-speed delivery.' },
+      { label: 'Session Duration', value: '+40%', description: 'Increase in average time on site post launch.' },
+      { label: 'Framework', value: 'Next.js', description: 'Statically exported for edge speed delivery.' },
       { label: 'Coverage', value: '50+', description: 'African markets addressed in the messaging.' }
     ],
     architecture: [
-      'Statically exported Next.js site for CDN-first, edge-fast delivery.',
+      'Statically exported Next.js site for CDN first, edge fast delivery.',
       'Reusable, modular marketing component library for rapid page assembly.',
-      'Scroll-driven Framer Motion animations with intersection-observer triggers.'
+      'Scroll driven Framer Motion animations with intersection observer triggers.'
     ],
     category: 'Design',
     stage: 'Production',
-    stageNote: 'A shipped, statically-exported marketing site tuned for SEO, Core Web Vitals and conversion.',
+    stageNote: 'A shipped, statically exported marketing site tuned for SEO, Core Web Vitals and conversion.',
     image: '/projects/hayapay.png',
     link: '/live-projects/hayapay/index.html',
     directEmbed: true

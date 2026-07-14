@@ -60,6 +60,8 @@
 
 * {
   border-color: var(--border);
+  hyphens: none;
+  -webkit-hyphens: none;
 }
 
 body {
@@ -69,6 +71,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.011em;
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
 }
 
 .font-serif {
@@ -79,13 +84,14 @@ body {
 /* Atmospheric paper wash + soft vignette */
 .page-atmosphere {
   background:
-    radial-gradient(ellipse 90% 60% at 100% 0%, rgba(154, 115, 64, 0.09), transparent 55%),
-    radial-gradient(ellipse 70% 50% at 0% 40%, rgba(35, 78, 58, 0.06), transparent 50%),
-    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(20, 18, 16, 0.04), transparent 60%),
+    radial-gradient(ellipse 90% 60% at 100% 0%, rgba(154, 115, 64, 0.11), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 0% 40%, rgba(35, 78, 58, 0.07), transparent 50%),
+    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(20, 18, 16, 0.045), transparent 60%),
+    linear-gradient(180deg, rgba(250, 247, 241, 0.4) 0%, transparent 28%),
     var(--background);
 }
 
-/* Fine film grain — beauty without noise spam */
+/* Fine film grain, beauty without noise spam */
 .grain::after {
   content: "";
   pointer-events: none;
@@ -150,17 +156,31 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  box-shadow: inset 0 0 0 1px rgba(20, 18, 16, 0.08);
+  box-shadow:
+    inset 0 0 0 1px rgba(20, 18, 16, 0.1),
+    inset 0 -40px 60px -40px rgba(20, 18, 16, 0.12);
   pointer-events: none;
+  z-index: 1;
 }
 
 /* Project image lift */
 .project-media img {
-  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1), filter 0.55s ease;
 }
 .group:hover .project-media img {
-  transform: scale(1.06);
-  filter: saturate(1.05);
+  transform: scale(1.05);
+  filter: saturate(1.08) contrast(1.02);
+}
+
+/* Soft section divider rule */
+.ink-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--gold) 55%, transparent),
+    transparent
+  );
 }
 
 @media (prefers-reduced-motion: reduce) {

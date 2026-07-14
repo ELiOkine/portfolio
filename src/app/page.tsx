@@ -26,7 +26,7 @@ export default function Home() {
               Tell me what you&apos;re building.
             </h2>
             <p className="text-lg text-white/60 leading-relaxed max-w-xl mb-10">
-              Open to engineering roles and product design work. I usually reply within a day.
+              Liked the live systems above? Let&apos;s talk roles, contracts, or a product that needs the same care.
             </p>
             <div className="flex flex-wrap items-center gap-5">
               <a
@@ -43,11 +43,11 @@ export default function Home() {
           <div className="lg:col-span-4 lg:pt-16 space-y-6 text-sm text-white/55">
             <p>
               <span className="block text-white/85 font-medium mb-1">Based in</span>
-              Accra (GMT), remote-friendly
+              Accra (GMT), remote friendly
             </p>
             <p>
               <span className="block text-white/85 font-medium mb-1">Open to</span>
-              Full-time, contract, product &amp; design
+              Full time, contract, product &amp; design
             </p>
             <p className="pt-2 flex gap-4">
               <a href={site.socials.github} target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors underline underline-offset-4 decoration-white/25">

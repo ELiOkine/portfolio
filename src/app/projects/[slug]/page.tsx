@@ -5,72 +5,48 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ExternalLink, Github, CheckCircle2, ChevronRight, Globe, Monitor, Code2, Smartphone } from 'lucide-react';
 import { projects } from '@/data/projects';
 import { cn } from '@/lib/utils';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function ProjectPage() {
   const { slug } = useParams();
   const router = useRouter();
-  const [viewMode, setViewMode] = useState<'preview' | 'live'>('preview');
-  
   const currentIndex = projects.findIndex(p => p.id === slug);
-  const project = projects[currentIndex];
-
-  if (!project) {
-    return (
-      <div className="min-h-screen flex items-center justify-center pt-20">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
-          <button onClick={() => router.push('/')} className="text-accent underline">Back to Home</button>
-        </div>
-      </div>
-    );
-  }
-
-  const nextProject = projects[(currentIndex + 1) % projects.length];
-  const prevProject = projects[(currentIndex - 1 + projects.length) % projects.length];
-
+  const project = currentIndex >= 0 ? projects[currentIndex] : undefined;
+  const [viewMode, setViewMode] = useState<'preview' | 'live'>(() =>
+    projects.find(p => p.id === slug)?.link ? 'live' : 'preview'
+  );
   const [patchedHtml, setPatchedHtml] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!project) return;
     const link = project.link;
-    // Builds that already ship a correct sub-path asset base + their own demo bootstrap
-    // are loaded directly; no runtime HTML patching needed.
     if (project.directEmbed) {
       setPatchedHtml(null);
       return;
     }
     if (viewMode === 'live' && link) {
-      // Fetch and patch the index.html for the project to handle sub-paths
       fetch(link)
         .then(res => {
           if (!res.ok) throw new Error("Preview fetch failed");
           return res.text();
         })
         .then(html => {
-          // Determine the exact base directory path for assets
           const basePath = link.substring(0, link.lastIndexOf('/') + 1);
           
-          // 1. Make asset paths absolute relative to the project folder
           let patched = html.replace(/(src|href)="assets\//g, `$1="${basePath}assets/`);
           patched = patched.replace(/(src|href)="\.\/assets\//g, `$1="${basePath}assets/`);
           patched = patched.replace(/(src|href)="\/assets\//g, `$1="${basePath}assets/`);
           
-          // 2. Inject a script to fix internal React Router paths
           const routingFix = `
             <script>
-              // Trick React Router into thinking it's at the root path
-              // but don't navigate so assets still work
               if (window.location.pathname !== '/') {
                 window.history.replaceState(null, '', '/');
               }
               
-              // Store original fetch
               const originalFetch = window.fetch;
               
-              // Simulation layer for API calls
               window.fetch = (url, options) => {
-                // Let Vite assets and static chunks load normally!
                 if (typeof url === 'string' && (url.includes('assets/') || url.endsWith('.svg') || url.endsWith('.json'))) {
                   return originalFetch(url, options);
                 }
@@ -94,12 +70,26 @@ export default function ProjectPage() {
         })
         .catch(err => {
           console.error('Failed to patch live preview:', err);
-          setPatchedHtml(null); // Fallback to direct src if patch fails
+          setPatchedHtml(null);
         });
     } else {
       setPatchedHtml(null);
     }
-  }, [viewMode, project.link]);
+  }, [viewMode, project]);
+
+  if (!project) {
+    return (
+      <div className="min-h-screen flex items-center justify-center pt-20">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
+          <button onClick={() => router.push('/')} className="text-accent underline">Back to Home</button>
+        </div>
+      </div>
+    );
+  }
+
+  const nextProject = projects[(currentIndex + 1) % projects.length];
+  const prevProject = projects[(currentIndex - 1 + projects.length) % projects.length];
 
   return (
     <article className="min-h-screen pt-32 pb-24 px-6 md:px-12">
@@ -175,7 +165,7 @@ export default function ProjectPage() {
                     "flex items-center gap-2 px-5 py-2.5 text-sm font-semibold transition-colors",
                     project.liveUrl ? "bg-secondary border border-border hover:bg-muted" : "bg-primary text-primary-foreground hover:bg-accent"
                   )}>
-                    Interactive Preview <ExternalLink size={16} />
+                    Try the live system <ExternalLink size={16} />
                   </button>
                 )}
                 {project.github && (
@@ -209,14 +199,23 @@ export default function ProjectPage() {
 
         {/* Project Experience Section */}
         <section id="preview-section" className="mb-32 scroll-mt-32">
-          <div className="flex items-center justify-between mb-8">
-            <h3 className="text-[10px] font-bold uppercase tracking-widest text-accent">Visual Experience</h3>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+            <div className="max-w-xl">
+              <h3 className="text-[10px] font-bold uppercase tracking-widest text-accent mb-3">Visual Experience</h3>
+              {project.link && (
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                  {viewMode === 'live'
+                    ? 'This is the live system. Click around, enter flows, and explore as you would in production.'
+                    : 'Static capture of the interface. Switch to Live System to interact with it.'}
+                </p>
+              )}
+            </div>
             {project.link && (
-              <div className="flex p-1 bg-muted rounded-md border border-border">
+              <div className="flex p-1 bg-muted border border-border shrink-0">
                 <button 
                   onClick={() => setViewMode('preview')}
                   className={cn(
-                    "flex items-center gap-2 px-4 py-1.5 text-[10px] font-bold uppercase rounded-md transition-all",
+                    "flex items-center gap-2 px-4 py-1.5 text-[10px] font-bold uppercase transition-all",
                     viewMode === 'preview' ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
                   )}
                 >
@@ -225,7 +224,7 @@ export default function ProjectPage() {
                 <button 
                   onClick={() => setViewMode('live')}
                   className={cn(
-                    "flex items-center gap-2 px-4 py-1.5 text-[10px] font-bold uppercase rounded-md transition-all",
+                    "flex items-center gap-2 px-4 py-1.5 text-[10px] font-bold uppercase transition-all",
                     viewMode === 'live' ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
                   )}
                 >
@@ -235,7 +234,19 @@ export default function ProjectPage() {
             )}
           </div>
 
-          <div className="border border-border overflow-hidden bg-background">
+          {project.link && viewMode === 'live' && (
+            <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 border border-accent/20 bg-accent/[0.04]">
+              <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-accent">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                Live &amp; interactive
+              </span>
+              <span className="text-sm text-muted-foreground">
+                Sample data, safe to explore. Open fullscreen for the full viewport.
+              </span>
+            </div>
+          )}
+
+          <div className="border border-border overflow-hidden bg-background shadow-[0_24px_60px_-28px_rgba(20,18,16,0.35)]">
             {/* Browser-like chrome header (sits above the content, never covers it) */}
             <div className="h-11 bg-muted/80 backdrop-blur-md border-b border-border flex items-center px-4 gap-3">
                <div className="flex gap-1.5 shrink-0">
@@ -247,8 +258,8 @@ export default function ProjectPage() {
                   <Globe size={10} className="text-muted-foreground shrink-0" />
                   <span className="text-[10px] text-muted-foreground truncate">
                     {viewMode === 'live'
-                      ? (project.appetizeKey ? 'Real app running on a cloud Android device' : (project.link || `${project.id} live`))
-                      : `${project.id} visual preview`}
+                      ? (project.appetizeKey ? 'Real app running on a cloud Android device' : `${project.title} live`)
+                      : `${project.title} visual preview`}
                   </span>
                </div>
                {project.link && (

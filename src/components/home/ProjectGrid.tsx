@@ -33,6 +33,9 @@ export default function ProjectGrid() {
             <h2 className="font-serif text-4xl md:text-6xl font-medium tracking-tight leading-[1.05]">
               Systems that move money, fleets, and people.
             </h2>
+            <p className="mt-5 text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
+              Each production piece opens a working preview. Click through, click around, try the live system on this site.
+            </p>
           </div>
           <div className="flex flex-wrap gap-1 border-b border-border pb-1">
             {['All', 'Engineering', 'Design', 'Fullstack'].map((f) => (

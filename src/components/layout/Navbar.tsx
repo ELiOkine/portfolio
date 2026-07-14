@@ -30,9 +30,9 @@ export default function Navbar() {
         scrolled ? 'py-3 border-b border-border bg-background/90 backdrop-blur-md' : 'py-5 bg-transparent'
       )}
     >
-      <div className="max-w-6xl mx-auto flex items-center justify-between">
-        <Link href="/" className="font-serif text-xl font-medium tracking-tight">
-          EO
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <Link href="/" className="font-serif text-xl font-medium tracking-tight hover:text-accent transition-colors">
+          Emmanuel<span className="text-gold">.</span>
         </Link>
 
         <div className="hidden md:flex items-center gap-8">

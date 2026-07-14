@@ -41,7 +41,7 @@ export default function About() {
               Over the past two years that has meant leading frontend work on products that move money (iSmartPay), run vehicle fleets (Fleetly), and put bookkeeping in the hands of market traders who have never opened a spreadsheet (Akonta).
             </p>
             <p>
-              I come back to the same questions: what happens when the network drops mid-payment, can a low-literacy user finish the task, and will this codebase still make sense fifteen modules deep.
+              I come back to the same questions: what happens when the network drops mid payment, can a low literacy user finish the task, and will this codebase still make sense fifteen modules deep.
             </p>
           </div>
 
@@ -70,9 +70,9 @@ export default function About() {
             </h3>
             <ul className="space-y-5">
               {[
-                { t: 'Own the slice.', d: 'From data model to pixel — not just the ticket.' },
-                { t: 'Constraints first.', d: 'Slow networks and non-technical users are the default.' },
-                { t: 'Trade-offs early.', d: 'No surprises late in a build.' },
+                { t: 'Own the slice.', d: 'From data model to pixel, not just the ticket.' },
+                { t: 'Constraints first.', d: 'Slow networks and non technical users are the default.' },
+                { t: 'Trade offs early.', d: 'No surprises late in a build.' },
               ].map((item) => (
                 <li key={item.t} className="flex gap-4 text-base leading-relaxed">
                   <span className="mt-2 h-px w-6 shrink-0 bg-gold" />
