@@ -3,6 +3,7 @@ import { DM_Sans, Fraunces, JetBrains_Mono } from "next/font/google";
 import "./styles.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import VersionGuard from "@/components/VersionGuard";
 
 const sans = DM_Sans({
   variable: "--font-sans",
@@ -61,6 +62,7 @@ export default function RootLayout({
       <body
         className={`${sans.variable} ${serif.variable} ${mono.variable} antialiased min-h-screen flex flex-col`}
       >
+        <VersionGuard />
         <Navbar />
         <main className="flex-grow">
           {children}

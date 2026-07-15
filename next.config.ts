@@ -1,4 +1,15 @@
 import type { NextConfig } from "next";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
+const packageVersion = JSON.parse(
+  readFileSync(join(process.cwd(), "package.json"), "utf8"),
+).version as string;
+
+const appVersion =
+  process.env.VERCEL_GIT_COMMIT_SHA ??
+  process.env.NEXT_PUBLIC_APP_VERSION ??
+  `${packageVersion}-${Date.now()}`;
 
 const nextConfig: NextConfig = {
   // Allow HMR when opening the local Network URL from another device on LAN.
@@ -8,6 +19,9 @@ const nextConfig: NextConfig = {
   // quota on every redeploy. Serve them directly instead.
   images: {
     unoptimized: true,
+  },
+  env: {
+    NEXT_PUBLIC_APP_VERSION: appVersion,
   },
 };
 
