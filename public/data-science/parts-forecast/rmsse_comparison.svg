@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320">
+  <rect width="100%" height="100%" fill="#faf7f1"/>
+  <text x="24" y="36" font-family="Georgia, serif" font-size="22" fill="#141210">Mean RMSSE (shared SKU run)</text>
+  <text x="24" y="58" font-family="ui-sans-serif,system-ui" font-size="12" fill="#6a645c">Values below 1.0 beat the seasonal-naive baseline · client anonymized</text>
+  <line x1="200" y1="80" x2="200" y2="280" stroke="#d4cdc0"/>
+  <line x1="680" y1="80" x2="680" y2="280" stroke="#d4cdc0" stroke-dasharray="4 4"/>
+  <text x="660" y="76" font-family="ui-sans-serif,system-ui" font-size="11" fill="#6a645c">1.0</text>
+  
+  <text x="24" y="112" font-family="Georgia, serif" font-size="16" fill="#141210">Chronos-2</text>
+  <rect x="200" y="90" width="326.40000000000003" height="32" fill="#234e3a"/>
+  <text x="536.4000000000001" y="112" font-family="ui-sans-serif,system-ui" font-size="13" fill="#6a645c">0.680</text>
+  
+  <text x="24" y="172" font-family="Georgia, serif" font-size="16" fill="#141210">Prophet</text>
+  <rect x="200" y="150" width="479.04" height="32" fill="#234e3a"/>
+  <text x="689.04" y="172" font-family="ui-sans-serif,system-ui" font-size="13" fill="#6a645c">0.998</text>
+  
+  <text x="24" y="232" font-family="Georgia, serif" font-size="16" fill="#141210">Seasonal naive</text>
+  <rect x="200" y="210" width="480.0" height="32" fill="#9a7340"/>
+  <text x="690.0" y="232" font-family="ui-sans-serif,system-ui" font-size="13" fill="#6a645c">1.000</text>
+  
+</svg>

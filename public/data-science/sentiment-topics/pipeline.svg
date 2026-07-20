@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <rect width="100%" height="100%" fill="#faf7f1"/>
+  <text x="40" y="48" font-family="Georgia, serif" font-size="24" fill="#141210">Neural topics → operational themes</text>
+  <text x="40" y="74" font-family="ui-sans-serif,system-ui" font-size="13" fill="#6a645c">Illustrative pipeline · client anonymized under NDA</text>
+  <rect x="40" y="110" width="180" height="72" fill="#e7e2d8" stroke="#d4cdc0"/>
+  <text x="56" y="152" font-family="ui-sans-serif,system-ui" font-size="14" fill="#141210">Reviews</text>
+  <path d="M230 146 H290" stroke="#9a7340" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="300" y="110" width="180" height="72" fill="#e8f1ea" stroke="#234e3a"/>
+  <text x="316" y="142" font-family="ui-sans-serif,system-ui" font-size="14" fill="#141210">BERTopic</text>
+  <text x="316" y="162" font-family="ui-sans-serif,system-ui" font-size="11" fill="#6a645c">MiniLM · UMAP</text>
+  <path d="M490 146 H550" stroke="#9a7340" stroke-width="2"/>
+  <rect x="560" y="110" width="180" height="72" fill="#e8f1ea" stroke="#234e3a"/>
+  <text x="576" y="142" font-family="ui-sans-serif,system-ui" font-size="14" fill="#141210">Emotion BERT</text>
+  <text x="576" y="162" font-family="ui-sans-serif,system-ui" font-size="11" fill="#6a645c">affect tags</text>
+  <path d="M650 182 V230" stroke="#9a7340" stroke-width="2"/>
+  <rect x="560" y="240" width="180" height="72" fill="#234e3a"/>
+  <text x="576" y="272" font-family="ui-sans-serif,system-ui" font-size="14" fill="#faf7f1">7B LLM</text>
+  <text x="576" y="292" font-family="ui-sans-serif,system-ui" font-size="11" fill="#d4cdc0">draft actions</text>
+  <rect x="40" y="340" width="820" height="140" fill="#fff" stroke="#d4cdc0"/>
+  <text x="60" y="378" font-family="Georgia, serif" font-size="18" fill="#141210">Generalized finding</text>
+  <text x="60" y="410" font-family="ui-sans-serif,system-ui" font-size="14" fill="#6a645c">Capacity pressure is widespread. Cancellation risk concentrates where</text>
+  <text x="60" y="432" font-family="ui-sans-serif,system-ui" font-size="14" fill="#6a645c">service recovery fails — staff interaction during breakdowns matters more</text>
+  <text x="60" y="454" font-family="ui-sans-serif,system-ui" font-size="14" fill="#6a645c">than the facility issue alone.</text>
+</svg>

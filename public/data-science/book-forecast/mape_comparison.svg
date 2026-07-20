@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+  <rect width="100%" height="100%" fill="#faf7f1"/>
+  <text x="24" y="36" font-family="Georgia, serif" font-size="22" fill="#141210">Test MAPE by model (%)</text>
+  <text x="24" y="58" font-family="ui-sans-serif,system-ui" font-size="12" fill="#6a645c">Lower is better · 32-week holdout</text>
+  <g transform="translate(0,0)">
+    <rect x="690" y="20" width="14" height="14" fill="#234e3a"/>
+    <text x="710" y="32" font-family="ui-sans-serif,system-ui" font-size="12" fill="#141210">Title A</text>
+    <rect x="690" y="42" width="14" height="14" fill="#9a7340"/>
+    <text x="710" y="54" font-family="ui-sans-serif,system-ui" font-size="12" fill="#141210">Title B</text>
+  </g>
+  
+  <text x="24" y="98" font-family="Georgia, serif" font-size="15" fill="#141210">SARIMA</text>
+  <rect x="180" y="80" width="250.1818181818182" height="24" fill="#234e3a"/>
+  <text x="438.1818181818182" y="98" font-family="ui-sans-serif,system-ui" font-size="12" fill="#6a645c">21.5%</text>
+  <rect x="180" y="108" width="262.9818181818182" height="24" fill="#9a7340"/>
+  <text x="450.9818181818182" y="126" font-family="ui-sans-serif,system-ui" font-size="12" fill="#6a645c">22.6%</text>
+  
+  <text x="24" y="180" font-family="Georgia, serif" font-size="15" fill="#141210">XGBoost</text>
+  <rect x="180" y="162" width="354.90909090909093" height="24" fill="#234e3a"/>
+  <text x="542.909090909091" y="180" font-family="ui-sans-serif,system-ui" font-size="12" fill="#6a645c">30.5%</text>
+  <rect x="180" y="190" width="311.8545454545455" height="24" fill="#9a7340"/>
+  <text x="499.8545454545455" y="208" font-family="ui-sans-serif,system-ui" font-size="12" fill="#6a645c">26.8%</text>
+  
+  <text x="24" y="262" font-family="Georgia, serif" font-size="15" fill="#141210">LSTM</text>
+  <rect x="180" y="244" width="577.1636363636364" height="24" fill="#234e3a"/>
+  <text x="765.1636363636364" y="262" font-family="ui-sans-serif,system-ui" font-size="12" fill="#6a645c">49.6%</text>
+  <rect x="180" y="272" width="256.0" height="24" fill="#9a7340"/>
+  <text x="444.0" y="290" font-family="ui-sans-serif,system-ui" font-size="12" fill="#6a645c">22.0%</text>
+  
+  <text x="24" y="344" font-family="Georgia, serif" font-size="15" fill="#141210">Parallel hybrid</text>
+  <rect x="180" y="326" width="265.3090909090909" height="24" fill="#234e3a"/>
+  <text x="453.3090909090909" y="344" font-family="ui-sans-serif,system-ui" font-size="12" fill="#6a645c">22.8%</text>
+  <rect x="180" y="354" width="209.45454545454547" height="24" fill="#9a7340"/>
+  <text x="397.4545454545455" y="372" font-family="ui-sans-serif,system-ui" font-size="12" fill="#6a645c">18.0%</text>
+  
+  <text x="24" y="396" font-family="ui-sans-serif,system-ui" font-size="11" fill="#a0aec0">Parallel hybrid best overall · Title B 18.0% MAPE</text>
+</svg>

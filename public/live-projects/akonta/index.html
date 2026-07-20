@@ -21,21 +21,30 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 16px;
-      min-height: 100vh;
+      padding: 12px;
+      min-height: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
     }
     .device {
       width: min(390px, 100%);
+      height: min(780px, calc(100% - 8px));
+      max-height: 100%;
       background: #0F172A;
       border-radius: 36px;
       padding: 10px;
       box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+      display: flex;
+      flex-direction: column;
     }
     .screen {
       border-radius: 28px;
       overflow: hidden;
       background: var(--bg);
-      height: min(780px, calc(100vh - 32px));
+      flex: 1;
+      min-height: 0;
+      height: 100%;
       display: flex;
       flex-direction: column;
       position: relative;
@@ -87,7 +96,11 @@
     .shop { font-size: 1.05rem; font-weight: 900; letter-spacing: -0.3px; }
     .date-r { display: flex; align-items: center; gap: 3px; font-size: 0.6rem; color: var(--muted); font-weight: 600; margin-top: 2px; }
     .home-h { display: flex; justify-content: space-between; margin-bottom: 8px; align-items: flex-start; }
-    .gear { width: 36px; height: 36px; border-radius: 10px; background: var(--surface); border: 1px solid var(--border); display: grid; place-items: center; color: var(--blue); }
+    .gear {
+      width: 36px; height: 36px; border-radius: 10px; background: var(--surface);
+      border: 1px solid var(--border); display: grid; place-items: center; color: var(--blue);
+      cursor: pointer; font-family: inherit; padding: 0;
+    }
 
     .profit-hero {
       background: var(--blue);
@@ -212,10 +225,17 @@
     @keyframes load { 0%,100% { width: 30%; } 50% { width: 85%; } }
 
     .demo-badge {
-      position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%);
+      position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%);
       background: rgba(15,23,42,0.85); color: #94A3B8; font-size: 0.62rem; font-weight: 700;
       padding: 5px 12px; border-radius: 99px; backdrop-filter: blur(8px);
       border: 1px solid rgba(255,255,255,0.08); z-index: 200;
+      pointer-events: none;
+    }
+    @media (max-height: 640px) {
+      .demo-badge { display: none; }
+      body { padding: 6px; }
+      .device { border-radius: 24px; padding: 6px; }
+      .screen { border-radius: 18px; }
     }
   </style>
 </head>
@@ -237,9 +257,9 @@
           <div>
             <div class="greeting">Good morning Emmanuel 👋</div>
             <div class="shop">Okine Provisions</div>
-            <div class="date-r"><ion-icon name="calendar-outline" style="font-size:0.65rem"></ion-icon> Monday, July 7</div>
+            <div class="date-r"><ion-icon name="calendar-outline" style="font-size:0.65rem"></ion-icon> <span id="home-date">Today</span></div>
           </div>
-          <div class="gear"><ion-icon name="settings-outline"></ion-icon></div>
+          <button type="button" class="gear" id="gear-btn" aria-label="Open settings"><ion-icon name="settings-outline"></ion-icon></button>
         </div>
         <div class="profit-hero">
           <div class="profit-lbl"><span>Today's Profit</span><div class="wallet-ico"><ion-icon name="wallet-outline"></ion-icon></div></div>
@@ -414,15 +434,35 @@
       return items;
     }
 
-    setTimeout(() => document.getElementById('splash').classList.add('hide'), 1800);
+    setTimeout(() => document.getElementById('splash').classList.add('hide'), 1200);
+
+    (function setHomeDate() {
+      const el = document.getElementById('home-date');
+      if (!el) return;
+      el.textContent = new Date().toLocaleDateString('en-GH', {
+        weekday: 'long', month: 'long', day: 'numeric',
+      });
+    })();
+
+    function goToView(view) {
+      document.querySelectorAll('.tab').forEach((t) => {
+        t.classList.toggle('on', t.dataset.view === view);
+      });
+      document.querySelectorAll('.view').forEach((v) => v.classList.remove('active'));
+      const target = document.getElementById('view-' + view);
+      if (target) target.classList.add('active');
+    }
 
     document.querySelectorAll('.tab').forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const view = tab.dataset.view;
-        document.querySelectorAll('.tab').forEach((t) => t.classList.remove('on'));
-        document.querySelectorAll('.view').forEach((v) => v.classList.remove('active'));
-        tab.classList.add('on');
-        document.getElementById('view-' + view).classList.add('active');
+      tab.addEventListener('click', () => goToView(tab.dataset.view));
+    });
+
+    document.getElementById('gear-btn')?.addEventListener('click', () => goToView('settings'));
+
+    document.querySelectorAll('.pill').forEach((pill) => {
+      pill.addEventListener('click', () => {
+        pill.parentElement.querySelectorAll('.pill').forEach((p) => p.classList.remove('on'));
+        pill.classList.add('on');
       });
     });
 

@@ -21,20 +21,20 @@ export default function ProjectGrid() {
         aria-hidden
         className="pointer-events-none absolute -right-8 top-8 font-serif text-[clamp(4rem,18vw,16rem)] leading-none text-foreground/[0.035] select-none tracking-tight"
       >
-        Work
+        Software
       </div>
 
       <div className="max-w-7xl mx-auto relative min-w-0">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 sm:mb-14 md:mb-16 gap-6 sm:gap-8">
           <div className="max-w-2xl min-w-0">
             <p className="text-xs font-medium uppercase tracking-[0.22em] text-gold mb-4">
-              My work
+              Software
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl font-medium tracking-tight leading-[1.05]">
               Systems that move money, fleets, and people.
             </h2>
             <p className="mt-4 sm:mt-5 text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-              Each production piece opens a working preview. Click through, click around, try the live system on this site.
+              Live product systems. Click through, click around, try the work on this site.
             </p>
           </div>
           <div className="flex flex-wrap gap-1 border-b border-border pb-1">

@@ -4,6 +4,8 @@ import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 import { ArrowDownRight } from 'lucide-react';
 import { site } from '@/lib/site';
+import { useTrack } from '@/components/TrackProvider';
+import { cambridgeCredential } from '@/lib/track';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -11,6 +13,38 @@ export default function Hero() {
   const first = site.name.split(' ')[0];
   const last = site.name.split(' ').slice(1).join(' ');
   const reduce = useReducedMotion();
+  const { track } = useTrack();
+
+  const isData = track === 'data';
+  const isSoftware = track === 'software';
+
+  const eyebrow = isData
+    ? 'Data scientist'
+    : isSoftware
+      ? 'Software engineer & designer'
+      : 'Software engineer · Data scientist';
+
+  const blurb = isData
+    ? `Forecasting, anomaly detection, and NLP case studies from the ${cambridgeCredential.withPartner}. Methods judged against baselines, not vibes.`
+    : isSoftware
+      ? 'Payment flows, fleet dashboards, and product interfaces built for real devices and unreliable networks, with live systems you can try right here.'
+      : 'I ship payment flows, fleet dashboards, and product interfaces for real devices. Separately, I do forecasting and ML case studies through the University of Cambridge Data Science for Business Career Accelerator.';
+
+  const primaryCta = isData
+    ? { href: '#data-science', label: 'Explore case studies' }
+    : { href: '#projects', label: 'Explore live work' };
+
+  const chips = isData
+    ? ['University of Cambridge', 'Forecasting', 'NLP', 'Anomaly detection']
+    : isSoftware
+      ? ['Fintech', 'Logistics', 'Interactive demos']
+      : ['Fintech', 'Logistics', 'University of Cambridge', 'Interactive demos'];
+
+  const roleLine = isData
+    ? 'Data Scientist'
+    : isSoftware
+      ? 'Software Engineer & UI/UX Designer'
+      : site.role;
 
   return (
     <section className="relative min-h-[100svh] flex items-stretch overflow-hidden page-atmosphere grain">
@@ -42,19 +76,20 @@ export default function Hero() {
                 <p className="text-[10px] uppercase tracking-[0.2em] text-white/70 mb-1">
                   Accra · {site.available ? 'Open to work' : 'Engineer'}
                 </p>
-                <p className="text-sm font-medium text-white">{site.role}</p>
+                <p className="text-sm font-medium text-white">{roleLine}</p>
               </div>
             </div>
           </motion.div>
 
           <div className="md:col-span-7 lg:col-span-7 order-2 md:order-1 pb-2 md:pb-4 lg:pb-6 min-w-0">
             <motion.p
+              key={eyebrow}
               initial={reduce ? false : { opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.35, ease }}
               className="text-xs font-medium uppercase tracking-[0.22em] text-gold mb-5 sm:mb-6 md:mb-8"
             >
-              Software engineer &amp; designer
+              {eyebrow}
             </motion.p>
 
             <h1 className="font-serif font-medium tracking-tight leading-[0.92] mb-6 sm:mb-8">
@@ -77,12 +112,13 @@ export default function Hero() {
             </h1>
 
             <motion.p
+              key={blurb}
               initial={reduce ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.5, ease }}
               className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed mb-8 sm:mb-10"
             >
-              Payment flows, fleet dashboards, and product interfaces built for real devices and unreliable networks, with live systems you can try right here.
+              {blurb}
             </motion.p>
 
             <motion.div
@@ -91,8 +127,8 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.62, ease }}
               className="flex flex-wrap items-center gap-3 sm:gap-4"
             >
-              <a href="#projects" className="btn-ink w-full sm:w-auto text-center">
-                Explore live work
+              <a href={primaryCta.href} className="btn-ink w-full sm:w-auto text-center">
+                {primaryCta.label}
               </a>
               <a
                 href={site.resume}
@@ -101,24 +137,29 @@ export default function Hero() {
               >
                 See my résumé
               </a>
-              <a href="#contact" className="inline-flex items-center gap-1.5 text-sm font-medium link-quiet w-full sm:w-auto justify-center sm:justify-start py-2">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-1.5 text-sm font-medium link-quiet w-full sm:w-auto justify-center sm:justify-start py-2"
+              >
                 Get in touch
                 <ArrowDownRight size={16} strokeWidth={1.75} />
               </a>
             </motion.div>
 
             <motion.div
+              key={chips.join('-')}
               initial={reduce ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.85 }}
               className="mt-10 sm:mt-14 md:mt-20 flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-muted-foreground"
             >
               <span className="h-px w-8 sm:w-10 bg-gold/60 shrink-0" />
-              <span>Fintech</span>
-              <span className="text-border">/</span>
-              <span>Logistics</span>
-              <span className="text-border">/</span>
-              <span>Interactive demos</span>
+              {chips.map((chip, i) => (
+                <span key={chip} className="inline-flex items-center gap-x-4 sm:gap-x-6">
+                  {i > 0 && <span className="text-border">/</span>}
+                  <span>{chip}</span>
+                </span>
+              ))}
             </motion.div>
           </div>
         </div>

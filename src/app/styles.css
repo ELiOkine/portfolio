@@ -83,10 +83,15 @@ html {
 }
 
 img,
-video,
-iframe {
+video {
   max-width: 100%;
   height: auto;
+}
+
+/* Do not set height:auto on iframes. Browsers collapse them to ~150px
+   and that breaks live project embeds which rely on h-full / explicit height. */
+iframe {
+  max-width: 100%;
 }
 
 /* Safer fluid type helpers used in hero / sections */
