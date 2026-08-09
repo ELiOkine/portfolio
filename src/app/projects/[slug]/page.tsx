@@ -2,7 +2,7 @@
 
 import { useParams, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ExternalLink, Github, CheckCircle2, ChevronRight, Globe, Monitor, Code2, Smartphone } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Github, CheckCircle2, ChevronRight, Globe, Monitor, Code2, Smartphone, Tablet, Maximize2 } from 'lucide-react';
 import { projects } from '@/data/projects';
 import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
@@ -17,6 +17,7 @@ export default function ProjectPage() {
     projects.find(p => p.id === slug)?.link ? 'live' : 'preview'
   );
   const [patchedHtml, setPatchedHtml] = useState<string | null>(null);
+  const [deviceViewport, setDeviceViewport] = useState<'responsive' | 'mobile' | 'tablet'>('responsive');
 
   useEffect(() => {
     if (!project) return;
@@ -242,42 +243,81 @@ export default function ProjectPage() {
               </span>
               <span className="text-sm text-muted-foreground">
                 Sample data, safe to explore. Open fullscreen for the full viewport.
-              </span>
+</span>
             </div>
           )}
 
           <div className="border border-border overflow-hidden bg-background shadow-[0_24px_60px_-28px_rgba(20,18,16,0.35)]">
-            {/* Browser-like chrome header (sits above the content, never covers it) */}
-            <div className="h-11 bg-muted/80 backdrop-blur-md border-b border-border flex items-center px-4 gap-3">
-               <div className="flex gap-1.5 shrink-0">
+            {/* Browser-like chrome header */}
+            <div className="h-11 bg-muted/80 backdrop-blur-md border-b border-border flex items-center px-3 sm:px-4 gap-2 sm:gap-3 justify-between">
+               <div className="flex gap-1.5 shrink-0 items-center">
                   <div className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
                   <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
                   <div className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
                </div>
-               <div className="flex-1 max-w-md mx-auto h-6 bg-background/50 rounded flex items-center px-3 gap-2 min-w-0">
+
+               <div className="flex-1 max-w-sm sm:max-w-md mx-auto h-6 bg-background/50 rounded flex items-center px-3 gap-2 min-w-0">
                   <Globe size={10} className="text-muted-foreground shrink-0" />
                   <span className="text-[10px] text-muted-foreground truncate">
                     {viewMode === 'live'
-                      ? (project.appetizeKey ? 'Real app running on a cloud Android device' : `${project.title} live`)
+                      ? (project.appetizeKey ? 'Real app running on cloud Android' : `${project.title} live system`)
                       : `${project.title} visual preview`}
                   </span>
                </div>
-               {project.link && (
-                 <a
-                   href={project.link}
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-tight text-muted-foreground hover:text-accent transition-colors shrink-0"
-                 >
-                   Open <ExternalLink size={12} />
-                 </a>
-               )}
+
+               <div className="flex items-center gap-1 sm:gap-2 shrink-0">
+                 {viewMode === 'live' && !project.appetizeKey && (
+                   <div className="hidden sm:flex items-center border border-border rounded bg-background/60 p-0.5 text-[10px]">
+                     <button
+                       onClick={() => setDeviceViewport('responsive')}
+                       className={cn(
+                         "px-2 py-0.5 font-medium transition-colors flex items-center gap-1",
+                         deviceViewport === 'responsive' ? "bg-primary text-primary-foreground font-semibold" : "text-muted-foreground hover:text-foreground"
+                       )}
+                       title="Full responsive view"
+                     >
+                       <Monitor size={11} /> Desktop
+                     </button>
+                     <button
+                       onClick={() => setDeviceViewport('tablet')}
+                       className={cn(
+                         "px-2 py-0.5 font-medium transition-colors flex items-center gap-1 border-l border-border",
+                         deviceViewport === 'tablet' ? "bg-primary text-primary-foreground font-semibold" : "text-muted-foreground hover:text-foreground"
+                       )}
+                       title="Tablet viewport (768px)"
+                     >
+                       <Tablet size={11} /> Tablet
+                     </button>
+                     <button
+                       onClick={() => setDeviceViewport('mobile')}
+                       className={cn(
+                         "px-2 py-0.5 font-medium transition-colors flex items-center gap-1 border-l border-border",
+                         deviceViewport === 'mobile' ? "bg-primary text-primary-foreground font-semibold" : "text-muted-foreground hover:text-foreground"
+                       )}
+                       title="Mobile viewport (375px)"
+                     >
+                       <Smartphone size={11} /> Mobile
+                     </button>
+                   </div>
+                 )}
+
+                 {project.link && (
+                   <a
+                     href={project.link}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-tight text-muted-foreground hover:text-accent transition-colors px-1.5 py-1"
+                   >
+                     Open <ExternalLink size={12} />
+                   </a>
+                 )}
+               </div>
             </div>
 
-            {/* Content area, tall for the live demo so the app shows fully */}
+            {/* Content area, tall for live demo so the app shows fully */}
             <div
               className={cn(
-                "relative bg-white overflow-hidden",
+                "relative bg-neutral-900 overflow-hidden flex items-center justify-center transition-all duration-300",
                 viewMode === 'live' ? "h-[70vh] sm:h-[80vh] min-h-[420px] sm:min-h-[560px]" : "aspect-video"
               )}
             >
@@ -289,7 +329,7 @@ export default function ProjectPage() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="absolute inset-0"
+                    className="absolute inset-0 bg-white"
                   >
                     <Image
                       src={project.image}
@@ -306,7 +346,12 @@ export default function ProjectPage() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="absolute inset-0 bg-white"
+                    className={cn(
+                      "h-full transition-all duration-300 bg-white shadow-2xl relative",
+                      deviceViewport === 'responsive' && "w-full",
+                      deviceViewport === 'tablet' && "w-[768px] max-w-full border-x border-border",
+                      deviceViewport === 'mobile' && "w-[375px] max-w-full border-x border-border"
+                    )}
                   >
                     {project.appetizeKey ? (
                       <iframe

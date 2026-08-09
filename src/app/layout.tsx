@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import VersionGuard from "@/components/VersionGuard";
 import { TrackProvider } from "@/components/TrackProvider";
+import { ResumeProvider } from "@/components/ResumeModal";
 
 const sans = DM_Sans({
  variable: "--font-sans",
@@ -70,12 +71,14 @@ export default function RootLayout({
  className={`${sans.variable} ${serif.variable} ${mono.variable} antialiased min-h-screen flex flex-col`}
  >
  <TrackProvider>
+ <ResumeProvider>
  <VersionGuard />
  <Navbar />
  <main className="flex-grow">
  {children}
  </main>
  <Footer />
+ </ResumeProvider>
  </TrackProvider>
  </body>
  </html>

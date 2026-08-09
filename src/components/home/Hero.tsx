@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { ArrowDownRight } from 'lucide-react';
 import { site } from '@/lib/site';
 import { useTrack } from '@/components/TrackProvider';
+import { useResumeModal } from '@/components/ResumeModal';
 import { cambridgeCredential } from '@/lib/track';
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -14,6 +15,7 @@ export default function Hero() {
   const last = site.name.split(' ').slice(1).join(' ');
   const reduce = useReducedMotion();
   const { track } = useTrack();
+  const { openResume } = useResumeModal();
 
   const isData = track === 'data';
   const isSoftware = track === 'software';
@@ -130,13 +132,13 @@ export default function Hero() {
               <a href={primaryCta.href} className="btn-ink w-full sm:w-auto text-center">
                 {primaryCta.label}
               </a>
-              <a
-                href={site.resume}
-                download={site.resumeFilename}
-                className="inline-flex items-center justify-center w-full sm:w-auto px-5 py-3 text-sm font-semibold border border-foreground/20 hover:border-accent hover:text-accent transition-colors"
+              <button
+                type="button"
+                onClick={openResume}
+                className="inline-flex items-center justify-center w-full sm:w-auto px-5 py-3 text-sm font-semibold border border-foreground/20 hover:border-accent hover:text-accent transition-colors cursor-pointer"
               >
                 See my résumé
-              </a>
+              </button>
               <a
                 href="#contact"
                 className="inline-flex items-center gap-1.5 text-sm font-medium link-quiet w-full sm:w-auto justify-center sm:justify-start py-2"

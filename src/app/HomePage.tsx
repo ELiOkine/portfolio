@@ -6,10 +6,12 @@ import DataScienceSection from '@/components/data-science/DataScienceSection';
 import About from '@/components/home/About';
 import PathGate from '@/components/PathGate';
 import { useTrack } from '@/components/TrackProvider';
+import { useResumeModal } from '@/components/ResumeModal';
 import { site, mailto } from '@/lib/site';
 
 export default function HomePage() {
  const { track } = useTrack();
+ const { openResume } = useResumeModal();
 
  return (
  <div className="flex flex-col">
@@ -52,13 +54,13 @@ export default function HomePage() {
  >
  {site.email}
  </a>
- <a
- href={site.resume}
- download={site.resumeFilename}
- className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 border border-white/35 text-primary-foreground text-sm font-semibold hover:bg-white/10 hover:border-white/60 transition-colors"
+ <button
+ type="button"
+ onClick={openResume}
+ className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 border border-white/35 text-primary-foreground text-sm font-semibold hover:bg-white/10 hover:border-white/60 transition-colors cursor-pointer"
  >
  See my résumé
- </a>
+ </button>
  </div>
  </div>
  <div className="lg:col-span-4 lg:pt-16 space-y-6 text-sm text-white/55">

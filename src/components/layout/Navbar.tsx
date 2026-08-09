@@ -4,10 +4,11 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { site, mailto } from '@/lib/site';
 import { useTrack } from '@/components/TrackProvider';
+import { useResumeModal } from '@/components/ResumeModal';
 
 const navLinks = [
   { name: 'Software', href: '/#projects' },
@@ -20,6 +21,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { track, setTrack, clearTrack } = useTrack();
+  const { openResume } = useResumeModal();
   const router = useRouter();
 
   useEffect(() => {
@@ -40,12 +42,17 @@ export default function Navbar() {
     router.push('/#data-science');
   };
 
-  const switchTrack = (next: 'software' | 'data') => {
+  const switchTrack = (next: 'software' | 'data' | 'all') => {
     if (next === 'data') {
       goData();
       return;
     }
-    goSoftware();
+    if (next === 'software') {
+      goSoftware();
+      return;
+    }
+    clearTrack();
+    setIsOpen(false);
   };
 
   const handleNavClick = (href: string) => {
@@ -100,7 +107,7 @@ export default function Navbar() {
               className={cn(
                 'px-2.5 py-1.5 transition-colors',
                 track === 'software'
-                  ? 'bg-primary text-primary-foreground'
+                  ? 'bg-primary text-primary-foreground font-bold'
                   : 'text-muted-foreground hover:text-foreground'
               )}
             >
@@ -112,31 +119,43 @@ export default function Navbar() {
               className={cn(
                 'px-2.5 py-1.5 transition-colors border-l border-border',
                 track === 'data'
-                  ? 'bg-primary text-primary-foreground'
+                  ? 'bg-primary text-primary-foreground font-bold'
                   : 'text-muted-foreground hover:text-foreground'
               )}
             >
               Data &amp; AI
             </button>
+            <button
+              type="button"
+              onClick={() => switchTrack('all')}
+              className={cn(
+                'px-2.5 py-1.5 transition-colors border-l border-border',
+                track === null
+                  ? 'bg-primary text-primary-foreground font-bold'
+                  : 'text-muted-foreground hover:text-foreground'
+              )}
+            >
+              All
+            </button>
           </div>
 
-          <a
-            href={site.resume}
-            download={site.resumeFilename}
-            className="inline-flex items-center px-3.5 py-2 text-sm font-semibold bg-primary text-primary-foreground hover:bg-accent transition-colors whitespace-nowrap"
+          <button
+            onClick={openResume}
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-sm font-semibold bg-primary text-primary-foreground hover:bg-accent transition-colors whitespace-nowrap"
           >
+            <FileText size={14} />
             See my résumé
-          </a>
+          </button>
         </div>
 
         <div className="lg:hidden flex items-center gap-2 shrink-0">
-          <a
-            href={site.resume}
-            download={site.resumeFilename}
-            className="inline-flex items-center px-3 py-1.5 text-xs font-semibold bg-primary text-primary-foreground whitespace-nowrap"
+          <button
+            onClick={openResume}
+            className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold bg-primary text-primary-foreground whitespace-nowrap"
           >
-            See résumé
-          </a>
+            <FileText size={12} />
+            Résumé
+          </button>
           <button
             className="p-2 text-foreground"
             onClick={() => setIsOpen(!isOpen)}
@@ -176,12 +195,12 @@ export default function Navbar() {
               <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground mb-2">
                 Path
               </p>
-              <div className="flex gap-2">
+              <div className="flex gap-1.5">
                 <button
                   type="button"
                   onClick={() => switchTrack('software')}
                   className={cn(
-                    'flex-1 px-3 py-2 text-sm font-semibold border border-border',
+                    'flex-1 px-2 py-2 text-xs font-semibold border border-border',
                     track === 'software' && 'bg-primary text-primary-foreground'
                   )}
                 >
@@ -191,35 +210,34 @@ export default function Navbar() {
                   type="button"
                   onClick={() => switchTrack('data')}
                   className={cn(
-                    'flex-1 px-3 py-2 text-sm font-semibold border border-border',
+                    'flex-1 px-2 py-2 text-xs font-semibold border border-border',
                     track === 'data' && 'bg-primary text-primary-foreground'
                   )}
                 >
                   Data &amp; AI
                 </button>
-              </div>
-              {track && (
                 <button
                   type="button"
-                  onClick={() => {
-                    clearTrack();
-                    setIsOpen(false);
-                    router.push('/');
-                  }}
-                  className="mt-2 text-xs text-muted-foreground underline underline-offset-2"
+                  onClick={() => switchTrack('all')}
+                  className={cn(
+                    'flex-1 px-2 py-2 text-xs font-semibold border border-border',
+                    track === null && 'bg-primary text-primary-foreground'
+                  )}
                 >
-                  Reset path choice
+                  All
                 </button>
-              )}
+              </div>
             </div>
-            <a
-              href={site.resume}
-              download={site.resumeFilename}
-              className="text-base font-semibold"
-              onClick={() => setIsOpen(false)}
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                openResume();
+              }}
+              className="text-base font-semibold text-left flex items-center gap-2"
             >
+              <FileText size={18} />
               See my résumé
-            </a>
+            </button>
             <a href={mailto} className="text-base font-medium text-accent" onClick={() => setIsOpen(false)}>
               {site.email}
             </a>
