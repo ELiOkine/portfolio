@@ -27,10 +27,10 @@ export default function Hero() {
       : 'Software engineer · Data scientist';
 
   const blurb = isData
-    ? `Forecasting, anomaly detection, and NLP case studies from the ${cambridgeCredential.withPartner}. Methods judged against baselines, not vibes.`
+    ? `Completed forecasting, anomaly detection, and NLP case studies through the ${cambridgeCredential.withPartner}. Methods judged against baselines, not vibes.`
     : isSoftware
       ? 'Payment flows, fleet dashboards, and product interfaces built for real devices and unreliable networks, with live systems you can try right here.'
-      : 'I ship payment flows, fleet dashboards, and product interfaces for real devices. Separately, I do forecasting and ML case studies through the University of Cambridge Data Science for Business Career Accelerator.';
+      : 'I ship payment flows, fleet dashboards, and product interfaces for real devices. Separately, I completed forecasting and ML case studies through the University of Cambridge Data Science for Business Career Accelerator.';
 
   const primaryCta = isData
     ? { href: '#data-science', label: 'Explore case studies' }
