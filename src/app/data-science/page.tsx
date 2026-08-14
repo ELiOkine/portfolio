@@ -45,7 +45,8 @@ export default function DataScienceIndexPage() {
             <p className="text-sm text-muted-foreground max-w-2xl leading-relaxed">
               Where a project is covered by NDA, the client is anonymized and proprietary data
               is not published. Methodology and permitted metrics remain. This is a professional
-              accelerator affiliated with the University of Cambridge, not a Cambridge degree.
+              accelerator affiliated with the University of Cambridge ({cambridgeCredential.dates}),
+              not a Cambridge degree.
             </p>
           </div>
           <div className="md:col-span-4 order-1 md:order-2">

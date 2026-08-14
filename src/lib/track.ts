@@ -8,4 +8,5 @@ export const cambridgeCredential = {
  program: 'Data Science for Business Career Accelerator',
  withPartner: 'University of Cambridge · Data Science for Business Career Accelerator',
  full: 'University of Cambridge Data Science for Business Career Accelerator (Fourth Rev)',
+ dates: 'Sept 2025 – Aug 2026',
 } as const;

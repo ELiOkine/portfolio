@@ -91,7 +91,7 @@ export const projects: Project[] = [
     category: 'Engineering',
     stage: 'Production',
     stageNote: 'Live product at iSmart International Ghana since September 2025, with a real REST API, database, 2FA auth and paying users. The embedded preview is a sandboxed build running on sample data so it is safe to explore publicly.',
-    liveUrl: 'https://stgpayportal.ismartghana.com',
+    liveUrl: 'https://payportal.ismartpay.org/login',
     clients: ['iSmart International Ghana'],
     image: '/projects/ismartpay.png',
     link: '/live-projects/ismartpay/index.html',
