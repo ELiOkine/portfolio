@@ -1,25 +1,25 @@
-# Emmanuel Okine
+# Emmanuel Okine — portfolio
 
-Personal site: live, clickable demos of production product UI. No login.
+A Next.js and TypeScript site for my product work as a frontend engineer: production fintech and operations interfaces, plus an admissions portal and selected data-science case studies.
 
-**Live:** [emmanuel-okine.vercel.app](https://emmanuel-okine.vercel.app)
+## What the site covers
 
-Software engineer in Accra. I ship payment flows, fleet dashboards, and product interfaces for real devices and unreliable networks.
+| Project | Role | What it is |
+| :--- | :--- | :--- |
+| iSmartPay | Frontend Lead, iSmart International Ghana (ended 10 Sep 2026) | Production fintech platform with 15 modules, including disbursements, payroll, wallet, collections and settlements. Also a white-label airtime and data platform from one themeable codebase. |
+| Fleetly | Lead Frontend Engineer, Jan–Jul 2025 | Enterprise fleet operations: vehicles, drivers, maintenance, fuel, safety and financials, plus a live tracking map and workshop and supplier portals. |
+| Jayee University College admissions portal | Contract Software Engineer, Oct 2023–Dec 2024 | Online admissions that handle 1,000+ applications a year and cut manual processing by 80%. |
+| Akonta | Personal product work | Offline-first market-stall ledger (source remains private). |
 
-## What you can try
-
-| Product | What it is |
-| :--- | :--- |
-| [iSmartPay](https://emmanuel-okine.vercel.app/projects/ismartpay) | Fintech platform (15 modules, live money movement) |
-| [Fleetly](https://emmanuel-okine.vercel.app/projects/fleetly) | Fleet ops for operators, workshops, suppliers |
-| [Akonta](https://emmanuel-okine.vercel.app/projects/akonta) | Offline first bookkeeping for market traders |
-| [Data science](https://emmanuel-okine.vercel.app/data-science) | Forecasting, anomaly detection, NLP case studies |
+Production client code is not in this repository. This repo is the public site, including project writeups and UI demos where I can share them.
 
 ## Stack
 
-Next.js, React, TypeScript, Tailwind. Interactive demos of the production systems sit on this site.
+- Next.js, React, TypeScript, Tailwind CSS
+- Node.js and Figma for product and implementation work
+- Python for data analysis, including Cambridge PACE Data Science with ML and AI case studies on the site
 
-## Local
+## Run locally
 
 ```bash
 npm install
@@ -27,3 +27,10 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+## Contact
+
+Emmanuel Okine · Exeter, UK  
+[emmanuelokine452@gmail.com](mailto:emmanuelokine452@gmail.com)  
+[LinkedIn](https://www.linkedin.com/in/emmanuel-okine-75b47a22b/)  
+[GitHub profile](https://github.com/ELiOkine)
