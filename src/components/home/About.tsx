@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const skills = [
  { category: 'Languages', items: ['TypeScript', 'JavaScript', 'Python', 'Java'] },
  { category: 'Frontend', items: ['React', 'Next.js', 'Tailwind CSS', 'Zustand', 'React Query'] },
- { category: 'Data & AI', items: ['scikit-learn', 'XGBoost', 'Prophet', 'TensorFlow', 'BERTopic', 'Chronos-2'] },
+ { category: 'Data & AI', items: ['scikit-learn', 'XGBoost', 'Prophet', 'TensorFlow', 'BERTopic'] },
  { category: 'Design', items: ['UI/UX', 'Figma', 'Design systems', 'Prototyping', 'Accessibility'] },
  { category: 'Backend & tools', items: ['Node.js', 'PostgreSQL', 'Supabase', 'SQLite', 'Docker', 'Vitest', 'Sentry'] },
 ];
@@ -43,7 +43,7 @@ export default function About() {
               Over the past two years that has meant leading frontend work on products that move money (iSmartPay), run vehicle fleets (Fleetly), and put bookkeeping in the hands of market traders who have never opened a spreadsheet (Akonta).
             </p>
             <p>
-              Separately, through the University of Cambridge Data Science for Business Career Accelerator, I worked on forecasting, anomaly detection, and NLP under real client constraints and NDA rules.
+              Separately, through the University of Cambridge Data Science for Business Career Accelerator, the public case study here is anomaly detection on public marine engine telemetry.
             </p>
  <p>
  I come back to the same questions: what happens when the network drops mid payment, can a low literacy user finish the task, and will this codebase still make sense fifteen modules deep.

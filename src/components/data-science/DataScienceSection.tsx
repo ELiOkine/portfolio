@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { getFeaturedDataScienceProjects } from '@/data/dataScience';
 import { CaseStudyCard } from './CaseStudyCard';
-import ForecastExplorer from './ForecastExplorer';
 import { cambridgeCredential } from '@/lib/track';
 
 export default function DataScienceSection() {
@@ -33,8 +32,8 @@ export default function DataScienceSection() {
             </h2>
             <p className="mt-4 sm:mt-5 text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
               Case studies from the{' '}
-              {cambridgeCredential.withPartner}: forecasting, anomaly detection, and NLP, with NDA safe
-              framing where required. Separate from the software product work.
+              {cambridgeCredential.withPartner}: unsupervised anomaly detection on a public dataset.
+              Separate from the software product work.
             </p>
           </div>
           <Link
@@ -43,10 +42,6 @@ export default function DataScienceSection() {
           >
             All case studies
           </Link>
-        </div>
-
-        <div className="mb-10 sm:mb-14">
-          <ForecastExplorer />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
@@ -61,8 +56,8 @@ export default function DataScienceSection() {
           viewport={{ once: true }}
           className="mt-8 text-xs text-muted-foreground max-w-2xl leading-relaxed"
         >
-          Client names and proprietary datasets are withheld under NDA. Published metrics are
-          limited to what can be disclosed without violating those agreements.
+          Published case studies use public datasets, with operating points, agreement rates, and
+          limitations included.
         </motion.p>
       </div>
     </section>

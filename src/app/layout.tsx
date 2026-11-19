@@ -29,7 +29,7 @@ export const metadata: Metadata = {
  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://emmanuel-okine.vercel.app"),
  title: "Emmanuel Okine | Software Engineer & Data Scientist",
  description:
- "Software engineer and data scientist in Accra. Ships fintech and ops products, and delivers forecasting, anomaly detection, and NLP case studies from the University of Cambridge Data Science for Business Career Accelerator.",
+ "Software engineer and data scientist in Accra. Ships fintech and ops products, and publishes a public anomaly detection case study from the University of Cambridge Data Science for Business Career Accelerator.",
  keywords: [
  "Emmanuel Okine",
  "Software Engineer",

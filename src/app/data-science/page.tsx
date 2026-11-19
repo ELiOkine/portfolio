@@ -9,21 +9,19 @@ import { cambridgeCredential } from '@/lib/track';
 export const metadata: Metadata = {
   title: 'Data Science & AI Case Studies | Emmanuel Okine',
   description:
-    'Forecasting, anomaly detection, and NLP case studies from the University of Cambridge Data Science for Business Career Accelerator: methods, evaluation, and NDA safe findings.',
+    'Anomaly detection case study from the University of Cambridge Data Science for Business Career Accelerator: methods, evaluation, and limitations on a public dataset.',
   openGraph: {
     title: 'Data Science & AI Case Studies | Emmanuel Okine',
     description:
-      'Case studies in intermittent demand forecasting, hybrid time series, unsupervised anomaly detection, and neural topic modelling.',
+      'Unsupervised anomaly detection on public marine engine telemetry, with consensus tiers instead of invented accuracy.',
   },
 };
 
 const capabilities = [
-  'Classical & hybrid forecasting',
-  'Foundation models for time series',
   'Unsupervised anomaly detection',
-  'Neural topic modelling & NLP',
-  'Honest baseline comparison',
-  'NDA aware client delivery',
+  'Isolation Forest & One-Class SVM',
+  'Consensus risk tiers',
+  'Honest evaluation without labels',
 ];
 
 export default function DataScienceIndexPage() {
@@ -43,9 +41,8 @@ export default function DataScienceIndexPage() {
               decisions under uncertainty, evaluation, and limitations.
             </p>
             <p className="text-sm text-muted-foreground max-w-2xl leading-relaxed">
-              Where a project is covered by NDA, the client is anonymized and proprietary data
-              is not published. Methodology and permitted metrics remain. This is a professional
-              accelerator affiliated with the University of Cambridge ({cambridgeCredential.dates}),
+              This case study uses a public dataset. It comes from a professional accelerator
+              affiliated with the University of Cambridge ({cambridgeCredential.dates}),
               not a Cambridge degree.
             </p>
           </div>

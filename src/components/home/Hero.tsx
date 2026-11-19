@@ -27,17 +27,17 @@ export default function Hero() {
       : 'Software engineer · Data scientist';
 
   const blurb = isData
-    ? `Completed forecasting, anomaly detection, and NLP case studies through the ${cambridgeCredential.withPartner}. Methods judged against baselines, not vibes.`
+    ? `Anomaly detection case study from the ${cambridgeCredential.withPartner}. Methods judged against baselines, not vibes.`
     : isSoftware
       ? 'Payment flows, fleet dashboards, and product interfaces built for real devices and unreliable networks, with live systems you can try right here.'
-      : 'I ship payment flows, fleet dashboards, and product interfaces for real devices. Separately, I completed forecasting and ML case studies through the University of Cambridge Data Science for Business Career Accelerator.';
+      : 'I ship payment flows, fleet dashboards, and product interfaces for real devices. Separately, I completed an anomaly detection case study through the University of Cambridge Data Science for Business Career Accelerator.';
 
   const primaryCta = isData
     ? { href: '#data-science', label: 'Explore case studies' }
     : { href: '#projects', label: 'Explore live work' };
 
   const chips = isData
-    ? ['University of Cambridge', 'Forecasting', 'NLP', 'Anomaly detection']
+    ? ['University of Cambridge', 'Anomaly detection', 'Public datasets']
     : isSoftware
       ? ['Fintech', 'Logistics', 'Interactive demos']
       : ['Fintech', 'Logistics', 'University of Cambridge', 'Interactive demos'];

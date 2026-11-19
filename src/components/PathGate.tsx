@@ -96,7 +96,7 @@ export default function PathGate() {
                   Data Science &amp; AI
                 </span>
                 <span className="mt-2 block text-sm text-muted-foreground leading-relaxed">
-                  Forecasting, anomalies, NLP. {cambridgeCredential.short} accelerator case studies.
+                  Anomaly detection. {cambridgeCredential.short} accelerator case study.
                 </span>
               </button>
             </div>

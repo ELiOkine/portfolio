@@ -8,7 +8,6 @@ import {
   getDataScienceProject,
 } from '@/data/dataScience';
 import { cn } from '@/lib/utils';
-import ForecastExplorer from '@/components/data-science/ForecastExplorer';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -119,12 +118,6 @@ export default async function DataScienceCaseStudyPage({ params }: PageProps) {
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{limitation}</p>
           </div>
         </section>
-
-        {slug === 'book-sales-forecasting' && (
-          <div className="mb-12 sm:mb-14">
-            <ForecastExplorer />
-          </div>
-        )}
 
         <div className="relative w-full aspect-[16/9] sm:aspect-[2/1] border border-border bg-surface mb-12 sm:mb-14 overflow-hidden">
           <Image
@@ -253,6 +246,7 @@ export default async function DataScienceCaseStudyPage({ params }: PageProps) {
           </aside>
         </div>
 
+        {dataScienceProjects.length > 1 && (
         <nav className="mt-16 sm:mt-20 pt-8 border-t border-border grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Link
             href={`/data-science/${prev.id}`}
@@ -277,6 +271,7 @@ export default async function DataScienceCaseStudyPage({ params }: PageProps) {
             </div>
           </Link>
         </nav>
+        )}
       </div>
     </article>
   );
